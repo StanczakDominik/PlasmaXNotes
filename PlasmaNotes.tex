@@ -1,0 +1,179 @@
+\input{header.tex}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\title{Notes from PlasmaX}
+\author{Perfi}
+
+\begin{document}
+\maketitle
+
+These notes will not be $100\%$ comprehensive, as I'm making them mainly for my own use. However, if you spot any mistakes, feel free to catch me on the forums and I'll fix any mistakes. 
+
+\section{Week 1. Description of the plasma state, with Paolo Ricci}
+Didn't start making notes until 1.5 so I'll be skimming the earlier topics.
+	\subsection{Plasmas in nature and laboratory}
+		\begin{itemize}
+			\item Plasma - the 4th state of matter. Heat stuff up to ~11400K (= 1eV) and gases begin being ionized.
+			\item The Sun is a miasma of incandescent plasma\footnote{\text{https://www.youtube.com/watch?v=sLkGSV9WDMA}}
+			\item Lightning is plasma (ionized air)
+			\item Plasma diplays
+			\item Nuclear fusion - can't really get there without turning stuff into plasma
+			\item The word 'plasma' comes from greek $\pi\lambda\alpha\sigma\mu\alpha$, which means 'moldable substance' or 'jelly', though it was mentioned on the forums that it might mean 'living thing'... which is really fitting when you think about it
+			\item A brief history:
+				\begin{itemize}
+					\item 1920's-1930's: ionospheric plasma research (for radio transmission) and vacuum tubes (Langmuir)
+					\item 1940's: MHD plasma waves (Alfvén)
+					\item 1950's: research on Magnetic Fusion. Geneva UN conference on uses for atomic energy which don't kill people
+				\end{itemize}
+			\item Fusion experiments: L-1, TFTR, JET, ITER tokamaks; W7-X stellarator at MPI in Germany; the NIF inertial fusion facility in US
+			\item The Earth's magnetosphere; van Allen belts
+			\item Jets - space plasmas
+			\item Lots of industrial applications
+		\end{itemize}
+		
+	\subsection{Rigorous definition of plasma: Debye length}
+	A plasma is a \textbf{globally neutral} \emph{ionised gas} with \textbf{collective effects}
+
+	The following parameters classify plasmas:
+		\begin{itemize}
+			\item \textbf{Debye length}
+			
+			Distance over the potential of a charged particle decreases by a factor $1/e$ due to screening by other charged particles
+			
+			\[\lambda_{De} = \sqrt{\frac{\epsilon_0 T_e}{e^2 n_0}} \] (for electrons)
+			
+			Solved in lecture by a statistical approach which assumed $n\frac{4}{3}\pi \lambda_{De}^3 \equiv N_D \gg 1$ (for a Debye sphere; in the lecture $n \lambda_{De}^3$ was used, which relates to a Debye cube. There's not much difference between them, a factor of $~4$). $N_D$  means the number of particles inside a sphere (or cube, following the lecture) of radius equal to the Debye length. The condition means there's plenty of particles to screen our test particle. This also assumed that binary interactions between particles were weak ($\frac{e \phi}{T_e} \gg 1$)
+			\end{itemize}
+	\subsection{Plasma definition: frequencies and parameters}
+\begin{itemize}
+\item \textbf{Plasma frequency}
+Assume a plasma of same density of ions and electrons. Displace electrons by $\Delta x$. They begin to exhibit harmonic oscillations (for $\Delta x$ not too large). Newton's 2nd law gives
+\[\dd{\Delta x}{t} + \frac{n_0 e^2}{\epsilon_0 m_e}\Delta x = 0\]
+Can define plasma frequency
+\[\omega_{pe}\equiv\sqrt{\frac{n_0 e^2}{\epsilon_0 m_e}}=\frac{v_{th,e}}{\lambda_{De}}\]
+where $v_{th,e}$ denotes the thermal speed of electrons
+\item \textbf{Collision frequency}
+	
+	The frequency of coulomb collisions between particles
+	\[\nu_{coll} \equiv \frac{n_0 e^4}{16 \pi \epsilon_0^2 m_e^2 v_{th,e}^3}\]
+	
+	\item Size of plasma has to be much larger than its Debye length (or there's no quasineutrality)
+	\end{itemize}
+	
+	\subsection{Particle motion in a static uniform magnetic field . Plasma magnetic properties} 
+		\begin{itemize}
+			\item Larmor radius - particles gyrate around the guiding center at this distance
+			\[\rho \equiv \frac{m v_{\perp}}{\abs{q} B}\]
+			\item Cyclotron frequency
+			\[\omega_c \equiv \frac{v_{\perp}}{\rho} = \frac{\abs{q} B}{m}\]
+			
+			Particle rotation direction on their helical trajectory
+			\begin{itemize}
+			\item $q>0$ ('by default'): left hand rotation with respect to $\v{B}$
+			\item $q<0$ (electrons): right hand rotation
+			
+			\item Magnetic moment
+			\[\abs{\v{\mu}} \equiv I A = \frac{\abs{q}\omega_e}{2\pi} \pi \rho^2 = \frac{m v_{\perp}^2}{2 B} = \frac{E_{kin \perp}}{B}\]
+			
+			(direction opposite to B)
+			is an adiabatic invariant for every particle; doesn't change under slow changes of factors. However, it will change through heat exchange, which usually operates on slower timescales than magnetic field changes.
+			
+			Plasmas are diamagnetic (they reduce externally applied magnetic fields) (because of direction of $\mu$)
+			\end{itemize}
+		\end{itemize}
+
+	\subsection{Particle motion in given electromagnetic fields: the drifts }
+Static and uniform E and B fields. Particles under Lorentz force which can be decomposed as:
+	\begin{itemize}
+		\item Parallel direction: \[m\d{\v{v_{\parallel}}}{t}=qE_{\parallel}\]
+	Uniform acceleration
+		\item Perpendicular direction: \[m\d{\v{v_{\perp}}}{t}=q(\v{E_{\perp}} + \v{V_{	\perp}}\times\v{B})\]
+	\end{itemize}
+The many drifts in a plasma:
+	\begin{itemize}
+		\item $\v{E}\times\v{B}$ drift
+		\begin{itemize}
+			\item Perpendicular component averages out over gyroperiod
+			\[\v{v_e}=\frac{\v{E_{\perp}}\times\v{B}}{B^2}\]
+			\item This is a motion of the guiding center which is superposed over the gyromotion
+			\item Does not depend on charge, neither in magnitude nor in direction (but gyromotion direction does)
+			\item Guiding center moves over lines of constant electrostatic potential $\phi$ (the drift does not change the particle energy!)
+			\item A generalization of this drift for any force: \[\v{v_F}=\frac{\v{F_{\perp}}\times\v{B}}{qB^2}\]
+			\item For a gravitational force (say, space plasmas), this depends on charge. Separates positive and negative charges. Polarizes the plasma, creating a $\v{E}$ field and an $\v{E}\times\v{B}$ drift
+		\end{itemize}
+		
+		\item Curvature drift
+		\begin{itemize}
+			\item \v{B} field curved, particle follows the B field - this happens through a centrifugal force
+			\[\v{F_c}=\frac{m v_{\parallel}^2}{R_B^2} \v{R_B}\]
+			\item This causes a drift:
+			\[\v{v_d} = \frac{\v{F_c} \times \v{B}}{q B^2} = \frac{m v_{\perp}^2}{q B^2 R_B^2} (\v{R_B} \times \v{B}\]
+		\end{itemize}
+		
+		\item Gradient drift $\grad{B} \perp \vec{B})$
+		\begin{itemize}
+		\item	Happens in changing (spatially) magnetic fields
+		\[\v{v_{\grad{B}}} = \frac{m v^2}{q c B^2} (\v{B} \times {\grad{B}} ) \]
+			\item A derivation so complicated, it deserved a separate appendix.
+			As particles gyrate, they move between regions of smaller and bigger B.
+			This causes a drift in a direction perpendicular to both the B field and the gradient of its value
+			We consider a small variation in B and expand B in a taylor series around $B_0$.
+			
+			Then we use that expansion to solve $m \d{\v{v}}{t} = q {\v{v} \times {B}}$, plugging in our expansion for B.
+			
+			We also decompose the velocity: an average $v_{0}$ and a small perturbation. $v_{0}$ is the solution to the equation for constant magnetic field $B_{0}$.
+			
+			We neglect the cross product of the two small perturbations and average over a gyroperiod.
+			
+			We use our knowledge of the solution for the static magnetic field (gyration in the plane perpendicular to B) to deal with the perpendicular velocities (x and y in this decomposition under the assumption that B is along z).
+			
+			The drift velocity is the perturbation described by the formula above for an arbitrary geometry of the problem.
+		\end{itemize}
+	\end{itemize}
+	
+	
+	\subsection{Plasma confinement based on single particle motion. Magnetic mirrors, stellarators, tokamaks}
+	\begin{itemize}
+	\item How do you confine a plasma?
+	
+	\textbf{Charged} particles follow helical trajectories along B field. This confines them in the perpendicular direction. What about the parallel one?
+	\item Can use open field lines. Take two circular coaxial electromagnets.
+	
+	\includegraphics[width=\linewidth]{magneticmirror}
+	
+	\item Can use closed field lines. Closed geometries. Example: tokamaks (toroidal), stellarators.
+	
+	\includegraphics[width=\linewidth]{tokamakconfinement}
+	
+	\item The magnetic mirror geometry is neat for particles really close to the axis. B is maximum (field density increases) near the electromagnets
+	
+	force in the axial direction is \[F_z =-\mu\abs{\grad{B}}\]
+	
+	$v_{\parallel}$ has to vanish at $B_{max}$ so that the kinetic energy is just composed of the perpendicular component of velocity
+	
+	Particle reflection condition
+	\[\frac{v_{\perp}^2}{v_{\perp}^2+v_{\parallel}^2} > \frac {B_{min}}{B_max}\]
+	
+	\includegraphics[width=\linewidth]{1f4}
+	
+	This means that particles in the \textbf{loss cones} in phase space (marked red; those which don't satisfy the inequality) cannot be confined in the mirror!
+	
+	Neat example: the Earth's magnetic field is a magnetic mirror!
+	
+	\includegraphics[width=\linewidth]{1f5}
+
+\item What about closed magnetic field lines? Can those deal with loss cones?
+
+B is not homogeneous! Curved! Has curvature and gradient drifts!
+
+For a purely toroidal field, positively charged particles drift towards the bottom, while negatively charged ones drift towards the top. This polarizes the plasma and introduces the $E \times B$ drift outwards, sending the plasma crashing into the major radius wall.
+
+A solution: a poloidal magnetic field to short circuit the charge accumulation. Either:
+\begin{itemize}
+\item Drive a current through the plasma $\rightarrow$ Tokamaks
+\item Get rid of axial symmetry $\rightarrow$ Stellarators
+\end{itemize} 
+
+	
+	\end{itemize}
+\end{document}
