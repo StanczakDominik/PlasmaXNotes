@@ -487,7 +487,8 @@ There's a singularity at $\omega = \v{k} \cdot \v{v}$. This is when particles ma
 
 \subsubsection{Getting to the two-stream instability}
 
-The two-stream instability is thermodynamically weird. The velocity distribution is definitely non-maxwellian, it's just two sharp peaks (low entropy). Could there be intrinsic modes in the system that restore thermodynamic equilibrium (high entropy)?
+The two-stream instability is thermodynamically weird. The velocity distribution is non-maxwellian.
+It's just two sharp peaks (low entropy). Could there be intrinsic modes in the system that restore thermodynamic equilibrium (high entropy)?
 
 We take a 1D system. The derivation above is general (plenty of vectors brought to you by yours truly). 
 
@@ -516,4 +517,71 @@ Otherwise, if $D(\omega = 0, k) < 0$, there's $2$ real roots corresponding to os
 \[ D(\omega =0, k) = 1 - \frac{\omega_{pe}^2}{k^2 v_0^2} < 0 \rightarrow k^2 v_0^2 < \omega_{pe}^2 \]
 
 Unstable modes are those that have sufficiently long wavelengths. That's all we can tell analytically. IT'S PARTICLE IN CELL TIME!
+
+\subsection{2f) Kinetic plasma simulations. The Particle in Cell method}
+\subsubsection{The various time scales in a plasma}
+
+\begin{itemize}
+\item $10^{-10}s$ - electron cyclotron motion
+\item $10^{-7}s$ - ion cyclotron motion
+\item $10^{-5}s$ - microturbulence
+\item $10^{-3}s$ - fast global instabilities
+\item $10^{-1}s$ - slow global instabilities
+\item $1s$ - energy confinement time
+\item $10^3s$ - gas equilibrisation
+\end{itemize}
+
+It's extremely hard to simulate all of these at once! Accurate modelling of cyclotron motion (say, $10^{-14}$ timestep) would mean observing \textbf{fast} global instabilities after $10^11$ timesteps. That's a lot of timesteps.
+
+\subsubsection{Simulation approach - Particle in Cell (PIC) method}
+
+One could solve the entire Vlasov equation by separating the whole $6D$ phase space into a grid and solving the partial differential equation. Possible. But usually, one uses the particle in cell method.
+
+$f$ is constant along particle trajectories. This translates directly into Newton's equations for a single particle:
+\[ \d{\v{r}}{t}=\v{v} \]
+\[ \d{\v{v}}{t}=\frac{q}{m}(\v{E} + \v{v} \times \v{B}) \]
+
+In the PIC (Particle in Cell) method, we approximate the distribution function by a discrete sum
+
+\[f(\v{r}, \v{v}, t) \simeq \sum_\alpha f_\alpha (\v{r} - \v{r_{\alpha 0}}, \v{v} - \v{v_{\alpha 0}})\]
+
+The $f_{\alpha}$`s are called \textbf{superparticles}; they have compact support - they're zero everywhere but on a small domain in phase space around $r_{\alpha 0}$ and $v_{\alpha 0}$. 
+
+We introduce the integral $I_{\alpha} = \int \int d\v{r} d\v{v} f_{\alpha}$ which is done over the small domain of the particle.
+
+At all times, the superparticles satisfy
+\[f(\v{r}, \v{v}, t) \simeq \sum_\alpha f_\alpha (\v{r} - \v{r_{\alpha}}(t), \v{v} - \v{v_{\alpha}}(t))\]
+
+If we have that
+\[ \d{\v{r_{\alpha}}}{t}=\v{v_{\alpha}} \]
+\[ \d{\v{v_{\alpha}}}{t}=\frac{q_{\alpha}}{m}(\v{E_{\alpha}} + \v{v_{\alpha}} \times \v{B_{\alpha}}) \]
+
+where
+\[ \v{E_{\alpha}} = \frac{1}{I_d} \int \int \v{E} f_{\alpha} d\v{r}\,d\v{v} \]
+\[ \v{B_{\alpha}} = \frac{1}{I_d} \int \int \v{B} f_{\alpha} d\v{r}\,d\v{v} \]
+
+and we have some initial conditions
+\[ \v{r_{\alpha}} (t=0) = \v{r_{\alpha_0}} \]
+\[ \v{v_{\alpha}} (t=0) = \v{v_{\alpha_0}} \]
+
+Then the distribution function defined as the sum of all superparticles (their distribution functions) also solves the Vlasov equation.\footnote{This is a complicated way of saying that we can use particles to approximate the motion of the plasma - see Birdsall and Langdon.}
+
+\subsubsection{Practical PIC}
+In one dimension, we have to:
+\begin{enumerate}
+\item Solve Poisson's equation to get the potential $\phi$ and field $\v{E}$
+
+This is done by discretizing space and time. We get discrete approximations to charge densities, potentials and fields.
+
+Derivatives are discretized using central differences. 
+\item Evaluate electric fields acting on superparticles
+
+\[E_{\alpha} = E_j \text{ if } \abs{x_j-x_{\alpha}} \leq \Delta x/2 \]
+
+\item Apply fields to superparticles. Solve for the motion of superparticles by a numerical algorithm (Euler's or Runge-Kutta's)
+\item Assign charge to discrete locations on grid. We sum the charges of superparticles in the $j$-th cell (in $x_{j-1/2} < x_{\alpha} < x_{j+1/2}$) and divide by the cell size.
+\end{enumerate}
+
+
+On a closing note: PICs are awesome, they're used in all kinds of fields. Electromagnetic fields, gravitational fields... go learn them. \text{:)}
 \end{document}
