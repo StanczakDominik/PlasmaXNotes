@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \title{Notes from PlasmaX}
-\author{Perfi}
+\author{Dominik Stańczak}
 
 \begin{document}
 \maketitle
@@ -245,4 +245,60 @@ Plugging these back into the particle conservation equation:
 
 \[   \]
 
+\subsection{2b) Coulomb collisions in plasmas. Bonus module.}
+We use Boltzmann equation and look into the short range interactions
+
+An electron with charge $-e$ approaches a positive ion (assumed immobile) with charge $Ze$. Electron trajectory changes.
+$\v{v_e}$ - initial electron velocity
+$b$ - impact parameter, shortest distance between extrapolated line of initial electron trajectory and ion position
+
+\[\frac{\text{Coulomb interaction energy}}{\text{Kinetic energy}} \sim \frac{\frac{Ze^2}{4 \pi \epsilon_0 b}}{m_e v_e^2} \sim 1 \]
+(similar to one so collision interaction is important)
+\[b \sim \frac{Ze^2}{4 \pi \epsilon_0 m_e v_e^2} = b_{\pi/2} \]
+
+Coulomb cross section: $\sigma_{\pi/2} = \pi b_{\pi/2}^2 = \frac{\pi Z^2 e^4}{(4 \pi \epsilon_0)^2 m_e^2 v_e^4}$
+
+Collision frequency: $\nu_{\pi/2} = n_i v_e \sigma_{\pi_2} = frac{n_i \pi Z^2 e^4}{(4 \pi \epsilon_0)^2 m_e^2 v_e^3}$
+
+Is this a correct estimate? Do collective small angle deflections matter in a plasma? How can we take the interaction with many particles into account properly? Average over all phase space somehow?
+
+Take the electron-ion collision again.
+Denote $\theta$ - angle between initial and final electron velocity.
+
+Particles interact through Coulomb force. Angular momentum and energy - conserved (if electron is much lighter than ion, $\frac{m_e}{m_i} \ll 1$).
+
+\[ tan(\theta/2) = \frac{b_{\pi/2}}{b} = \frac{Ze^2}{4 \pi \epsilon_0 m_e v_e^2 b} \]
+
+$b_{\pi/2}$ - impact parameter at which collision deflects electron by $90^\circ$.
+
+Cumulative effect for many collisions? Imagine electron moving towards ion cloud.
+
+Due to symmetry we take $\avg{\Delta \v{v_{\perp e}}} =0$ but $\avg{\Delta \v{v_{\perp e}^2}} \neq 0$ . So magnitude could change, but there will be no preferred direction. $\perp$ stands for parallel to initial velocity.
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =\int db n_i v_e 2 \pi b \]
+(we integrate over all possible impact parameters
+\[ \Delta \v{v_{\perp e}^2} = v_e^2 \sin{\theta}^2 = \Delta v_e^2 \tan{\theta/2}^2 [1+\tan{\theta/2}^2]^{-2} \]
+
+Plugging into the integral:
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =8 \pi n_i v_e^3 \int_0^{\lambda_D} \frac{(b_{\pi/2} / b)^2 b}{(1+(b_{\pi/2} / b)^2)^2} db \pi b \]
+We neglect quantum effects (thus integrating from 0) and integrate up to Debye length as coulomb interactions are screened beyond it. Finally, we get:
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} = 8 \pi n_i v_e^3 b_{\pi/2}^2 \ln{\frac{\lambda_D}{b_{\pi/2}}} \text{(if $\lambda_D \gg b_{\pi/2}$} \]
+
+Following section may have some 4`s swapped for $\Delta$`s. 
+\begin{itemize}
+\item Note that electrons do not lose much energy as $m_e \ll m_i$. Basically reflected balls from a wall. Thus
+\[ v_e (\Delta v_{\parallel e}) + 0.5 \Delta v_{\perp e}^2 = 0\]
+And
+\[\d{\avg{\Delta v_{\parallel e}}}{t} = - 4 \pi n_i v_e^2 b_{\pi/2}^2 \ln{\frac{\lambda_D}{b_{\pi/2}}} \]
+\item We define the coulomb logarithm: 
+\[ \ln{\Lambda} \equiv \ln{\frac{\lambda_D}{b_{\pi/2}}} \sim \text{In most plasmas equals  15 to 25} \]
+\item 
+\[ \d{\avg{\Delta v_{\parallel e} }}{t} = - \nu_{ei} v_e \]
+Collision frequency of electrons against ions:
+\[ \nu_{ei} = 4 \pi n_i b_{\pi/2}^2 v_e \ln{\Lambda} = n_i \sigma_{ei} v_e \]
+Whereas
+\[ \sigma_{ei} = 4 \pi b_{\pi/2}^2 \ln{\Lambda} \]
+Can compare 
+\[ \frac{\sigma_{\pi/2}}{\sigma_{ei}} = \frac{\pi b_{\pi/2}^2}{4 \pi b_{\pi/2}^2 \ln{\Lambda}} \ll 1\]
+Much smaller than 1! So small angle deflections dominate over large scale deflections!
+\end{itemize}
 \end{document}
