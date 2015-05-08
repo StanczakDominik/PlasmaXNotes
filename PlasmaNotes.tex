@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \title{Notes from PlasmaX}
-\author{Dominik Stańczak}
+\author{Dominik `Perfi' Stańczak}
 
 \begin{document}
 \maketitle
@@ -113,7 +113,7 @@ The many drifts in a plasma:
 		\item Gradient drift $\grad{B} \perp \vec{B})$
 		\begin{itemize}
 		\item	Happens in changing (spatially) magnetic fields
-		\[\v{v_{\grad{B}}} = \frac{m v^2}{q c B^2} (\v{B} \times {\grad{B}} ) \]
+		\[\v{v_{\grad{B}}} = \frac{m v^2}{2 q B^3} (\v{B} \times {\grad{B}} ) \]
 			\item A derivation so complicated, it deserved a separate appendix.
 			As particles gyrate, they move between regions of smaller and bigger B.
 			This causes a drift in a direction perpendicular to both the B field and the gradient of its value
@@ -201,9 +201,9 @@ $f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase sp
 \par \textbf{Examples of distribution functions}
 \begin{itemize}
 	\item Maxwell-Boltzmann distribution function, for three dimensions
-	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^(3/2) exp(-\frac{v^2}{2 v_{thermal}^2}) \] %insert equation
+	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^{3/2} exp(-\frac{v^2}{2 v_{thermal}^2}) \] %insert equation
 	In 1D, only the normalization of the distribution changes from the 3D case:
-	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^(1/2) exp(-\frac{v^2}{2 v_{thermal}^2}) \]
+	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^{1/2} exp(-\frac{v^2}{2 v_{thermal}^2}) \]
 	\item Monoenergetic beam in 1D
 	\[ F_0(v) = n_0 \delta (v-v_0) \]
 	\item Two counterstreaming beams in 1D (two-stream instability!)
@@ -301,4 +301,58 @@ Can compare
 \[ \frac{\sigma_{\pi/2}}{\sigma_{ei}} = \frac{\pi b_{\pi/2}^2}{4 \pi b_{\pi/2}^2 \ln{\Lambda}} \ll 1\]
 Much smaller than 1! So small angle deflections dominate over large scale deflections!
 \end{itemize}
+
+\subsection{2c) Collisional processes in plasmas}
+\subsubsection{Slowing down of an electron beam}
+\[ \d{\avg{\Delta v_{\parallel e} }}{t} = - \nu_{ei} v_e = -\frac{n_i Z^2 e^4 \ln{\Lambda}}{4 \pi \epsilon_0^2 m_e^2 v_e^3} \]
+We could use this to calculate how an electron beam slows in a plasma.
+Assume a Maxwellian distribution of electron velocities with mean velocity $u_e\ll v_{thermal, e}$ in 1D:
+\[ f_e(v) = n_0 (\frac{m_e}{2 \pi v_{thermal,e}})^{1/2} exp(-\frac{m_e (v_{\parallel e} - u_e)^2}{2 v_{thermal,e}^2}) \]
+
+\[ \d{u_e}{t} = -\avg{\nu_{ei} v_{\parallel e}} = \frac{-1}{n_0} \int{\nu_{ei} v_{\parallel e} f_e(v_{\parallel e}) dv_{\parallel e}} \simeq -\avg{\nu_{ei}} u_e (\text{if } u_e \ll v_{thermal, e})\]  
+
+The average collision frequency between electrons and ions $\nu_{ei}$ is
+
+\[ \nu_{ei} = \frac{\sqrt{2}}{12 \pi^(3/2)} \frac{n_i Z^2 e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^(1/2) T_e^(3/2)} \]
+
+There are also collisions between electrons coming from the beam and electrons in the plasma:
+\[ \nu_{ee} = \frac{\sqrt{2}}{12 \pi^(3/2)} \frac{n_e e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^(1/2) T_e^(3/2)} \sim \frac{\avg{\nu_{ei}} n_e}{Z^2 n_i} \]
+
+\subsubsection{Plasma resistivity}
+Take a cloud of ions and electrons. Apply electric field $\v{E}$. Ions will move in direction of E, whereas electrons will move in opposite direction. E then drives a current in a plasma - charges are moving!
+
+We neglect the slow and heavy electrons and focus on electron movement. From Newton's second law:
+
+\[m_e n_e \d{\v{u_e}}{t} = -e n_e \v{E} + \v{R_{ei}} \]
+$R_{ei}$ is the collision term we have just calculated. This slows down the current.
+\[\v{R_{ei}} = - m_e n_e \avg{\nu_{ei}} (\v{u_e}-\v{u_i}) \text{ (assuming } u_e \ll v_{th,e} ) \]
+
+\begin{itemize}
+\item After a transient, we'll reach steady state operation and $\d{}{t}=0$
+\item The current can be depicted as $\v{j} = - n_e e (\v{u_e}-\v{u_i})$
+\end{itemize}
+Thus:
+\[ e^2 n_e \v{E} = m_e \avg{\nu_{ei}} \v{j}\]
+\[ \v{E} = \frac{m_e \avg{\nu_{ei}}}{e^2 n_e} \v{j} \equiv \eta \v{j} \]
+By comparison with Ohm's law we can define the plasma resistivity:
+\[ \eta \equiv \frac{m_e \avg{\nu_{ei}}}{e^2 n_e} = \frac{ \sqrt{2 m_e} Z	e^2 \ln{\Lambda}}{12 \pi^{3/2} \epsilon_0^2 T_e^{3/2}} \]
+The bigger the temperature, the lower the resistivity. Unlike in metals. It's also independent of density! The contributions of increasing the number of carriers and increasing the number of collisions cancel each other out exactly.
+\subsubsection{Overview of plasma collision frequencies}
+\begin{itemize}
+\item Electron - ion collision frequency $nu_{ei} = $ 
+\item Electron - electron collision frequency $nu_{ei}$
+\item Ion - ion collision frequency $nu_{ii}$.
+\end{itemize}
+
+Ions gain energy when you fire an electron beam into a plasma (could be heated this way?).
+
+\[ m_e \Delta \v{v_e} = m_i \Delta \v{v_i}\]
+\[ 0.5 m_i \abs{\Delta \v{v_i}}^2 = \frac{ m_e^2}{2 m_i} \abs{\Delta \v{v_e}}^2 \sim \frac{m_e^2}{2 m_i} \abs{\Delta \v{v_{\perp e}}^2}\]
+(as we can ignore the change in parallel electron velocity)
+
+Rate of exchange of energy (between species! This equalizes the temperatures between electrons and ions!):
+\[ \avg{\nu_E} = \frac{n_i Z^2 e^4 \sqrt{m_e} \ln{\Lambda}}{3 \pi \sqrt{2 \pi} \epsilon_0^2 m_i T_e^{3/2}} \sim Z \frac {m_e}{m_i} \avg{\nu_{ei}} \]
+
+The electrons have a similar, very fast rate of collisions with each other and with ions. The rate of collisions between ions happens $~40$ times slower, and then the rate of energy exchange is $~40$ times slower than that. At a similar rate to that of energy exchange is the rate of ions colliding with electrons.
+
 \end{document}
