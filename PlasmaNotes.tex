@@ -76,7 +76,7 @@ where $v_{th,e}$ denotes the thermal speed of electrons
 			\[\abs{\v{\mu}} \equiv I A = \frac{\abs{q}\omega_e}{2\pi} \pi \rho^2 = \frac{m v_{\perp}^2}{2 B} = \frac{E_{kin \perp}}{B}\]
 			
 			(direction opposite to B)
-			is an adiabatic invariant for every particle; doesn't change under slow changes of factors. However, it will change through heat exchange, which usually operates on slower timescales than magnetic field changes.
+			is an adiabatic invariant for every particle; doesn't change under slow changes of factors involved in the equation for $\mu$. However, it will change through heat exchange, which usually operates on slower timescales than magnetic field changes (see 2c).
 			
 			Plasmas are diamagnetic (they reduce externally applied magnetic fields) (because of direction of $\mu$)
 			\end{itemize}
@@ -213,9 +213,9 @@ $f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase sp
 \textbf{Conservation of particles number}
 
 If there are no sources or sinks, we have the following condition for conservation of number of particles
-\[ \d{f_s}{t} = -\nabla_{ED} \cdot (\v{u} f_s) \]
-where
-\[ \nabla_{ED} = ( \d{}{x},\d{}{y},\d{}{z},\d{}{v_x},\d{}{v_y},\d{}{v_z}) = (\d{}{\v{r}}, \d{}{\v{v}}) \]
+\[ \d{f_s}{t} = -\nabla_{6D} \cdot (\v{u} f_s) \]
+where we introduce the six-dimensional nabla operator because who's gonna stop us
+\[ \nabla_{6D} = ( \d{}{x},\d{}{y},\d{}{z},\d{}{v_x},\d{}{v_y},\d{}{v_z}) = (\d{}{\v{r}}, \d{}{\v{v}}) \]
 \[ \v{u} = (\d{\v{r}}{t}, \d{\v{v}}{t}) = (\v{v}, \frac{\v{F}}{m_s}) = (\v{v}, \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s}) \] %insert
 
 Long range forces - collective interactions. Short range forces - binary collisions (between individual particles, like you'd have in a gas).
@@ -354,5 +354,44 @@ Rate of exchange of energy (between species! This equalizes the temperatures bet
 \[ \avg{\nu_E} = \frac{n_i Z^2 e^4 \sqrt{m_e} \ln{\Lambda}}{3 \pi \sqrt{2 \pi} \epsilon_0^2 m_i T_e^{3/2}} \sim Z \frac {m_e}{m_i} \avg{\nu_{ei}} \]
 
 The electrons have a similar, very fast rate of collisions with each other and with ions. The rate of collisions between ions happens $~40$ times slower, and then the rate of energy exchange is $~40$ times slower than that. At a similar rate to that of energy exchange is the rate of ions colliding with electrons.
+
+\subsection{2d) Vlasov equation}
+\subsubsection{Derivation from Boltzmann equation}
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = (\d{f_s}{t})_c\]
+If we can assume that the number of particles in a Debye cube is REALLY HIGH: $n \lambda_D^3 \gg\gg$, so that  $(\d{f}{t})_c=0$, then the \textbf{Vlasov equation} holds:
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
+E and B here represent the long range interactions. The charge density is computed as indicated before, integrating out all the velocities. The currents are likewise obtained by summing over the species and calculating the average velocities at each positions.
+
+\subsubsection{Conservation laws for the Vlasov equation}
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
+This satisfies the following conservation properties:
+\begin{itemize}
+\item Number of particles - we can integrate the Vlasov equation over all positions and velocities. Integrating $\d{f_s}{t}$ gives us $\d{N_s}{t}$. The second term gives us, by means of Gauss (divergence) theorem and pushing the boundaries out to infinity, where $f_s$ should decay to zero, zero. In the third term we have a velocity divergence. Since no particles have infinite velocities\footnote{Einstein says hi.}, we can once more use the divergence theorem \textit{(in velocity space!!!)} to eliminate the third term and we reach $\d{N_s}{t} = 0$. Particles are conserved.
+\item Momentum, which we calculate as the sum of particle and field momenta. No actual derivation is given except for the formula:
+
+\[ \v{P_{tot}} = \sum_s m_s \int d\v{r} \int d\v{v} \, \v{v} f_s + \epsilon_0 \int d\v{r} (\v{E} \times \v{B}) = \text{const}  \]
+
+\item Total energy can be decomposed into energy of particles and energy of field.
+\[ E= \sum_s \int d\v{r} \int d\v{v} \frac{1}{2} m_s v^2 f_s + \frac{1}{2} \int d\v{r} (\epsilon_0 E^2 + B^2/\mu_0) = \text{const} \]
+
+\item Entropy, as given by information theory
+\[ S = \sum_s \int d\v{r} \int d\v{v} f_s \ln{f_s} = \text{const} \]
+This is because collisions are neglected by the Vlasov equation. Therefore it is time-reversible!
+\end{itemize}
+
+
+\subsubsection{Interpretation of Vlasov equation}
+\begin{itemize}
+\item $f_s$ has incompressible motion (in phase space) - it can be considered as an incompressible fluid (moving in phase space - it's going to obey Liouville's theorem)
+\item As seen by particle along orbit \[ \d{f_s}{t} = \pd{f_s}{t} + \v{v} \cdot \pd{f_s}{\v{r}} + \frac{\v{F}}{m_s} \cdot \pd{f_s}{\v{v}} = \pd{f_s}{t} + \v{v} \cdot \pd{f_s}{\v{r}} + \frac{q_s}{m_s} (\v{E} + \v{v} \times \v{B}) \cdot \pd{f_s}{\v{v}} \]
+And the funny thing is, that's just the Vlasov equation itself. Thus along particle orbits, $f_s = 0$.
+\end{itemize}
+
+\subsubsection{(Formal) solutions of Vlasov equation}
+If $c_j$ is a constant of motion, then any distribution function being a function of any number of constants of motion $c_j$  is a solution.
+
+This is unlike the Boltzmann equation, where only the Maxwellian distribution was a stationary solution.
+
+It can be really difficult to find constants of motion, as well. It seems to be implied that practical solutions rely on numerical methods - that way you need not specify constants of motion for a formal solution.
 
 \end{document}
