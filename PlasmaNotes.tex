@@ -18,7 +18,7 @@ Didn't start making notes until 1.5 so I'll be skimming the earlier topics.
 			\item Lightning is plasma (ionized air)
 			\item Plasma diplays
 			\item Nuclear fusion - can't really get there without turning stuff into plasma
-			\item The word 'plasma' comes from greek $\pi\lambda\alpha\sigma\mu\alpha$, which means 'moldable substance' or 'jelly', though it was mentioned on the forums that it might mean 'living thing'... which is really fitting when you think about it
+	\item The word `plasma' comes from greek $\pi\lambda\alpha\sigma\mu\alpha$, which means `moldable substance' or `jelly', though it was mentioned on the forums that it might mean `living thing'... which is really fitting when you think about it
 			\item A brief history:
 				\begin{itemize}
 					\item 1920's-1930's: ionospheric plasma research (for radio transmission) and vacuum tubes (Langmuir)
@@ -69,7 +69,7 @@ where $v_{th,e}$ denotes the thermal speed of electrons
 			
 			Particle rotation direction on their helical trajectory
 			\begin{itemize}
-			\item $q>0$ ('by default'): left hand rotation with respect to $\v{B}$
+			\item $q>0$ (`by default'): left hand rotation with respect to $\v{B}$
 			\item $q<0$ (electrons): right hand rotation
 			
 			\item Magnetic moment
@@ -107,7 +107,7 @@ The many drifts in a plasma:
 			\item \v{B} field curved, particle follows the B field - this happens through a centrifugal force
 			\[\v{F_c}=\frac{m v_{\parallel}^2}{R_B^2} \v{R_B}\]
 			\item This causes a drift:
-			\[\v{v_d} = \frac{\v{F_c} \times \v{B}}{q B^2} = \frac{m v_{\perp}^2}{q B^2 R_B^2} (\v{R_B} \times \v{B}\]
+			\[\v{v_d} = \frac{\v{F_c} \times \v{B}}{q B^2} = \frac{m v_{\perp}^2}{q B^2 R_B^2} (\v{R_B} \times \v{B})\]
 		\end{itemize}
 		
 		\item Gradient drift $\grad{B} \perp \vec{B})$
@@ -152,7 +152,8 @@ The many drifts in a plasma:
 	$v_{\parallel}$ has to vanish at $B_{max}$ so that the kinetic energy is just composed of the perpendicular component of velocity
 	
 	Particle reflection condition
-	\[\frac{v_{\perp}^2}{v_{\perp}^2+v_{\parallel}^2} > \frac {B_{min}}{B_max}\]
+	\[\frac{v_{\perp}^2}{v_{\perp}^2+v_{\parallel}^2} > \frac {B_{min}}{B_{max}}\]
+
 	
 	\includegraphics[width=\linewidth]{1f4}
 	
@@ -176,4 +177,72 @@ A solution: a poloidal magnetic field to short circuit the charge accumulation. 
 
 	
 	\end{itemize}
+
+%%WEEK 2%%
+\section{Week 2: Kinetic description of plasmas, with Paolo Ricci}
+\subsection{2a) From single particle to kinetic description }
+	Kinetic description of plasma. A (relatively?) complete description of plasma which covers both the particles and the fields evolving over time.
+
+The usual diagram for a plasma description, seen often in simulations:
+\begin{enumerate}
+	\item Take Newton's equations using electric and magnetic fields \textbf{for all particles at all times} (use Lorentz force)
+	\item Use positions and velocities to compute charge and current densities. Charge density given as sum over particles of their charges, localized through use of Dirac delta functions. Current density - similar, but multiplied by particle velocity vectors inside the sum.
+	\item Take charge and current density, plug them into Maxwell equations, calculate E and B fields at positions
+	\item Take calculated E and B fields and apply them as forces to particles. Repeat cycle until bored or simulation returns segmentation fault.
+\end{enumerate}
+But real plasmas involve on the order of $10^21$ particles for a fusion plasma. Too much strain on our computational abilities. Impractical. We use a distribution function:
+
+$f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase space volume $d\v{r} d\v{v}$ located at $\v{r}, \v{v}$. We have a separate distribution function $f_i$ for every species
+\begin{itemize}
+\item Total number of particles $N_S$ given by integral of distribution function over all positions and velocities (which covers all the phase space)
+\item Number density of particles $n_s$ given by integral over all velocities for a given location $\v{r}$ 
+\item Average velocity given by $\frac{1}{n_s} \int \v{v} f_i(\v{r}, \v{v}, t)  d\v{v}$
+\end{itemize}
+\par \textbf{Examples of distribution functions}
+\begin{itemize}
+	\item Maxwell-Boltzmann distribution function, for three dimensions
+	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^(3/2) exp(-\frac{v^2}{2 v_{thermal}^2}) \] %insert equation
+	In 1D, only the normalization of the distribution changes from the 3D case:
+	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^(1/2) exp(-\frac{v^2}{2 v_{thermal}^2}) \]
+	\item Monoenergetic beam in 1D
+	\[ F_0(v) = n_0 \delta (v-v_0) \]
+	\item Two counterstreaming beams in 1D (two-stream instability!)
+	\[ F_0(v) = \frac{n_0}{2} [\delta (v-v_0) + \delta(v+v_0)] \]
+\end{itemize}
+
+\textbf{Conservation of particles number}
+
+If there are no sources or sinks, we have the following condition for conservation of number of particles
+\[ \d{f_s}{t} = -\nabla_{ED} \cdot (\v{u} f_s) \]
+where
+\[ \nabla_{ED} = ( \d{}{x},\d{}{y},\d{}{z},\d{}{v_x},\d{}{v_y},\d{}{v_z}) = (\d{}{\v{r}}, \d{}{\v{v}}) \]
+\[ \v{u} = (\d{\v{r}}{t}, \d{\v{v}}{t}) = (\v{v}, \frac{\v{F}}{m_s}) = (\v{v}, \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s}) \] %insert
+
+Long range forces - collective interactions. Short range forces - binary collisions (between individual particles, like you'd have in a gas).
+Plugging these back into the particle conservation equation:
+\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
+
+\textbf{Boltzmann equation}
+	We can improve on the previous equation. Start out with the expanded particle conservation equation:
+	
+\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
+
+\begin{itemize}
+	\item In the phase space approach, velocity is treated as a completely independent variable than v (though you could consider one as a derivative of the other). Thus $\d{}{\v{r}} \cdot (\v{v} f_s) = \v{v} \cdot	\d{f_s}{\v{r}}$
+		\item long range force can be decomposed into electric field independent of v, and the  $\v{v} \times \v{B}$ term - perpendicular to v. Thus, $\d{}{\v{v}} \cdot [\v{F_{long range}} f_s] = \v{F_{long range}}\cdot\d{f_s}{\v{v}} $
+	\item Plugging in:
+	
+	\[ \d{f_s}{t} = -\v{v}\cdot\d{f_s}{\v{r}} - \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} - \d{}{\v{v}} \cdot (\frac{\v{F_{short range}}}{m_s} f_s) \]
+	\item Can be rewritten as:
+	
+	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} = - \d{}{\v{v}} \cdot (\frac{\v{F_{short range}}}{m_s} f_s) \]
+	
+	Term on the right is called a `collision operator' $(\d{f}{t})_c$.	
+	
+\item And we get the \textbf{Boltzmann equation}:
+	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{q_s}{m_s}(\v{E_{long range}} + \v{v} \times \v{B_{long range}}) \cdot \d{f_s}{\v{v}} = (\d{f_s}{t})_c \]
+\end {itemize}
+
+\[   \]
+
 \end{document}

@@ -11,14 +11,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1676
-NormalPos.bottom=458
+NormalPos.right=820
+NormalPos.bottom=295
 Class=LaTeXView
 Document=PlasmaNotes.tex
 
 [Frame0_View0,0]
-TopLine=168
-Cursor=9860
+TopLine=140
+Cursor=6439
 
 [SessionInfo]
 FrameCount=1
