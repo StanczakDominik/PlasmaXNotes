@@ -394,4 +394,126 @@ This is unlike the Boltzmann equation, where only the Maxwellian distribution wa
 
 It can be really difficult to find constants of motion, as well. It seems to be implied that practical solutions rely on numerical methods - that way you need not specify constants of motion for a formal solution.
 
+\subsection{The two stream instability!}
+We make this our testing ground for the Vlasov equation. The situation is two beams of electrons moving in opposite directions in 1D. Spoiler alert - WE'RE ACTUALLY GOING TO MESS AROUND WITH THE MATLAB CODE FOR THIS KIND OF SIMULATION IN THE HOMEWORK, THIS IS AWESOME. Ahem.
+\subsubsection{Simplifications}
+We take the Vlasov equation and Maxwell's equations
+
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
+\[ \div{\v{E}} = \frac{\rho}{\epsilon_0} \]
+\[ \div{\v{B}} = 0 \]
+\[ \curl{\v{E}} = -\d{\v{B}}{t} \]
+\[ \curl{\v{B}} = \mu_0 ( \v{j} + \epsilon_0 \d{\v{E}}{t}) \]
+
+We simplify the situation. Set $\v{B} = 0$ for an electrostatic situation.
+
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} \vec{E} \cdot \d{f_s}{\v{v}} = 0\]
+\[ \div{\v{E}} = \frac{\rho}{\epsilon_0} \]
+\[ \div{\v{B}} = 0 \]
+\[ \curl{\v{E}} = 0 \]
+which implies
+\[\v{E} = -\grad{\phi}\]
+\[\Delta\phi = -\frac{\rho}{\epsilon_0} \]
+
+We also assume that ions are stationary in the background with density $n_0$ (electrons move at a much faster time scale). This means we only have to solve Vlasov for the electron motion and can replace $f_s$ by $f$ for brevity:
+
+\[\d{f}{t} + \v{v} \cdot \d{f}{\v{r}} - \frac{e \vec{E}}{m_s} \cdot \d{f}{\v{v}} = 0\]
+\[\Delta\phi = \frac{e}{\epsilon_0} \int f d\v{v} - \frac{e}{\epsilon_0} n_0\]
+
+\subsubsection{Linearisation}
+
+We're going to be analysing small perturbations from equilibrium. This means basically expanding the quality of interest in a short Taylor series:
+\[g=g_0 \text{ (equilibrium)} + g_1 \text{ (perturbation, $g_1 \ll g_0$) } \]
+
+In our case, $f_0$ being the initial distribution functions which is isotropic over all position space (thus no dependence on $\v{r}$) and $f_1$ being our small perturbation:
+\[f(\v{r}, \v{v}, t) = f_0 (\v{v}) + f_1(\v{r}, \v{v}, t) \]
+\[\phi = \phi_1 (\v{r}, t) \text{ as we can set $\phi_0 = 0$ since it's constant anyway} \]
+\[\v{E} = \v{E_1} (\v{r}, t)\]
+
+We plug these into the Vlasov equation:
+
+\[ \pd{f_0 + f_1}{t} + \v{v} \cdot \pd {(f_0 + f_1)}{\v{r}} - \frac{e \v{E_1}}{m_e} \cdot \pd{(f_0 + f_1)}{\v{v}} = 0 \]
+
+Simplifying and neglecting $\v{E_1} \cdot \pd{f_1}{\v{v}}$ as small times small:
+
+\[\pd{f_1}{t} + \v{v} \cdot \pd{f_1}{\v{r}} - \frac{e\v{E_1}}{m_e} \cdot \pd {f_0}{\v{v}}\]
+
+Also plugging in $\v{E_1} = -\grad{\phi}$:
+
+\[ \Delta \phi_1 = \frac{e}{\epsilon_0} \int f_1 d\v{v} \]
+
+Thus:
+
+\[\pd{f_1}{t} + \v{v} \cdot \pd{f_1}{\v{r}} - \frac{e}{m_e}\pd{\phi_1}{\v{r}} \cdot \pd {f_0}{\v{v}}\]
+\[ \Delta \phi_1 = \frac{e}{\epsilon_0} \int f_1 d\v{v} \]
+
+We now apply Fourier analysis to $f_1$:
+
+\[ f_1 (\v{r}, \v{v}, t) = \int d\v{k} \int d\omega \tilde{f_1} (\v{k}, \v{v}, \omega) \exp{i(\v{k} \cdot \v{r} - \omega t)} \]
+This is neat because:
+\begin{itemize}
+\item The time derivative is simple:
+\[ \pd{f_1}{t} (\v{r}, \v{v}, t) = \int d\v{k} \int d\omega (-i\omega) \tilde{f_1} (\v{k}, \v{v}, \omega) \exp{i(\v{k} \cdot \v{r} - \omega t)} \]
+\item The spatial derivative is also pretty simple:
+\[ \pd{f_1}{\v{r}} (\v{r}, \v{v}, t) = \int d\v{k} \int d\omega (i\v{k}) \tilde{f_1} (\v{k}, \v{v}, \omega) \exp{i(\v{k} \cdot \v{r} - \omega t)} \]
+\end{itemize}
+
+So we go back to the Vlasov equation and plug in the expressions above:
+
+\[\pd{f_1}{t} + \v{v} \cdot \pd{f_1}{\v{r}} - \frac{e}{m_e}\pd{\phi_1}{\v{r}} \cdot \pd {f_0}{\v{v}} = 0\]
+\[\int d\v{k} \int d\omega [(-i\omega + i \v{k} \cdot \v{v}) \tilde{f_1} + \frac{i e \tilde{\phi_1}}{m_e} \v{k} \cdot \pd{f_0}{\v{v}}]\exp{i(\v{k} \cdot \v{r} - \omega t)} = 0 \]
+
+This can be true only if all the coefficients vanish:
+
+\[ (-i\omega + i \v{k} \cdot \v{v}) \tilde{f_1} + \frac{i e \tilde{\phi_1}}{m_e} \v{k} \cdot \pd{f_0}{\v{v}} = 0 \]
+\[ \tilde{f_1} = \frac{e}{m_e} \frac{\tilde{\phi_1}}{\omega - \v{k} \cdot \v{v}} \v{k} \cdot \pd{f_0}{\v{v}} \]
+
+Plugging this result into the Fourier transform of the Poission equation above:
+
+\[ \Delta \phi_1 = \frac{e}{\epsilon_0} \int f_1 d\v{v} \]
+\[ -k^2 \tilde{\phi_1} = \frac{e}{\epsilon_0} \int \tilde{f_1} d\v{v} =\frac{e^2 \tilde{\phi_1}}{\epsilon_0 m_e} \int \frac{\v{k} \cdot \pd{f_0}{\v{v}}}{\omega - \v{k} \cdot \v{v}} d\v{v} \]
+
+Which then implies
+
+\[ \tilde{\phi_1} k^2 [ 1+ \frac{e^2}{\epsilon_0 m_e k^2} \int \frac{\v{k} \cdot \pd{f_0}{\v{v}}}{\omega - \v{k} \cdot \v{v}} d\v{v} ] =0 \]
+
+We denote the bulky part as the dispersion function
+
+\[ D(\omega, \v{k}) \equiv 1+ \frac{e^2}{\epsilon_0 m_e k^2} \int \frac{\v{k} \cdot \pd{f_0}{\v{v}}}{\omega - \v{k} \cdot \v{v}} d\v{v} \]
+
+Which we can find the roots of, and the solutions (values of $\omega$ and $\v{k}$) gives us the normal modes of our plasma.
+
+There's a singularity at $\omega = \v{k} \cdot \v{v}$. This is when particles match velocities with wave velocities in the plasmas... this may or may not be connected to Landau damping. This topic will not be further developed in the course.
+
+\subsubsection{Getting to the two-stream instability}
+
+The two-stream instability is thermodynamically weird. The velocity distribution is definitely non-maxwellian, it's just two sharp peaks (low entropy). Could there be intrinsic modes in the system that restore thermodynamic equilibrium (high entropy)?
+
+We take a 1D system. The derivation above is general (plenty of vectors brought to you by yours truly). 
+
+\[f=f_0(v_x) = f(u)\]
+
+\[ D(\omega, k) = 1 + \frac{e^2}{\epsilon_0 m_e} \frac{1}{k} \int \d{f_0}{u} \frac{du}{\omega-k u} \]
+
+I'm pretty sure there's a mistake in the lecture and a $1/k$ factor was lost there (it should be $1/k^2$).
+
+For two counter streaming beams:
+
+\[ f_0 (u) =\frac{n}{2} [\delta(u-v_0) + \delta(u+v_0)] \]
+
+The distribution function `luckily' avoids the singularity. We calculate the dispersion function and arrive at
+
+\[D(\omega, k) = 1- \frac{n e^2}{2 \epsilon_0}{m_e} [\frac{1}{(\omega-k v_0)^2} + \frac{1}{(\omega + k v_0)^2} ] \]
+
+(note that the plasma frequency pops up: $\omega^2_{pe} = \frac{n e^2}{\epsilon_0 m_e}$)
+
+This is a $4$th order polynomial in the nominator. The function has two vertical asymptotes at $\omega = \pm k v_0$ and a horizontal one at $1$.
+
+Depending on the parameters, if $D(\omega=0, k) \geq 0$, there's $4$ real roots. The modes will be oscillatory instead of exponentially growing.
+
+Otherwise, if $D(\omega = 0, k) < 0$, there's $2$ real roots corresponding to oscillations and $2$ complex roots corresponding to exponential explosions.
+
+\[ D(\omega =0, k) = 1 - \frac{\omega_{pe}^2}{k^2 v_0^2} < 0 \rightarrow k^2 v_0^2 < \omega_{pe}^2 \]
+
+Unstable modes are those that have sufficiently long wavelengths. That's all we can tell analytically. IT'S PARTICLE IN CELL TIME!
 \end{document}
