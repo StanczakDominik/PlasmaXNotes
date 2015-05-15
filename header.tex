@@ -4,6 +4,8 @@
 % Version 2
 \documentclass[11pt]{article} 
 \usepackage{amsmath} % AMS Math Package
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsthm} % Theorem Formatting
 \usepackage{amssymb}	% Math symbols such as \mathbb
 \usepackage{graphicx} % Allows for eps images
@@ -43,8 +45,18 @@
  #2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
 \newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
 \let\divsymb=\div % rename builtin command \div to \divsymb
-\renewcommand{\div}[1]{\gv{\nabla} \cdot #1} % for divergence
-\newcommand{\curl}[1]{\gv{\nabla} \times #1} % for curl
+\renewcommand{\div}[1]{\gv{\nabla} \cdot \v{#1}} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times \v{#1}} % for curl
+
+\newcommand{\laplace}[1]{\Delta #1} % for laplacian
+\newcommand{\eps}{\epsilon_0} % electric permittivity
+\newcommand{\oneover}[1]{\frac{1}{#1}} % 1/thing
+\newcommand{\dotproduct}[2]{\v{#1} \cdot \v{#2}} % for dotproduct
+\newcommand{\crossproduct}[2]{\v{#1} \times \v{#2}} % for crossproduct
+%aliases
+\newcommand{\para}{\parallel}
+\newcommand{\rot}[1]{\curl{#1}}
+
 \let\baraccent=\= % rename builtin command \= to \baraccent
 \renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
 \newtheorem{prop}{Proposition}

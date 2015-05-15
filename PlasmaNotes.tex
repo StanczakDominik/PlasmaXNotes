@@ -190,7 +190,7 @@ The usual diagram for a plasma description, seen often in simulations:
 	\item Take charge and current density, plug them into Maxwell equations, calculate E and B fields at positions
 	\item Take calculated E and B fields and apply them as forces to particles. Repeat cycle until bored or simulation returns segmentation fault.
 \end{enumerate}
-But real plasmas involve on the order of $10^21$ particles for a fusion plasma. Too much strain on our computational abilities. Impractical. We use a distribution function:
+But real plasmas involve on the order of $10^{21}$ particles for a fusion plasma. Too much strain on our computational abilities. Impractical. We use a distribution function:
 
 $f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase space volume $d\v{r} d\v{v}$ located at $\v{r}, \v{v}$. We have a separate distribution function $f_i$ for every species
 \begin{itemize}
@@ -201,9 +201,9 @@ $f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase sp
 \par \textbf{Examples of distribution functions}
 \begin{itemize}
 	\item Maxwell-Boltzmann distribution function, for three dimensions
-	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^{3/2} exp(-\frac{v^2}{2 v_{thermal}^2}) \] %insert equation
+	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^{3/2} \exp{-\frac{v^2}{2 v_{thermal}^2}} \] %insert equation
 	In 1D, only the normalization of the distribution changes from the 3D case:
-	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^{1/2} exp(-\frac{v^2}{2 v_{thermal}^2}) \]
+	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^{1/2} \exp{-\frac{v^2}{2 v_{thermal}^2}} \]
 	\item Monoenergetic beam in 1D
 	\[ F_0(v) = n_0 \delta (v-v_0) \]
 	\item Two counterstreaming beams in 1D (two-stream instability!)
@@ -228,7 +228,7 @@ Plugging these back into the particle conservation equation:
 \[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
 
 \begin{itemize}
-	\item In the phase space approach, velocity is treated as a completely independent variable than v (though you could consider one as a derivative of the other). Thus $\d{}{\v{r}} \cdot (\v{v} f_s) = \v{v} \cdot	\d{f_s}{\v{r}}$
+	\item In the phase space approach, velocity is treated as a completely independent variable from r (though you could consider one as a derivative of the other). Thus $\d{}{\v{r}} \cdot (\v{v} f_s) = \v{v} \cdot	\d{f_s}{\v{r}}$
 		\item long range force can be decomposed into electric field independent of v, and the  $\v{v} \times \v{B}$ term - perpendicular to v. Thus, $\d{}{\v{v}} \cdot [\v{F_{long range}} f_s] = \v{F_{long range}}\cdot\d{f_s}{\v{v}} $
 	\item Plugging in:
 	
@@ -307,7 +307,7 @@ Much smaller than 1! So small angle deflections dominate over large scale deflec
 \[ \d{\avg{\Delta v_{\parallel e} }}{t} = - \nu_{ei} v_e = -\frac{n_i Z^2 e^4 \ln{\Lambda}}{4 \pi \epsilon_0^2 m_e^2 v_e^3} \]
 We could use this to calculate how an electron beam slows in a plasma.
 Assume a Maxwellian distribution of electron velocities with mean velocity $u_e\ll v_{thermal, e}$ in 1D:
-\[ f_e(v) = n_0 (\frac{m_e}{2 \pi v_{thermal,e}})^{1/2} exp(-\frac{m_e (v_{\parallel e} - u_e)^2}{2 v_{thermal,e}^2}) \]
+\[ f_e(v) = n_0 (\frac{m_e}{2 \pi v_{thermal,e}})^{1/2} \exp{\frac{-m_e (v_{\parallel e} - u_e)^2}{2 v_{thermal,e}^2}} \]
 
 \[ \d{u_e}{t} = -\avg{\nu_{ei} v_{\parallel e}} = \frac{-1}{n_0} \int{\nu_{ei} v_{\parallel e} f_e(v_{\parallel e}) dv_{\parallel e}} \simeq -\avg{\nu_{ei}} u_e (\text{if } u_e \ll v_{thermal, e})\]  
 
