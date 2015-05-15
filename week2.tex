@@ -1,0 +1,411 @@
+\documentclass[PlasmaNotes.tex]{subfiles}
+\begin{document}
+\setcounter{section}{1}
+
+\section{Week 2: Kinetic description of plasmas, with Paolo Ricci}
+\subsection{From single particle to kinetic description}
+	Kinetic description of plasma. A (relatively?) complete description of plasma which covers both the particles and the fields evolving over time.
+
+The usual diagram for a plasma description, seen often in simulations:
+\begin{enumerate}
+	\item Take Newton's equations using electric and magnetic fields \textbf{for all particles at all times} (use Lorentz force)
+	\item Use positions and velocities to compute charge and current densities. Charge density given as sum over particles of their charges, localized through use of Dirac delta functions. Current density - similar, but multiplied by particle velocity vectors inside the sum.
+	\item Take charge and current density, plug them into Maxwell equations, calculate E and B fields at positions
+	\item Take calculated E and B fields and apply them as forces to particles. Repeat cycle until bored or simulation returns segmentation fault.
+\end{enumerate}
+But real plasmas involve on the order of $10^{21}$ particles for a fusion plasma. Too much strain on our computational abilities. Impractical. We use a distribution function:
+
+$f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase space volume $d\v{r} d\v{v}$ located at $\v{r}, \v{v}$. We have a separate distribution function $f_i$ for every species
+\begin{itemize}
+\item Total number of particles $N_S$ given by integral of distribution function over all positions and velocities (which covers all the phase space)
+\item Number density of particles $n_s$ given by integral over all velocities for a given location $\v{r}$ 
+\item Average velocity given by $\frac{1}{n_s} \int \v{v} f_i(\v{r}, \v{v}, t)  d\v{v}$
+\end{itemize}
+\par \textbf{Examples of distribution functions}
+\begin{itemize}
+	\item Maxwell-Boltzmann distribution function, for three dimensions
+	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^{3/2} \exp{-\frac{v^2}{2 v_{thermal}^2}} \] %insert equation
+	In 1D, only the normalization of the distribution changes from the 3D case:
+	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^{1/2} \exp{-\frac{v^2}{2 v_{thermal}^2}} \]
+	\item Monoenergetic beam in 1D
+	\[ F_0(v) = n_0 \delta (v-v_0) \]
+	\item Two counterstreaming beams in 1D (two-stream instability!)
+	\[ F_0(v) = \frac{n_0}{2} [\delta (v-v_0) + \delta(v+v_0)] \]
+\end{itemize}
+
+\textbf{Conservation of particles number}
+
+If there are no sources or sinks, we have the following condition for conservation of number of particles
+\[ \d{f_s}{t} = -\nabla_{6D} \cdot (\v{u} f_s) \]
+where we introduce the six-dimensional nabla operator because who's gonna stop us
+\[ \nabla_{6D} = ( \d{}{x},\d{}{y},\d{}{z},\d{}{v_x},\d{}{v_y},\d{}{v_z}) = (\d{}{\v{r}}, \d{}{\v{v}}) \]
+\[ \v{u} = (\d{\v{r}}{t}, \d{\v{v}}{t}) = (\v{v}, \frac{\v{F}}{m_s}) = (\v{v}, \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s}) \] %insert
+
+Long range forces - collective interactions. Short range forces - binary collisions (between individual particles, like you'd have in a gas).
+Plugging these back into the particle conservation equation:
+\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
+
+\textbf{Boltzmann equation}
+	We can improve on the previous equation. Start out with the expanded particle conservation equation:
+	
+\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
+
+\begin{itemize}
+	\item In the phase space approach, velocity is treated as a completely independent variable from r (though you could consider one as a derivative of the other). Thus $\d{}{\v{r}} \cdot (\v{v} f_s) = \v{v} \cdot	\d{f_s}{\v{r}}$
+		\item long range force can be decomposed into electric field independent of v, and the  $\v{v} \times \v{B}$ term - perpendicular to v. Thus, $\d{}{\v{v}} \cdot [\v{F_{long range}} f_s] = \v{F_{long range}}\cdot\d{f_s}{\v{v}} $
+	\item Plugging in:
+	
+	\[ \d{f_s}{t} = -\v{v}\cdot\d{f_s}{\v{r}} - \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} - \d{}{\v{v}} \cdot (\frac{\v{F_{short range}}}{m_s} f_s) \]
+	\item Can be rewritten as:
+	
+	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} = - \d{}{\v{v}} \cdot (\frac{\v{F_{short range}}}{m_s} f_s) \]
+	
+	Term on the right is called a `collision operator' $(\d{f}{t})_c$.	
+	
+\item And we get the \textbf{Boltzmann equation}:
+	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{q_s}{m_s}(\v{E_{long range}} + \v{v} \times \v{B_{long range}}) \cdot \d{f_s}{\v{v}} = (\d{f_s}{t})_c \]
+\end {itemize}
+
+\[   \]
+
+\subsection{2b) Coulomb collisions in plasmas. Bonus module.}
+We use Boltzmann equation and look into the short range interactions
+
+An electron with charge $-e$ approaches a positive ion (assumed immobile) with charge $Ze$. Electron trajectory changes.
+$\v{v_e}$ - initial electron velocity
+$b$ - impact parameter, shortest distance between extrapolated line of initial electron trajectory and ion position
+
+\[\frac{\text{Coulomb interaction energy}}{\text{Kinetic energy}} \sim \frac{\frac{Ze^2}{4 \pi \epsilon_0 b}}{m_e v_e^2} \sim 1 \]
+(similar to one so collision interaction is important)
+\[b \sim \frac{Ze^2}{4 \pi \epsilon_0 m_e v_e^2} = b_{\pi/2} \]
+
+Coulomb cross section: $\sigma_{\pi/2} = \pi b_{\pi/2}^2 = \frac{\pi Z^2 e^4}{(4 \pi \epsilon_0)^2 m_e^2 v_e^4}$
+
+Collision frequency: $\nu_{\pi/2} = n_i v_e \sigma_{\pi_2} = frac{n_i \pi Z^2 e^4}{(4 \pi \epsilon_0)^2 m_e^2 v_e^3}$
+
+Is this a correct estimate? Do collective small angle deflections matter in a plasma? How can we take the interaction with many particles into account properly? Average over all phase space somehow?
+
+Take the electron-ion collision again.
+Denote $\theta$ - angle between initial and final electron velocity.
+
+Particles interact through Coulomb force. Angular momentum and energy - conserved (if electron is much lighter than ion, $\frac{m_e}{m_i} \ll 1$).
+
+\[ tan(\theta/2) = \frac{b_{\pi/2}}{b} = \frac{Ze^2}{4 \pi \epsilon_0 m_e v_e^2 b} \]
+
+$b_{\pi/2}$ - impact parameter at which collision deflects electron by $90^\circ$.
+
+Cumulative effect for many collisions? Imagine electron moving towards ion cloud.
+
+Due to symmetry we take $\avg{\Delta \v{v_{\perp e}}} =0$ but $\avg{\Delta \v{v_{\perp e}^2}} \neq 0$ . So magnitude could change, but there will be no preferred direction. $\perp$ stands for parallel to initial velocity.
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =\int db n_i v_e 2 \pi b \]
+(we integrate over all possible impact parameters
+\[ \Delta \v{v_{\perp e}^2} = v_e^2 \sin{\theta}^2 = \Delta v_e^2 \tan{\theta/2}^2 [1+\tan{\theta/2}^2]^{-2} \]
+
+Plugging into the integral:
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =8 \pi n_i v_e^3 \int_0^{\lambda_D} \frac{(b_{\pi/2} / b)^2 b}{(1+(b_{\pi/2} / b)^2)^2} db \pi b \]
+We neglect quantum effects (thus integrating from 0) and integrate up to Debye length as coulomb interactions are screened beyond it. Finally, we get:
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} = 8 \pi n_i v_e^3 b_{\pi/2}^2 \ln{\frac{\lambda_D}{b_{\pi/2}}} \text{(if $\lambda_D \gg b_{\pi/2}$} \]
+
+Following section may have some 4`s swapped for $\Delta$`s. 
+\begin{itemize}
+\item Note that electrons do not lose much energy as $m_e \ll m_i$. Basically reflected balls from a wall. Thus
+\[ v_e (\Delta v_{\parallel e}) + 0.5 \Delta v_{\perp e}^2 = 0\]
+And
+\[\d{\avg{\Delta v_{\parallel e}}}{t} = - 4 \pi n_i v_e^2 b_{\pi/2}^2 \ln{\frac{\lambda_D}{b_{\pi/2}}} \]
+\item We define the coulomb logarithm: 
+\[ \ln{\Lambda} \equiv \ln{\frac{\lambda_D}{b_{\pi/2}}} \sim \text{In most plasmas equals  15 to 25} \]
+\item 
+\[ \d{\avg{\Delta v_{\parallel e} }}{t} = - \nu_{ei} v_e \]
+Collision frequency of electrons against ions:
+\[ \nu_{ei} = 4 \pi n_i b_{\pi/2}^2 v_e \ln{\Lambda} = n_i \sigma_{ei} v_e \]
+Whereas
+\[ \sigma_{ei} = 4 \pi b_{\pi/2}^2 \ln{\Lambda} \]
+Can compare 
+\[ \frac{\sigma_{\pi/2}}{\sigma_{ei}} = \frac{\pi b_{\pi/2}^2}{4 \pi b_{\pi/2}^2 \ln{\Lambda}} \ll 1\]
+Much smaller than 1! So small angle deflections dominate over large scale deflections!
+\end{itemize}
+
+\subsection{2c) Collisional processes in plasmas}
+\subsubsection{Slowing down of an electron beam}
+\[ \d{\avg{\Delta v_{\parallel e} }}{t} = - \nu_{ei} v_e = -\frac{n_i Z^2 e^4 \ln{\Lambda}}{4 \pi \epsilon_0^2 m_e^2 v_e^3} \]
+We could use this to calculate how an electron beam slows in a plasma.
+Assume a Maxwellian distribution of electron velocities with mean velocity $u_e\ll v_{thermal, e}$ in 1D:
+\[ f_e(v) = n_0 (\frac{m_e}{2 \pi v_{thermal,e}})^{1/2} \exp{\frac{-m_e (v_{\parallel e} - u_e)^2}{2 v_{thermal,e}^2}} \]
+
+\[ \d{u_e}{t} = -\avg{\nu_{ei} v_{\parallel e}} = \frac{-1}{n_0} \int{\nu_{ei} v_{\parallel e} f_e(v_{\parallel e}) dv_{\parallel e}} \simeq -\avg{\nu_{ei}} u_e (\text{if } u_e \ll v_{thermal, e})\]  
+
+The average collision frequency between electrons and ions $\nu_{ei}$ is
+
+\[ \nu_{ei} = \frac{\sqrt{2}}{12 \pi^(3/2)} \frac{n_i Z^2 e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^(1/2) T_e^(3/2)} \]
+
+There are also collisions between electrons coming from the beam and electrons in the plasma:
+\[ \nu_{ee} = \frac{\sqrt{2}}{12 \pi^(3/2)} \frac{n_e e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^(1/2) T_e^(3/2)} \sim \frac{\avg{\nu_{ei}} n_e}{Z^2 n_i} \]
+
+\subsubsection{Plasma resistivity}
+Take a cloud of ions and electrons. Apply electric field $\v{E}$. Ions will move in direction of E, whereas electrons will move in opposite direction. E then drives a current in a plasma - charges are moving!
+
+We neglect the slow and heavy electrons and focus on electron movement. From Newton's second law:
+
+\[m_e n_e \d{\v{u_e}}{t} = -e n_e \v{E} + \v{R_{ei}} \]
+$R_{ei}$ is the collision term we have just calculated. This slows down the current.
+\[\v{R_{ei}} = - m_e n_e \avg{\nu_{ei}} (\v{u_e}-\v{u_i}) \text{ (assuming } u_e \ll v_{th,e} ) \]
+
+\begin{itemize}
+\item After a transient, we'll reach steady state operation and $\d{}{t}=0$
+\item The current can be depicted as $\v{j} = - n_e e (\v{u_e}-\v{u_i})$
+\end{itemize}
+Thus:
+\[ e^2 n_e \v{E} = m_e \avg{\nu_{ei}} \v{j}\]
+\[ \v{E} = \frac{m_e \avg{\nu_{ei}}}{e^2 n_e} \v{j} \equiv \eta \v{j} \]
+By comparison with Ohm's law we can define the plasma resistivity:
+\[ \eta \equiv \frac{m_e \avg{\nu_{ei}}}{e^2 n_e} = \frac{ \sqrt{2 m_e} Z	e^2 \ln{\Lambda}}{12 \pi^{3/2} \epsilon_0^2 T_e^{3/2}} \]
+The bigger the temperature, the lower the resistivity. Unlike in metals. It's also independent of density! The contributions of increasing the number of carriers and increasing the number of collisions cancel each other out exactly.
+\subsubsection{Overview of plasma collision frequencies}
+\begin{itemize}
+\item Electron - ion collision frequency $nu_{ei} = $ 
+\item Electron - electron collision frequency $nu_{ei}$
+\item Ion - ion collision frequency $nu_{ii}$.
+\end{itemize}
+
+Ions gain energy when you fire an electron beam into a plasma (could be heated this way?).
+
+\[ m_e \Delta \v{v_e} = m_i \Delta \v{v_i}\]
+\[ 0.5 m_i \abs{\Delta \v{v_i}}^2 = \frac{ m_e^2}{2 m_i} \abs{\Delta \v{v_e}}^2 \sim \frac{m_e^2}{2 m_i} \abs{\Delta \v{v_{\perp e}}^2}\]
+(as we can ignore the change in parallel electron velocity)
+
+Rate of exchange of energy (between species! This equalizes the temperatures between electrons and ions!):
+\[ \avg{\nu_E} = \frac{n_i Z^2 e^4 \sqrt{m_e} \ln{\Lambda}}{3 \pi \sqrt{2 \pi} \epsilon_0^2 m_i T_e^{3/2}} \sim Z \frac {m_e}{m_i} \avg{\nu_{ei}} \]
+
+The electrons have a similar, very fast rate of collisions with each other and with ions. The rate of collisions between ions happens $~40$ times slower, and then the rate of energy exchange is $~40$ times slower than that. At a similar rate to that of energy exchange is the rate of ions colliding with electrons.
+
+\subsection{2d) Vlasov equation}
+\subsubsection{Derivation from Boltzmann equation}
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = (\d{f_s}{t})_c\]
+If we can assume that the number of particles in a Debye cube is REALLY HIGH: $n \lambda_D^3 \gg\gg$, so that  $(\d{f}{t})_c=0$, then the \textbf{Vlasov equation} holds:
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
+E and B here represent the long range interactions. The charge density is computed as indicated before, integrating out all the velocities. The currents are likewise obtained by summing over the species and calculating the average velocities at each positions.
+
+\subsubsection{Conservation laws for the Vlasov equation}
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
+This satisfies the following conservation properties:
+\begin{itemize}
+\item Number of particles - we can integrate the Vlasov equation over all positions and velocities. Integrating $\d{f_s}{t}$ gives us $\d{N_s}{t}$. The second term gives us, by means of Gauss (divergence) theorem and pushing the boundaries out to infinity, where $f_s$ should decay to zero, zero. In the third term we have a velocity divergence. Since no particles have infinite velocities\footnote{Einstein says hi.}, we can once more use the divergence theorem \textit{(in velocity space!!!)} to eliminate the third term and we reach $\d{N_s}{t} = 0$. Particles are conserved.
+\item Momentum, which we calculate as the sum of particle and field momenta. No actual derivation is given except for the formula:
+
+\[ \v{P_{tot}} = \sum_s m_s \int d\v{r} \int d\v{v} \, \v{v} f_s + \epsilon_0 \int d\v{r} (\v{E} \times \v{B}) = \text{const}  \]
+
+\item Total energy can be decomposed into energy of particles and energy of field.
+\[ E= \sum_s \int d\v{r} \int d\v{v} \frac{1}{2} m_s v^2 f_s + \frac{1}{2} \int d\v{r} (\epsilon_0 E^2 + B^2/\mu_0) = \text{const} \]
+
+\item Entropy, as given by information theory
+\[ S = \sum_s \int d\v{r} \int d\v{v} f_s \ln{f_s} = \text{const} \]
+This is because collisions are neglected by the Vlasov equation. Therefore it is time-reversible!
+\end{itemize}
+
+
+\subsubsection{Interpretation of Vlasov equation}
+\begin{itemize}
+\item $f_s$ has incompressible motion (in phase space) - it can be considered as an incompressible fluid (moving in phase space - it's going to obey Liouville's theorem)
+\item As seen by particle along orbit \[ \d{f_s}{t} = \pd{f_s}{t} + \v{v} \cdot \pd{f_s}{\v{r}} + \frac{\v{F}}{m_s} \cdot \pd{f_s}{\v{v}} = \pd{f_s}{t} + \v{v} \cdot \pd{f_s}{\v{r}} + \frac{q_s}{m_s} (\v{E} + \v{v} \times \v{B}) \cdot \pd{f_s}{\v{v}} \]
+And the funny thing is, that's just the Vlasov equation itself. Thus along particle orbits, $f_s = 0$.
+\end{itemize}
+
+\subsubsection{(Formal) solutions of Vlasov equation}
+If $c_j$ is a constant of motion, then any distribution function being a function of any number of constants of motion $c_j$  is a solution.
+
+This is unlike the Boltzmann equation, where only the Maxwellian distribution was a stationary solution.
+
+It can be really difficult to find constants of motion, as well. It seems to be implied that practical solutions rely on numerical methods - that way you need not specify constants of motion for a formal solution.
+
+\subsection{The two stream instability!}
+We make this our testing ground for the Vlasov equation. The situation is two beams of electrons moving in opposite directions in 1D. Spoiler alert - WE'RE ACTUALLY GOING TO MESS AROUND WITH THE MATLAB CODE FOR THIS KIND OF SIMULATION IN THE HOMEWORK, THIS IS AWESOME. Ahem.
+\subsubsection{Simplifications}
+We take the Vlasov equation and Maxwell's equations
+
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
+\[ \div{\v{E}} = \frac{\rho}{\epsilon_0} \]
+\[ \div{\v{B}} = 0 \]
+\[ \curl{\v{E}} = -\d{\v{B}}{t} \]
+\[ \curl{\v{B}} = \mu_0 ( \v{j} + \epsilon_0 \d{\v{E}}{t}) \]
+
+We simplify the situation. Set $\v{B} = 0$ for an electrostatic situation.
+
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} \vec{E} \cdot \d{f_s}{\v{v}} = 0\]
+\[ \div{\v{E}} = \frac{\rho}{\epsilon_0} \]
+\[ \div{\v{B}} = 0 \]
+\[ \curl{\v{E}} = 0 \]
+which implies
+\[\v{E} = -\grad{\phi}\]
+\[\Delta\phi = -\frac{\rho}{\epsilon_0} \]
+
+We also assume that ions are stationary in the background with density $n_0$ (electrons move at a much faster time scale). This means we only have to solve Vlasov for the electron motion and can replace $f_s$ by $f$ for brevity:
+
+\[\d{f}{t} + \v{v} \cdot \d{f}{\v{r}} - \frac{e \vec{E}}{m_s} \cdot \d{f}{\v{v}} = 0\]
+\[\Delta\phi = \frac{e}{\epsilon_0} \int f d\v{v} - \frac{e}{\epsilon_0} n_0\]
+
+\subsubsection{Linearisation}
+
+We're going to be analysing small perturbations from equilibrium. This means basically expanding the quality of interest in a short Taylor series:
+\[g=g_0 \text{ (equilibrium)} + g_1 \text{ (perturbation, $g_1 \ll g_0$) } \]
+
+In our case, $f_0$ being the initial distribution functions which is isotropic over all position space (thus no dependence on $\v{r}$) and $f_1$ being our small perturbation:
+\[f(\v{r}, \v{v}, t) = f_0 (\v{v}) + f_1(\v{r}, \v{v}, t) \]
+\[\phi = \phi_1 (\v{r}, t) \text{ as we can set $\phi_0 = 0$ since it's constant anyway} \]
+\[\v{E} = \v{E_1} (\v{r}, t)\]
+
+We plug these into the Vlasov equation:
+
+\[ \pd{f_0 + f_1}{t} + \v{v} \cdot \pd {(f_0 + f_1)}{\v{r}} - \frac{e \v{E_1}}{m_e} \cdot \pd{(f_0 + f_1)}{\v{v}} = 0 \]
+
+Simplifying and neglecting $\v{E_1} \cdot \pd{f_1}{\v{v}}$ as small times small:
+
+\[\pd{f_1}{t} + \v{v} \cdot \pd{f_1}{\v{r}} - \frac{e\v{E_1}}{m_e} \cdot \pd {f_0}{\v{v}}\]
+
+Also plugging in $\v{E_1} = -\grad{\phi}$:
+
+\[ \Delta \phi_1 = \frac{e}{\epsilon_0} \int f_1 d\v{v} \]
+
+Thus:
+
+\[\pd{f_1}{t} + \v{v} \cdot \pd{f_1}{\v{r}} - \frac{e}{m_e}\pd{\phi_1}{\v{r}} \cdot \pd {f_0}{\v{v}}\]
+\[ \Delta \phi_1 = \frac{e}{\epsilon_0} \int f_1 d\v{v} \]
+
+We now apply Fourier analysis to $f_1$:
+
+\[ f_1 (\v{r}, \v{v}, t) = \int d\v{k} \int d\omega \tilde{f_1} (\v{k}, \v{v}, \omega) \exp{i(\v{k} \cdot \v{r} - \omega t)} \]
+This is neat because:
+\begin{itemize}
+\item The time derivative is simple:
+\[ \pd{f_1}{t} (\v{r}, \v{v}, t) = \int d\v{k} \int d\omega (-i\omega) \tilde{f_1} (\v{k}, \v{v}, \omega) \exp{i(\v{k} \cdot \v{r} - \omega t)} \]
+\item The spatial derivative is also pretty simple:
+\[ \pd{f_1}{\v{r}} (\v{r}, \v{v}, t) = \int d\v{k} \int d\omega (i\v{k}) \tilde{f_1} (\v{k}, \v{v}, \omega) \exp{i(\v{k} \cdot \v{r} - \omega t)} \]
+\end{itemize}
+
+So we go back to the Vlasov equation and plug in the expressions above:
+
+\[\pd{f_1}{t} + \v{v} \cdot \pd{f_1}{\v{r}} - \frac{e}{m_e}\pd{\phi_1}{\v{r}} \cdot \pd {f_0}{\v{v}} = 0\]
+\[\int d\v{k} \int d\omega [(-i\omega + i \v{k} \cdot \v{v}) \tilde{f_1} + \frac{i e \tilde{\phi_1}}{m_e} \v{k} \cdot \pd{f_0}{\v{v}}]\exp{i(\v{k} \cdot \v{r} - \omega t)} = 0 \]
+
+This can be true only if all the coefficients vanish:
+
+\[ (-i\omega + i \v{k} \cdot \v{v}) \tilde{f_1} + \frac{i e \tilde{\phi_1}}{m_e} \v{k} \cdot \pd{f_0}{\v{v}} = 0 \]
+\[ \tilde{f_1} = \frac{e}{m_e} \frac{\tilde{\phi_1}}{\omega - \v{k} \cdot \v{v}} \v{k} \cdot \pd{f_0}{\v{v}} \]
+
+Plugging this result into the Fourier transform of the Poission equation above:
+
+\[ \Delta \phi_1 = \frac{e}{\epsilon_0} \int f_1 d\v{v} \]
+\[ -k^2 \tilde{\phi_1} = \frac{e}{\epsilon_0} \int \tilde{f_1} d\v{v} =\frac{e^2 \tilde{\phi_1}}{\epsilon_0 m_e} \int \frac{\v{k} \cdot \pd{f_0}{\v{v}}}{\omega - \v{k} \cdot \v{v}} d\v{v} \]
+
+Which then implies
+
+\[ \tilde{\phi_1} k^2 [ 1+ \frac{e^2}{\epsilon_0 m_e k^2} \int \frac{\v{k} \cdot \pd{f_0}{\v{v}}}{\omega - \v{k} \cdot \v{v}} d\v{v} ] =0 \]
+
+We denote the bulky part as the dispersion function
+
+\[ D(\omega, \v{k}) \equiv 1+ \frac{e^2}{\epsilon_0 m_e k^2} \int \frac{\v{k} \cdot \pd{f_0}{\v{v}}}{\omega - \v{k} \cdot \v{v}} d\v{v} \]
+
+Which we can find the roots of, and the solutions (values of $\omega$ and $\v{k}$) gives us the normal modes of our plasma.
+
+There's a singularity at $\omega = \v{k} \cdot \v{v}$. This is when particles match velocities with wave velocities in the plasmas... this may or may not be connected to Landau damping. This topic will not be further developed in the course.
+
+\subsubsection{Getting to the two-stream instability}
+
+The two-stream instability is thermodynamically weird. The velocity distribution is non-maxwellian.
+It's just two sharp peaks (low entropy). Could there be intrinsic modes in the system that restore thermodynamic equilibrium (high entropy)?
+
+We take a 1D system. The derivation above is general (plenty of vectors brought to you by yours truly). 
+
+\[f=f_0(v_x) = f(u)\]
+
+\[ D(\omega, k) = 1 + \frac{e^2}{\epsilon_0 m_e} \frac{1}{k} \int \d{f_0}{u} \frac{du}{\omega-k u} \]
+
+I'm pretty sure there's a mistake in the lecture and a $1/k$ factor was lost there (it should be $1/k^2$).
+
+For two counter streaming beams:
+
+\[ f_0 (u) =\frac{n}{2} [\delta(u-v_0) + \delta(u+v_0)] \]
+
+The distribution function `luckily' avoids the singularity. We calculate the dispersion function and arrive at
+
+\[D(\omega, k) = 1- \frac{n e^2}{2 \epsilon_0}{m_e} [\frac{1}{(\omega-k v_0)^2} + \frac{1}{(\omega + k v_0)^2} ] \]
+
+(note that the plasma frequency pops up: $\omega^2_{pe} = \frac{n e^2}{\epsilon_0 m_e}$)
+
+This is a $4$th order polynomial in the nominator. The function has two vertical asymptotes at $\omega = \pm k v_0$ and a horizontal one at $1$.
+
+Depending on the parameters, if $D(\omega=0, k) \geq 0$, there's $4$ real roots. The modes will be oscillatory instead of exponentially growing.
+
+Otherwise, if $D(\omega = 0, k) < 0$, there's $2$ real roots corresponding to oscillations and $2$ complex roots corresponding to exponential explosions.
+
+\[ D(\omega =0, k) = 1 - \frac{\omega_{pe}^2}{k^2 v_0^2} < 0 \rightarrow k^2 v_0^2 < \omega_{pe}^2 \]
+
+Unstable modes are those that have sufficiently long wavelengths. That's all we can tell analytically. IT'S PARTICLE IN CELL TIME!
+
+\subsection{2f) Kinetic plasma simulations. The Particle in Cell method}
+\subsubsection{The various time scales in a plasma}
+
+\begin{itemize}
+\item $10^{-10}s$ - electron cyclotron motion
+\item $10^{-7}s$ - ion cyclotron motion
+\item $10^{-5}s$ - microturbulence
+\item $10^{-3}s$ - fast global instabilities
+\item $10^{-1}s$ - slow global instabilities
+\item $1s$ - energy confinement time
+\item $10^3s$ - gas equilibrisation
+\end{itemize}
+
+It's extremely hard to simulate all of these at once! Accurate modelling of cyclotron motion (say, $10^{-14}$ timestep) would mean observing \textbf{fast} global instabilities after $10^11$ timesteps. That's a lot of timesteps.
+
+\subsubsection{Simulation approach - Particle in Cell (PIC) method}
+
+One could solve the entire Vlasov equation by separating the whole $6D$ phase space into a grid and solving the partial differential equation. Possible. But usually, one uses the particle in cell method.
+
+$f$ is constant along particle trajectories. This translates directly into Newton's equations for a single particle:
+\[ \d{\v{r}}{t}=\v{v} \]
+\[ \d{\v{v}}{t}=\frac{q}{m}(\v{E} + \v{v} \times \v{B}) \]
+
+In the PIC (Particle in Cell) method, we approximate the distribution function by a discrete sum
+
+\[f(\v{r}, \v{v}, t) \simeq \sum_\alpha f_\alpha (\v{r} - \v{r_{\alpha 0}}, \v{v} - \v{v_{\alpha 0}})\]
+
+The $f_{\alpha}$`s are called \textbf{superparticles}; they have compact support - they're zero everywhere but on a small domain in phase space around $r_{\alpha 0}$ and $v_{\alpha 0}$. 
+
+We introduce the integral $I_{\alpha} = \int \int d\v{r} d\v{v} f_{\alpha}$ which is done over the small domain of the particle.
+
+At all times, the superparticles satisfy
+\[f(\v{r}, \v{v}, t) \simeq \sum_\alpha f_\alpha (\v{r} - \v{r_{\alpha}}(t), \v{v} - \v{v_{\alpha}}(t))\]
+
+If we have that
+\[ \d{\v{r_{\alpha}}}{t}=\v{v_{\alpha}} \]
+\[ \d{\v{v_{\alpha}}}{t}=\frac{q_{\alpha}}{m}(\v{E_{\alpha}} + \v{v_{\alpha}} \times \v{B_{\alpha}}) \]
+
+where
+\[ \v{E_{\alpha}} = \frac{1}{I_d} \int \int \v{E} f_{\alpha} d\v{r}\,d\v{v} \]
+\[ \v{B_{\alpha}} = \frac{1}{I_d} \int \int \v{B} f_{\alpha} d\v{r}\,d\v{v} \]
+
+and we have some initial conditions
+\[ \v{r_{\alpha}} (t=0) = \v{r_{\alpha_0}} \]
+\[ \v{v_{\alpha}} (t=0) = \v{v_{\alpha_0}} \]
+
+Then the distribution function defined as the sum of all superparticles (their distribution functions) also solves the Vlasov equation.\footnote{This is a complicated way of saying that we can use particles to approximate the motion of the plasma - see Birdsall and Langdon.}
+
+\subsubsection{Practical PIC}
+In one dimension, we have to:
+\begin{enumerate}
+\item Solve Poisson's equation to get the potential $\phi$ and field $\v{E}$
+
+This is done by discretizing space and time. We get discrete approximations to charge densities, potentials and fields.
+
+Derivatives are discretized using central differences. 
+\item Evaluate electric fields acting on superparticles
+
+\[E_{\alpha} = E_j \text{ if } \abs{x_j-x_{\alpha}} \leq \Delta x/2 \]
+
+\item Apply fields to superparticles. Solve for the motion of superparticles by a numerical algorithm (Euler's or Runge-Kutta's)
+\item Assign charge to discrete locations on grid. We sum the charges of superparticles in the $j$-th cell (in $x_{j-1/2} < x_{\alpha} < x_{j+1/2}$) and divide by the cell size.
+\end{enumerate}
+
+
+On a closing note: PICs are awesome, they're used in all kinds of fields. Electromagnetic fields, gravitational fields... go learn them. \text{:)}
+
+\end{document}
