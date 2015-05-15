@@ -12,13 +12,13 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=820
-NormalPos.bottom=485
+NormalPos.bottom=718
 Class=LaTeXView
-Document=PlasmaNotes.tex
+Document=week3.tex
 
 [Frame0_View0,0]
-TopLine=2
-Cursor=361
+TopLine=178
+Cursor=7278
 
 [Frame1]
 Flags=0
@@ -30,13 +30,13 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=820
-NormalPos.bottom=485
+NormalPos.bottom=718
 Class=LaTeXView
-Document=week1.tex
+Document=header.tex
 
 [Frame1_View0,0]
 TopLine=0
-Cursor=373
+Cursor=374
 
 [Frame2]
 Flags=0
@@ -48,13 +48,13 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=820
-NormalPos.bottom=485
+NormalPos.bottom=718
 Class=LaTeXView
-Document=header.tex
+Document=week1.tex
 
 [Frame2_View0,0]
 TopLine=0
-Cursor=374
+Cursor=373
 
 [Frame3]
 Flags=0
@@ -66,13 +66,13 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=820
-NormalPos.bottom=485
+NormalPos.bottom=718
 Class=LaTeXView
-Document=week2.tex
+Document=PlasmaNotes.tex
 
 [Frame3_View0,0]
-TopLine=443
-Cursor=562
+TopLine=0
+Cursor=361
 
 [Frame4]
 Flags=0
@@ -84,15 +84,15 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=820
-NormalPos.bottom=485
+NormalPos.bottom=718
 Class=LaTeXView
-Document=week3.tex
+Document=week2.tex
 
 [Frame4_View0,0]
-TopLine=166
-Cursor=5746
+TopLine=247
+Cursor=562
 
 [SessionInfo]
 FrameCount=5
-ActiveFrame=4
+ActiveFrame=3
 

@@ -16,24 +16,26 @@
 In the fluid model we only really look at quantities that depend on position. This means we'll have to integrate out all velocity dependence.
 
 Number density - the integral of distribution function over all velocities. Simple. We just care about the density \emph{at a location}.
-\[ \]
+\[n_s(r,t) = \int{dv f_s(r, v, t)} \]
 
-For any function, it's average value is the integral of the function weighted by distribution function, normalized by dividing the integral by the number density of the species.
-\[ \]
+For any function $g(r, v)$, it's average value is the integral of the function weighted by distribution function, normalized by dividing the integral by the number density of the species.
+\[ \avg{g(r)} = \oneover{n_s} \int{g(r, v) f_s(r,v, t) d_v} f \]
 
 Examples:
 \begin{itemize}
-\item Average fluid velocity
-\[ \]
-\item Average kinetic energy density
-\[ \]
-\item Pressure \textbf{tensor} (as pressure may depend on direction)
-\[ \]
+\item Average fluid velocity, $g(v) = v$
+\[ u_s(r,t) = \oneover{n_s} \int{v f_s(r,v,t) dv} \]
+\item Average kinetic energy density, $g(v) = \oneover{2} m_s v^2$
+\[ w_s(r,t) = \oneover{n_s} \int{ \oneover{2} m_s v^2 f_s(r,v,t) dv} \]
+\item Pressure \textbf{tensor} (as pressure may depend on direction), $g(v) = m_s (\v{v} -\v{u_s})(\v{v} -\v{u_s})$ - a tensor (dyadic) quantity)
+\[ \hat{P} = \int m_s (\v{v} -\v{u_s}) (\v{v} -\v{u_s}) f_s(r,v,t) \]
 \end{itemize}
 
 \subsubsection{Examples of fluid averaged quantities}
 \begin{enumerate}
-\item Beam density. Distribution function with uniform spread in $1D$ positions and a delta function dependence on velocity (only one velocity in the whole beam).
+\item Beam density. Distribution function with uniform spread in $1D$ positions and a delta function dependence on velocity (only one velocity in the whole beam
+
+\[ f = n_0 \delta(\v{v} - \v{v_0}) \]
 
 The density ends up being just $n_0$ because of the Dirac delta velocity dependence.
 
@@ -44,7 +46,9 @@ The kinetic energy density is just $m v_0^2/2$, obviously.
 The pressure tensor ends up as zero! Both the vector quantities end up being zero as $\v{v} = \v{v_0}$. Reasonable. If everything's moving at the same velocity there's not going to be anything pushing anything else.
 
 \item Maxwellian velocity distribution with uniform position distribution
-\[ \]
+\[ f = n_0 \Big( \frac{1}{2 \pi v_{th}^2} \Big)^{3/2} \exp{\frac{-(\v{v}-\v{v_0})^2}{2 v_{th}^2}} \]
+
+Note that the lecture had a version with masses. This was corrected in the errata - I suppose because we're working in position-velocity phase space instead of position-momentum phase space.
 
 Number density is just $n_0$, as the velocity distribution is normalized to one anyway.
 
@@ -53,79 +57,86 @@ Average fluid velocity - gaussian average value $v_0$.
 Average kinetic energy density: kinetic energy from average velocity plus $\frac{3}{2} k_b T$ (thermal velocity)
 
 Pressure tensor is a diagonal matrix.
-\[ \]
+\[\hat{P} = 
+\begin{pmatrix}
+n_0 T & 0 & 0 \\
+0 & n_0 T & 0 \\
+0 & 0 & n_0 T
+\end{pmatrix} \]
+
+Note that in the errata, $n_0 K_B T$ (from the lecture) was corrected to $n_0 T$, as in this course temperatures are defined thermodynamically, through energy, including the Boltzmann constant.
+
 \end{enumerate}
 
 \subsubsection{The moments of the kinetic equation}
 
 We take the Boltzmann equation:
 
-\[ \]
+\[ \pd{f_s}{t} + \dotproduct{v}{\pd{f_s}{r}} + \frac{q_s}{m_s}\dotproduct{(E+\crossproduct{v}{B})}{\pd{f_s}{v}} = \Big(\pd{f_s}{t}\Big)_c \]
 
-Shift the collision term to the left side
+Shift the collision term to the left side and denote the whole thing, which is now equal to zero for all positions, times and velocities (I'll denote this as $BOLT$):
 
-\[BOLT =  \]
-And take averages - `moments' - of that by integrating $BOLT$ it with a weight $g$. This will give us the following equations:
+\[BOLT = \pd{f_s}{t} + \dotproduct{v}{\pd{f_s}{r}} + \frac{q_s}{m_s}\dotproduct{(E+\crossproduct{v}{B})}{\pd{f_s}{v}} - \Big(\pd{f_s}{t}\Big)_c = 0  \]
+And take averages - `moments' - of that by integrating $BOLT$ with a weight $g$. This will give us the following equations:
 \begin{itemize}
-\item Continuity - $g=1$
-\item Momentum - $g=mv$
-\item Energy - $g=mv^2/2$
+\item Continuity for $g=1$
+\item Momentum for $g=mv$
+\item Energy for $g=mv^2/2$
 \end{itemize}
-The continuity equation will be done here.
+The continuity equation will be done here. The rest are, in true physics tradition, easy to derive and as such are left to the reader.
 
 \subsubsection{The continuity equation}
 
-\[ \]
+\[ \int{BOLT dv} = \int{ \Big( \pd{f_s}{t} + \dotproduct{v}{\pd{f_s}{r}} + \frac{q_s}{m_s}\dotproduct{(E+\crossproduct{v}{B})}{\pd{f_s}{v}} - \Big(\pd{f_s}{t}\Big)_c\Big) dv} = 0 \]
 
 \begin{itemize}
 \item The first term ends up as just the time derivative of average number density
-\[ \]
-\item The first term is the time derivative of average fluid velocity times average number density
-\[ \]
+\[ \int{\pd{f_s}{t} dv} = \pd{}{t} \int{f_s dv} = \pd{n_s}{t} \]
+\item The second term is the time derivative of average fluid velocity times average number density
+\[ \int{\dotproduct{v}{\pd{f_s}{r}} dv} = \pd{}{r} \int{v f_s dv} = \pd{(n_s \v{u_s})}{\v{r}} \]
 
 \item The third term: the forces can be brought under the velocity derivative. We then use the divergence theorem in velocity space and since particles aren't going to have infinite velocities, the surface integral over the region in velocity space is zero.
-\[ \]
 
 \item The fourth collision term is zero on the grounds that 'collisions do not create nor destroy particles'. Not sure how that works...
+
 \end{itemize}
 
 On the whole, we get the neat continuity equation:
-%Get this a square!
-\[ \]
 
+\begin{equation}
+\boxed{\pd{n_s}{t} + \pd{}{\v{r}} \cdot (n_s \v{u_s}) = 0}
+\end{equation}
 \subsubsection{The two fluid model!}
 
 We treat electrons as one fluid, and electrons as another, separate fluid. The two fluids are in the same region in space and interacting with each other (not much of a plasma otherwise!).
 
 We take the continuity equation derived above
 
-\[ \]
+\[ \pd{n_s}{t} + \pd{}{\v{r}} \cdot (n_s \v{u_s}) = 0 \]
 
 We also take the momentum equation, which was left for the student to derive
 
-\[ \]
+\[ m_s n_s \d{\v{u_s}}{t} = q_s n_s \Big( \v{E} + \crossproduct{u_s}{B} \Big) - \pd{}{\v{r}} \cdot \hat{P_s} + \v{R_s} \]
 
-Where $\d{}{t}$ is the total time derivative (streaming included)
+Where $\d{}{t} = \pd{}{t} + \v{u_s} \cdot \pd{}{\v{r}}$ is the total time derivative (streaming included), and $R$ is a collision term
 
-\[ \]
+\[ \v{R_s} = \int{m_s (\v{v} - \v{u_s}) \Big( \pd{f}{t} \Big)_c dv} \]
 
-And $R$ is the collision term
+We also take the energy equation\footnote{I'm not sure about the equations on this page. May have taken a tensor for a vector or vice versa. If anyone can confirm they're correct or spot any mistakes, please say so on the forums.}
 
-\[ \]
-
-We also take the energy equation
+\[ \frac{3}{2} n_s \d{T_s}{t} + \hat{P_s} \cdot \pd{}{\v{r}} \v{u_s} + \pd{}{\v{r}} \cdot \v{q_s} = Q_s \]
 
 Where $T_s$ is the temperature factor related to spread of velocity
 
-\[ \]
+\[ \frac{1}{3 n_s} \int{m_s (\v{v} - \v{u_s})^2 f_s dv} \]
 
-And $q_s$ is the heat flux vector, the kinetic energy transported by the velocity of the fluid
+$q_s$ is the heat flux vector, the kinetic energy transported by the velocity of the fluid
 
-\[ \]
+\[ \frac{m_s}{2} \int{(\v{v}-\v{u_s})^2 (\v{v}-\v{u_s}) f_s dv} \]
 
 And $Q_s$ is the heat generated by viscous forces (basically friction, collisions?)
 
-\[ \]
+\[ Q_s = \int{\frac{m_s}{2} (\v{v}-\v{u_s})^2 \Big(\pd{f}{t}\Big)_c dv} \]
 
 The system of equation is \textbf{not closed}, we need an expression for the heat flux, which requires knowing the distribution function. This is a \emph{closure problem}. Closures can be difficult to find and people are actively sciencing that as hard as they can. The problem is that you'd need to use the distribution function to get quantities we'd like to use instead of the distribution function.
 
