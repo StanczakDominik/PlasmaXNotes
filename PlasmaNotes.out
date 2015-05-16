@@ -1,35 +1,53 @@
-\BOOKMARK [1][-]{section.1}{Week 1. Description of the plasma state, with Paolo Ricci}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Plasmas in nature and laboratory}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Rigorous definition of plasma: Debye length}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Plasma definition: frequencies and parameters}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.4}{Particle motion in a static uniform magnetic field . Plasma magnetic properties}{section.1}% 5
-\BOOKMARK [2][-]{subsection.1.5}{Particle motion in given electromagnetic fields: the drifts }{section.1}% 6
-\BOOKMARK [2][-]{subsection.1.6}{Plasma confinement based on single particle motion. Magnetic mirrors, stellarators, tokamaks}{section.1}% 7
-\BOOKMARK [1][-]{section.2}{Week 2: Kinetic description of plasmas, with Paolo Ricci}{}% 8
-\BOOKMARK [2][-]{subsection.2.1}{From single particle to kinetic description}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.2}{2b\) Coulomb collisions in plasmas. Bonus module.}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.3}{2c\) Collisional processes in plasmas}{section.2}% 11
-\BOOKMARK [3][-]{subsubsection.2.3.1}{Slowing down of an electron beam}{subsection.2.3}% 12
-\BOOKMARK [3][-]{subsubsection.2.3.2}{Plasma resistivity}{subsection.2.3}% 13
-\BOOKMARK [3][-]{subsubsection.2.3.3}{Overview of plasma collision frequencies}{subsection.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.4}{2d\) Vlasov equation}{section.2}% 15
-\BOOKMARK [3][-]{subsubsection.2.4.1}{Derivation from Boltzmann equation}{subsection.2.4}% 16
-\BOOKMARK [3][-]{subsubsection.2.4.2}{Conservation laws for the Vlasov equation}{subsection.2.4}% 17
-\BOOKMARK [3][-]{subsubsection.2.4.3}{Interpretation of Vlasov equation}{subsection.2.4}% 18
-\BOOKMARK [3][-]{subsubsection.2.4.4}{\(Formal\) solutions of Vlasov equation}{subsection.2.4}% 19
-\BOOKMARK [2][-]{subsection.2.5}{The two stream instability!}{section.2}% 20
-\BOOKMARK [3][-]{subsubsection.2.5.1}{Simplifications}{subsection.2.5}% 21
-\BOOKMARK [3][-]{subsubsection.2.5.2}{Linearisation}{subsection.2.5}% 22
-\BOOKMARK [3][-]{subsubsection.2.5.3}{Getting to the two-stream instability}{subsection.2.5}% 23
-\BOOKMARK [2][-]{subsection.2.6}{2f\) Kinetic plasma simulations. The Particle in Cell method}{section.2}% 24
-\BOOKMARK [3][-]{subsubsection.2.6.1}{The various time scales in a plasma}{subsection.2.6}% 25
-\BOOKMARK [3][-]{subsubsection.2.6.2}{Simulation approach - Particle in Cell \(PIC\) method}{subsection.2.6}% 26
-\BOOKMARK [3][-]{subsubsection.2.6.3}{Practical PIC}{subsection.2.6}% 27
-\BOOKMARK [1][-]{section.3}{Week 3. Fluid description of plasmas, with Paolo Ricci}{}% 28
-\BOOKMARK [2][-]{subsection.3.1}{From Vlasov to two-fluid}{section.3}% 29
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Fluid quantities from the distribution function}{subsection.3.1}% 30
-\BOOKMARK [3][-]{subsubsection.3.1.2}{Examples of fluid averaged quantities}{subsection.3.1}% 31
-\BOOKMARK [3][-]{subsubsection.3.1.3}{The moments of the kinetic equation}{subsection.3.1}% 32
-\BOOKMARK [3][-]{subsubsection.3.1.4}{The continuity equation}{subsection.3.1}% 33
-\BOOKMARK [3][-]{subsubsection.3.1.5}{The two fluid model!}{subsection.3.1}% 34
-\BOOKMARK [3][-]{subsubsection.3.1.6}{Two fluid simulation of plasma turbulence}{subsection.3.1}% 35
+\BOOKMARK [2][-]{subsection.0.1}{The notes' repository}{}% 1
+\BOOKMARK [2][-]{subsection.0.2}{The course wiki and errata pages}{}% 2
+\BOOKMARK [2][-]{subsection.0.3}{Qni's Julia package}{}% 3
+\BOOKMARK [1][-]{section.1}{Week 1. Description of the plasma state, with Paolo Ricci}{}% 4
+\BOOKMARK [2][-]{subsection.1.1}{Plasmas in nature and laboratory}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.2}{Rigorous definition of plasma: Debye length}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.3}{Plasma definition: frequencies and parameters}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.4}{Particle motion in a static uniform magnetic field . Plasma magnetic properties}{section.1}% 8
+\BOOKMARK [2][-]{subsection.1.5}{Particle motion in given electromagnetic fields: the drifts }{section.1}% 9
+\BOOKMARK [2][-]{subsection.1.6}{Plasma confinement based on single particle motion. Magnetic mirrors, stellarators, tokamaks}{section.1}% 10
+\BOOKMARK [1][-]{section.2}{Week 2: Kinetic description of plasmas, with Paolo Ricci}{}% 11
+\BOOKMARK [2][-]{subsection.2.1}{From single particle to kinetic description}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.2}{2b\) Coulomb collisions in plasmas. Bonus module.}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.3}{2c\) Collisional processes in plasmas}{section.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Slowing down of an electron beam}{subsection.2.3}% 15
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Plasma resistivity}{subsection.2.3}% 16
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Overview of plasma collision frequencies}{subsection.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.4}{2d\) Vlasov equation}{section.2}% 18
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Derivation from Boltzmann equation}{subsection.2.4}% 19
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Conservation laws for the Vlasov equation}{subsection.2.4}% 20
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Interpretation of Vlasov equation}{subsection.2.4}% 21
+\BOOKMARK [3][-]{subsubsection.2.4.4}{\(Formal\) solutions of Vlasov equation}{subsection.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.5}{The two stream instability!}{section.2}% 23
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Simplifications}{subsection.2.5}% 24
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Linearisation}{subsection.2.5}% 25
+\BOOKMARK [3][-]{subsubsection.2.5.3}{Getting to the two-stream instability}{subsection.2.5}% 26
+\BOOKMARK [2][-]{subsection.2.6}{2f\) Kinetic plasma simulations. The Particle in Cell method}{section.2}% 27
+\BOOKMARK [3][-]{subsubsection.2.6.1}{The various time scales in a plasma}{subsection.2.6}% 28
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Simulation approach - Particle in Cell \(PIC\) method}{subsection.2.6}% 29
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Practical PIC}{subsection.2.6}% 30
+\BOOKMARK [1][-]{section.3}{Week 3. Fluid description of plasmas, with Paolo Ricci}{}% 31
+\BOOKMARK [2][-]{subsection.3.1}{From Vlasov to two-fluid}{section.3}% 32
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Fluid quantities from the distribution function}{subsection.3.1}% 33
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Examples of fluid averaged quantities}{subsection.3.1}% 34
+\BOOKMARK [3][-]{subsubsection.3.1.3}{The moments of the kinetic equation}{subsection.3.1}% 35
+\BOOKMARK [3][-]{subsubsection.3.1.4}{The continuity equation}{subsection.3.1}% 36
+\BOOKMARK [3][-]{subsubsection.3.1.5}{The two fluid model!}{subsection.3.1}% 37
+\BOOKMARK [3][-]{subsubsection.3.1.6}{Two fluid simulation of plasma turbulence}{subsection.3.1}% 38
+\BOOKMARK [2][-]{subsection.3.2}{The two-fluid dispersion relation}{section.3}% 39
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Linearization and fourier mode analysis - a review}{subsection.3.2}% 40
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Linearization of Maxwell equations}{subsection.3.2}% 41
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Linearization of two-fluid equations}{subsection.3.2}% 42
+\BOOKMARK [3][-]{subsubsection.3.2.4}{The two-fluid dispersion relation}{subsection.3.2}% 43
+\BOOKMARK [2][-]{subsection.3.3}{Two fluid waves, parallel and perpendicular propagation}{section.3}% 44
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Two fluid cold plasma dispersion relation}{subsection.3.3}% 45
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Waves propagating parallel to B0}{subsection.3.3}% 46
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Waves propagating perpendicular to B0}{subsection.3.3}% 47
+\BOOKMARK [3][-]{subsubsection.3.3.4}{The main takeaway}{subsection.3.3}% 48
+\BOOKMARK [2][-]{subsection.3.4}{Properties of two-fluid waves \(Resonanses, cutoffs, etc\)}{section.3}% 49
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Properties of right and left handed waves}{subsection.3.4}% 50
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Whistler waves}{subsection.3.4}% 51
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Cut-off and resonance frequencies}{subsection.3.4}% 52
+\BOOKMARK [3][-]{subsubsection.3.4.4}{Properties of waves propagating perpendicular to B0}{subsection.3.4}% 53

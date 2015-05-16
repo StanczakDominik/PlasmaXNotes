@@ -19,36 +19,51 @@ Input:17:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu
 Input:18:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty
 Input:19:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def
 Input:20:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\subfiles\subfiles.sty
-Input:21:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
-Input:22:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
-Input:23:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
-Input:24:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
-Input:25:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty
-Input:26:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty
-Input:27:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty
-Input:28:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg
-Input:29:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def
-Input:30:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty
-Input:31:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty
-Input:32:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty
-Input:33:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty
-Input:34:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty
-Input:35:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty
-Input:36:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
-Input:37:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
-Input:38:D:\GitHub\PlasmaXNotes\week2.aux
-Input:39:C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii
-Input:40:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
-Input:41:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
-Input:42:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd
+Input:21:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+Input:22:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+Input:23:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty
+Input:24:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+Input:25:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
+Input:26:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty
+Input:27:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty
+Input:28:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+Input:29:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg
+Input:30:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty
+Input:31:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+Input:32:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
+Input:33:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
+Input:34:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+Input:35:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+Input:36:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+Input:37:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+Input:38:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty
+Input:39:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg
+Input:40:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def
+Input:41:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty
+Input:42:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+Input:43:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
+Input:44:D:\GitHub\PlasmaXNotes\week2.aux
+Input:45:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+Input:46:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
+Input:47:C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii
+Input:48:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+Input:49:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+Input:50:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd
 Output:pdf
 Magnification:1000
 Unit:1
 X Offset:0
 Y Offset:0
 Content:
-!3003
+!3617
 {1
+[1,46:4736286,51697090:31969936,46960804,0
+h1,46:4736286,4736286:0,0,0
+[1,46:4736286,4736286:0,0,0
+(1,46:4736286,1061602:0,0,0
+k1,46:4736286,1061602:1249852
+)
+]
 [1,46:4736286,51697090:31969936,46960804,0
 [1,46:3552215,51697090:33154007,50569707,0
 [1,46:3552215,1913815:33154007,786432,0
@@ -1341,10 +1356,17 @@ x1,39:23192351,49355978
 h1,46:3552215,51697090:33154007,0,0
 ]
 ]
-!31858
+]
+!32021
 }1
 !10
 {2
+[1,87:4736286,51697090:31969936,46960804,0
+[1,87:4736286,4736286:0,0,0
+(1,87:4736286,1061602:0,0,0
+k1,87:4736286,1061602:1249852
+)
+]
 [1,87:4736286,51697090:31969936,46960804,0
 [1,87:3552215,51697090:33154007,50569707,0
 [1,87:3552215,1913815:33154007,786432,0
@@ -3164,10 +3186,17 @@ x1,78:26556858,47453605
 h1,87:3552215,51697090:33154007,0,0
 ]
 ]
-!44934
+]
+!45069
 }2
 !10
 {3
+[1,124:4736286,51697090:31969936,46960804,0
+[1,124:4736286,4736286:0,0,0
+(1,124:4736286,1061602:0,0,0
+k1,124:4736286,1061602:1249852
+)
+]
 [1,124:4736286,51697090:31969936,46960804,0
 [1,124:3552215,51697090:33154007,50569707,0
 [1,124:3552215,1913815:33154007,786432,0
@@ -4679,10 +4708,17 @@ x1,116:28669588,46707809
 h1,124:3552215,51697090:33154007,0,0
 ]
 ]
-!37174
+]
+!37313
 }3
 !10
 {4
+[1,161:4736286,51697090:31969936,46960804,0
+[1,161:4736286,4736286:0,0,0
+(1,161:4736286,1061602:0,0,0
+k1,161:4736286,1061602:1249852
+)
+]
 [1,161:4736286,51697090:31969936,46960804,0
 [1,161:3552215,51697090:33154007,50569707,0
 [1,161:3552215,1913815:33154007,786432,0
@@ -6168,10 +6204,17 @@ g1,156:36706222,49717328
 h1,161:3552215,51697090:33154007,0,0
 ]
 ]
-!36908
+]
+!37047
 }4
 !10
 {5
+[1,193:4736286,51697090:31969936,46960804,0
+[1,193:4736286,4736286:0,0,0
+(1,193:4736286,1061602:0,0,0
+k1,193:4736286,1061602:1249852
+)
+]
 [1,193:4736286,51697090:31969936,46960804,0
 [1,193:3552215,51697090:33154007,50569707,0
 [1,193:3552215,1913815:33154007,786432,0
@@ -7701,10 +7744,17 @@ g1,187:36706222,47473122
 h1,193:3552215,51697090:33154007,0,0
 ]
 ]
-!38631
+]
+!38770
 }5
 !10
 {6
+[1,225:4736286,51697090:31969936,46960804,0
+[1,225:4736286,4736286:0,0,0
+(1,225:4736286,1061602:0,0,0
+k1,225:4736286,1061602:1249852
+)
+]
 [1,225:4736286,51697090:31969936,46960804,0
 [1,225:3552215,51697090:33154007,50569707,0
 [1,225:3552215,1913815:33154007,786432,0
@@ -9391,6 +9441,10 @@ $1,192:4643124,49731010
 (1,192:4643124,49731010:0,504627,0
 r1,192:4643124,49731010:0,504627,0
 )
+(1,192:4643124,49731010:0,0,0
+(1,192:4643124,49010114:0,0,0
+)
+)
 x1,192:6809969,49731010
 g1,192:7011989,49731010
 x1,192:7554075,49731010
@@ -9405,10 +9459,17 @@ g1,192:36706222,49731010
 h1,225:3552215,51697090:33154007,0,0
 ]
 ]
-!43431
+]
+!43634
 }6
 !10
 {7
+[1,266:4736286,51697090:31969936,46960804,0
+[1,266:4736286,4736286:0,0,0
+(1,266:4736286,1061602:0,0,0
+k1,266:4736286,1061602:1249852
+)
+]
 [1,266:4736286,51697090:31969936,46960804,0
 [1,266:3552215,51697090:33154007,50569707,0
 [1,266:3552215,1913815:33154007,786432,0
@@ -10680,10 +10741,17 @@ x1,258:27828558,49491565
 h1,266:3552215,51697090:33154007,0,0
 ]
 ]
-!32152
+]
+!32291
 }7
 !10
 {8
+[1,308:4736286,51697090:31969936,46960804,0
+[1,308:4736286,4736286:0,0,0
+(1,308:4736286,1061602:0,0,0
+k1,308:4736286,1061602:1249852
+)
+]
 [1,308:4736286,51697090:31969936,46960804,0
 [1,308:3552215,51697090:33154007,50569707,0
 [1,308:3552215,1913815:33154007,786432,0
@@ -12264,10 +12332,17 @@ x1,301:25864310,49473499
 h1,308:3552215,51697090:33154007,0,0
 ]
 ]
-!39537
+]
+!39676
 }8
 !10
 {9
+[1,352:4736286,51697090:31969936,46960804,0
+[1,352:4736286,4736286:0,0,0
+(1,352:4736286,1061602:0,0,0
+k1,352:4736286,1061602:1249852
+)
+]
 [1,352:4736286,51697090:31969936,46960804,0
 [1,352:3552215,51697090:33154007,50569707,0
 [1,352:3552215,1913815:33154007,786432,0
@@ -13723,10 +13798,17 @@ g1,350:36706222,48669621
 h1,352:3552215,51697090:33154007,0,0
 ]
 ]
-!37530
+]
+!37669
 }9
 !10
 {10
+[1,397:4736286,51697090:31969936,46960804,0
+[1,397:4736286,4736286:0,0,0
+(1,397:4736286,1061602:0,0,0
+k1,397:4736286,1061602:1249852
+)
+]
 [1,397:4736286,51697090:31969936,46960804,0
 [1,397:3552215,51697090:33154007,50569707,0
 [1,397:3552215,1913815:33154007,786432,0
@@ -14860,6 +14942,10 @@ $1,390:4643124,48512926
 (1,390:4643124,48512926:0,504627,0
 r1,390:4643124,48512926:0,504627,0
 )
+(1,390:4643124,48512926:0,0,0
+(1,390:4643124,47792030:0,0,0
+)
+)
 x1,390:5824939,48512926
 k1,390:6021671,48512926:196732
 x1,390:6429077,48512926
@@ -14922,10 +15008,17 @@ g1,390:36706222,49233822
 h1,397:3552215,51697090:33154007,0,0
 ]
 ]
-!30256
+]
+!30459
 }10
 !11
 {11
+[1,411:4736286,51697090:31969936,46960804,0
+[1,411:4736286,4736286:0,0,0
+(1,411:4736286,1061602:0,0,0
+k1,411:4736286,1061602:1249852
+)
+]
 [1,411:4736286,51697090:31969936,46960804,0
 [1,411:3552215,51697090:33154007,50569707,0
 [1,411:3552215,1913815:33154007,786432,0
@@ -15381,11 +15474,12 @@ g1,410:36706222,21179446
 h1,411:3552215,51697090:33154007,0,0
 ]
 ]
-!11628
+]
+!11767
 }11
-Input:43:D:\GitHub\PlasmaXNotes\week2.aux
+Input:51:D:\GitHub\PlasmaXNotes\week2.aux
 !53
 Postamble:
-Count:9423
+Count:9487
 !26
 Post scriptum:

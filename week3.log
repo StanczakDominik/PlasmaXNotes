@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.5)  15 MAY 2015 10:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.5)  16 MAY 2015 21:24
 entering extended mode
 **week3.tex
 (D:\GitHub\PlasmaXNotes\week3.tex
@@ -647,25 +647,111 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 Non-PDF special ignored!
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4] [5]
 
-(D:\GitHub\PlasmaXNotes\week3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 159.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 159.
-Package rerunfilecheck Info: File `week3.out' has not changed.
-(rerunfilecheck)             Checksum: 2E1A372B99BBCF195BB441C1FFF0A1C8;727.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 304.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 304.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 304.
+
+[6]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 356.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 356.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 356.
+
+[7] [8] <leftrightfrequencies.png, id=153, 411.03563pt x 338.76563pt>
+File: leftrightfrequencies.png Graphic file (type png)
+ <use leftrightfrequencies.png>
+Package pdftex.def Info: leftrightfrequencies.png used on input line 428.
+(pdftex.def)             Requested size: 505.89pt x 416.94286pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 428--429
+[][] 
+ []
+
+[9 <D:/GitHub/PlasmaXNotes/leftrightfrequencies.png>] <whistlerwaves.png, id=161, 793.46437pt x 366.61969pt>
+File: whistlerwaves.png Graphic file (type png)
+
+<use whistlerwaves.png>
+Package pdftex.def Info: whistlerwaves.png used on input line 446.
+(pdftex.def)             Requested size: 505.89pt x 233.75192pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 446--448
+[][]
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 463.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 463.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 463.
+
+[10 <D:/GitHub/PlasmaXNotes/whistlerwaves.png>]
+! Missing } inserted.
+<inserted text> 
+                }
+l.477 ...ga^2_{UH} = \Omega_e^2 + \omega_{pe}^2 \]
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+<OMXMfrequencies.png, id=169, 463.7325pt x 316.93407pt>
+File: OMXMfrequencies.png Graphic file (type png)
+ <use OMXMfrequencies.png>
+Package pdftex.def Info: OMXMfrequencies.png used on input line 485.
+(pdftex.def)             Requested size: 505.89pt x 345.75111pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 485--486
+[][] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 489.
+[11 <D:/GitHub/PlasmaXNotes/OMXMfrequencies.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 489.
+ (D:\GitHub\PlasmaXNotes\week3.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 489.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 489.
+
+
+Package rerunfilecheck Warning: File `week3.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `week3.out':
+(rerunfilecheck)             Before: FB4B3472C002D5D8082A44B1319DC7D4;1793
+(rerunfilecheck)             After:  298545C465EB10FEA084D2579DEEADA7;2176.
  ) 
 Here is how much of TeX's memory you used:
- 6963 strings out of 493921
- 97416 string characters out of 3144871
- 189990 words of memory out of 3000000
- 10138 multiletter control sequences out of 15000+200000
- 20419 words of font info for 57 fonts, out of 3000000 for 9000
+ 7032 strings out of 493921
+ 98527 string characters out of 3144871
+ 191007 words of memory out of 3000000
+ 10168 multiletter control sequences out of 15000+200000
+ 22260 words of font info for 63 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 40i,8n,34p,432b,413s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,8n,34p,501b,413s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0900.pk> <C:\Users\Dominik\AppData\
 Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\fonts\pk\ljf
 our\jknappen\ec\dpi600\ecrm0600.pk> <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm08
@@ -673,14 +759,17 @@ our\jknappen\ec\dpi600\ecrm0600.pk> <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\f
 ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\fonts\pk
 \ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 bx1200.pk> <C:\Users\Dominik\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on week3.pdf (4 pages, 164512 bytes).
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on week3.pdf (11 pages, 1307707 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 503 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

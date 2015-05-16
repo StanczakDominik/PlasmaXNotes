@@ -19,36 +19,51 @@ Input:17:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu
 Input:18:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty
 Input:19:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def
 Input:20:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\subfiles\subfiles.sty
-Input:21:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
-Input:22:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
-Input:23:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
-Input:24:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
-Input:25:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty
-Input:26:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty
-Input:27:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty
-Input:28:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg
-Input:29:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def
-Input:30:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty
-Input:31:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty
-Input:32:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty
-Input:33:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty
-Input:34:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty
-Input:35:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty
-Input:36:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
-Input:37:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
-Input:38:D:\GitHub\PlasmaXNotes\week1.aux
-Input:39:C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii
-Input:40:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd
-Input:41:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
-Input:42:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+Input:21:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+Input:22:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+Input:23:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty
+Input:24:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+Input:25:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
+Input:26:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty
+Input:27:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty
+Input:28:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+Input:29:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg
+Input:30:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty
+Input:31:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+Input:32:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
+Input:33:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
+Input:34:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+Input:35:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+Input:36:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+Input:37:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+Input:38:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty
+Input:39:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg
+Input:40:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def
+Input:41:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty
+Input:42:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+Input:43:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
+Input:44:D:\GitHub\PlasmaXNotes\week1.aux
+Input:45:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+Input:46:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
+Input:47:C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii
+Input:48:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd
+Input:49:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+Input:50:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
 Output:pdf
 Magnification:1000
 Unit:1
 X Offset:0
 Y Offset:0
 Content:
-!3003
+!3617
 {1
+[1,43:4736286,51697090:31969936,46960804,0
+h1,43:4736286,4736286:0,0,0
+[1,43:4736286,4736286:0,0,0
+(1,43:4736286,1061602:0,0,0
+k1,43:4736286,1061602:1249852
+)
+]
 [1,43:4736286,51697090:31969936,46960804,0
 [1,43:3552215,51697090:33154007,50569707,0
 [1,43:3552215,1913815:33154007,786432,0
@@ -1238,6 +1253,10 @@ $1,9:4643124,49731010
 (1,9:4643124,49731010:0,504627,0
 r1,9:4643124,49731010:0,504627,0
 )
+(1,9:4643124,49731010:0,0,0
+(1,9:4643124,49010114:0,0,0
+)
+)
 (1,9:4643124,49731010:14539277,442260,147420
 x1,9:4979824,49731010
 x1,9:8585874,49731010
@@ -1254,10 +1273,17 @@ g1,9:36706221,49731010
 h1,43:3552215,51697090:33154007,0,0
 ]
 ]
-!29416
+]
+!29639
 }1
 !10
 {2
+[1,88:4736286,51697090:31969936,46960804,0
+[1,88:4736286,4736286:0,0,0
+(1,88:4736286,1061602:0,0,0
+k1,88:4736286,1061602:1249852
+)
+]
 [1,88:4736286,51697090:31969936,46960804,0
 [1,88:3552215,51697090:33154007,50569707,0
 [1,88:3552215,1913815:33154007,786432,0
@@ -2397,10 +2423,17 @@ g1,82:36706221,49137518
 h1,88:3552215,51697090:33154007,0,0
 ]
 ]
-!27652
+]
+!27787
 }2
 !10
 {3
+[1,131:4736286,51697090:31969936,46960804,0
+[1,131:4736286,4736286:0,0,0
+(1,131:4736286,1061602:0,0,0
+k1,131:4736286,1061602:1249852
+)
+]
 [1,131:4736286,51697090:31969936,46960804,0
 [1,131:3552215,51697090:33154007,50569707,0
 [1,131:3552215,1913815:33154007,786432,0
@@ -3812,10 +3845,17 @@ g1,123:36706223,49591508
 h1,131:3552215,51697090:33154007,0,0
 ]
 ]
-!35321
+]
+!35460
 }3
 !10
 {4
+[1,152:4736286,51697090:31969936,46960804,0
+[1,152:4736286,4736286:0,0,0
+(1,152:4736286,1061602:0,0,0
+k1,152:4736286,1061602:1249852
+)
+]
 [1,152:4736286,51697090:31969936,46960804,0
 [1,152:3552215,51697090:33154007,50569707,0
 [1,152:3552215,1913815:33154007,786432,0
@@ -4322,10 +4362,17 @@ h1,147:23610876,44963893:78643,0,0
 h1,152:3552215,51697090:33154007,0,0
 ]
 ]
-!12772
+]
+!12911
 }4
 !10
 {5
+[1,167:4736286,51697090:31969936,46960804,0
+[1,167:4736286,4736286:0,0,0
+(1,167:4736286,1061602:0,0,0
+k1,167:4736286,1061602:1249852
+)
+]
 [1,167:4736286,51697090:31969936,46960804,0
 [1,167:3552215,51697090:33154007,50569707,0
 [1,167:3552215,1913815:33154007,786432,0
@@ -4665,10 +4712,17 @@ g1,165:36706222,49731010
 h1,167:3552215,51697090:33154007,0,0
 ]
 ]
-!8778
+]
+!8917
 }5
 !9
 {6
+[1,173:4736286,51697090:31969936,46960804,0
+[1,173:4736286,4736286:0,0,0
+(1,173:4736286,1061602:0,0,0
+k1,173:4736286,1061602:1249852
+)
+]
 [1,173:4736286,51697090:31969936,46960804,0
 [1,173:3552215,51697090:33154007,50569707,0
 [1,173:3552215,1913815:33154007,786432,0
@@ -4749,11 +4803,12 @@ g1,168:36706222,5426545
 h1,173:3552215,51697090:33154007,0,0
 ]
 ]
-!1907
+]
+!2046
 }6
-Input:43:D:\GitHub\PlasmaXNotes\week1.aux
+Input:51:D:\GitHub\PlasmaXNotes\week1.aux
 !51
 Postamble:
-Count:2876
+Count:2911
 !26
 Post scriptum:

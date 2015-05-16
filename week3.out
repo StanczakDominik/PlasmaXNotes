@@ -6,3 +6,18 @@
 \BOOKMARK [3][-]{subsubsection.3.1.4}{The continuity equation}{subsection.3.1}% 6
 \BOOKMARK [3][-]{subsubsection.3.1.5}{The two fluid model!}{subsection.3.1}% 7
 \BOOKMARK [3][-]{subsubsection.3.1.6}{Two fluid simulation of plasma turbulence}{subsection.3.1}% 8
+\BOOKMARK [2][-]{subsection.3.2}{The two-fluid dispersion relation}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Linearization and fourier mode analysis - a review}{subsection.3.2}% 10
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Linearization of Maxwell equations}{subsection.3.2}% 11
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Linearization of two-fluid equations}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.4}{The two-fluid dispersion relation}{subsection.3.2}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Two fluid waves, parallel and perpendicular propagation}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Two fluid cold plasma dispersion relation}{subsection.3.3}% 15
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Waves propagating parallel to B0}{subsection.3.3}% 16
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Waves propagating perpendicular to B0}{subsection.3.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.3.4}{The main takeaway}{subsection.3.3}% 18
+\BOOKMARK [2][-]{subsection.3.4}{Properties of two-fluid waves \(Resonanses, cutoffs, etc\)}{section.3}% 19
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Properties of right and left handed waves}{subsection.3.4}% 20
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Whistler waves}{subsection.3.4}% 21
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Cut-off and resonance frequencies}{subsection.3.4}% 22
+\BOOKMARK [3][-]{subsubsection.3.4.4}{Properties of waves propagating perpendicular to B0}{subsection.3.4}% 23
