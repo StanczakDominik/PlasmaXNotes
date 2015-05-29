@@ -1,0 +1,116 @@
+\documentclass[PlasmaNotes.tex]{subfiles}
+\begin{document}
+
+\section{Week 5. SPAAAAAAAAAAAAAAAAAAAAAAACE}
+
+With this out of the way,
+
+\subsection{The Sun}
+
+\subsubsection{Solar properties}
+\begin{itemize}
+\item Mean distance $d_0 = 1.5e11 m = 1 AU$
+\item Mass $M_0=2e30 kg$, typical for \emph{main sequence stars}
+\item Radius $R_0 = 7e8 m$. Sharply defined (photosphere)
+\item Luminosity $L_0=3.84e26 W$. Can use $E=mc^2$ to get $\d{m}{t} = 10^9 kg/s$ 
+\item About 80\% hydrogen
+\end{itemize}
+
+Logarithmic star luminosity grows linearly with logarithmic mass
+
+\[ L/L_0 = (M/M_0)^{\alpha} \]
+\[ 3 < \alpha < 4\]
+
+A star $10$ times heavier will burn mass $1000$ times faster. Lower lifetime.
+
+\subsubsection{Hydrostatic equilibrium}
+
+Assume: Sun is perfectly spherical. Chop it up in spherical shells, radial distance $r$, thickness $dr$. Local matter density $\rho$. $M_r$ - total mass inside shell.
+
+Use force balance to get relation between acceleration, gravity and radial change in pressure (pressure forces).
+
+Set acceleration to zero for hydrostatic equilibrium and solar death rays to kill for maximum awesome, 
+
+\[ \d{P}{r} = - G M_r \rho /r^2 \]
+
+Integrate shells ($4 \pi r^2$) from $0$ to $R_0$.
+
+\[3 \avg{P} V = \int_0^{R_0}{\rho G M_0 4 \pi r dr} \]
+
+Right side is gravitational energy. Assume volume is filled with a plasma, N protons, N electrons, temperature T.
+
+\[ \avg{P} = 2 N k_b T/V \]
+
+Integrating, we get an average temperature $2.3e6 K$. Maximum can reach $1.6e7 K$
+
+\subsubsection{Proton proton chain reaction (pp I chain)}
+
+Total energy release - $26.22 MeV$.
+
+\subsubsection{Solar luminosity}
+
+Energy density proportional to $T^4$. Total radiative energy you get by multiplying by volume. Luminosity can be gotten as total energy over average time to reach solar surface.
+
+Simplest assumption for a photon going straight from solar center gets you a photon getting there in $500s$.
+
+The plasma is not transparent! Photons get absorbed, scattered, reemitted...
+
+\begin{itemize}
+\item Free free absorption (inverse bremsstrahlung)
+\item Bound free absorption (photoionization)
+\item bound bound absorption (photoexcitation)
+\item electron scattering (Thompson, Compton scattering)
+\end{itemize}
+
+Mean free path for Thomson scattering in solar interior is $2 cm$, that's awfully low. This means photons don't go in a straight line but diffuse in a random walk
+
+\[ \avg{R^2} = D \tau_{ph} \]
+
+Under this assumption, a photon takes $10e8 y$ to escape. And this fits the experimental data..... Whoa.
+
+We get the result that luminosity scales as $M^3$. Just what we began with for main sequence stars!
+
+
+\subsection{The solar cycle. Solar magnetic fields}
+
+Hydrodynamic dynamo process generates the magnetic fields
+
+\subsubsection{Sunspots}
+
+\textbf{Sunspots} - dark patches through which magnetic fields emerge from the interior. The number of sunspots is periodic.
+
+International Sunspot Number, an average value from observatories over the globe.
+
+This is strikingly periodic!
+
+Sunspots larger than the Earth. AB/944
+
+Dark region - umbra, lighter around it - penumbra. Umbrae are characterized by $\%$ of hemisphere surface, and latidude positions.
+
+Solar rotation time: 1 month approximatley
+
+\subsubsection{The butterfly diagram}
+
+Sunspots range from $-30$ to $+30$ degrees in latitude. At the beginning of each cycle, sunspots occur at maximum values and converge towards the equator (which, however, stays free of sunspots)
+
+\subsubsection{Magnetic field measurements}
+
+Started in 1908 by Hale. Zeeman splitting implied magnetic fields about $ 0.2 T$.
+
+Binary groups - fields leaving and entering Sun, closed field loops. Groups on northern hemisphere have symmetric groups on the southern hemisphere, with switched order of entering/leaving sun by mag fields.
+
+\subsubsection{Hale's law}
+
+Leading sunspot (in rotation) tends to be closer to the equator
+
+Between periods, polarities of sunspots reverse!
+
+\subsubsection{Global magnetic field structure}
+
+At solar minimum, polar fields about 10 Gauss - much lower than in sunspots. With no sunspots, we'd get a dipole field. 
+
+At solar maximum, multipolar field, lots of twisted lines leaving and entering solar surface
+
+At next solar minimum, reversed polarity.
+
+\end{document}
