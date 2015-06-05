@@ -1,0 +1,70 @@
+\documentclass[PlasmaNotes.tex]{subfiles}
+\begin{document}
+\setcounter{section}{5}
+
+\section{Week 6. Plasma applications in industry and medicine}
+
+\subsection{Survey of plasmas in industry and medicine}
+
+\subsubsection{What's the difference}
+
+Industrial plasmas tend to have a low degree of ionization ($\oneover{1 000 000}$). Lots of neutrals, and lots of collisional damping, thus no waves. They're made with no magnetic fields (no need to confine the plasma). 
+
+\subsubsection{Why plasma chemistry is difficult}
+
+There's chemical reactions between different cations, anions and radicals. This creates a complex soup of different plasma species in bulk plasmas. There's little simplicity here.
+
+\subsubsection{Different types of reactions}
+
+Homogeneous reactions in the gas phase:
+\begin{itemize}
+\item Ionization - electron hits compound, leaves cation and 2 electrons
+\item Dissociation - electron breaks down a compound and leaves 
+\item Attachment - electron hits compound, breaks it down and attaches itself to one of the resulting molecules leaving an anion
+\end{itemize}
+
+Heterogeneous reaction between the gas and the surface:
+\begin{itemize}
+\item Ion neutralization - cations and electrons recombine on the surface with high efficiency
+\item Association - hydrogen atoms recombine into $H_2$ on surfaces, as in volume processes it's difficult for them to conserve momentum and energy
+\item Secondary emission - positive ions bombard surfaces and release secondary electrons
+\item Sputtering - positive ions bombard surfaces and release atoms of the surface compound
+\item Deposition - gaseous A reacts with surface B, leaves compound AB on the surface
+\item Etching - gaseous A reacts with surface B, leaves compound AB in a gas form (can be pumped away)
+\end{itemize}
+
+Transport of species to surfaces - diffusion (Fick's law) (neutral flux) and, for ions, Bohmian diffusion.
+
+\subsubsection{Elastic collisions - only kinetic energy exchanged (no losses)}
+
+A ball of speed V, mass m strikes a stationary mass M. Due to conservation of momentum and energy, maximum fraction of energy transferred to M is $\delta_{max} = \frac{4 m M}{(m+M)^2}$. For an electron striking an atom, $\delta_{max} = \frac{4m}{M}\ll 1$. For an ion striking an atom, the masses are similar and $\delta_{max} \sim 1$.
+
+Thus, electrons don't heat the gas efficiently, while ions do.
+
+\subsubsection{Power balance}
+
+Electrons in an electric field $E$ gain energy with average power $P=Eeu$, $u$ being their drift velocity and proportional to $mu_e E$, $mu_e$ being the electron mobility, so $P=\frac{e^2 E^2}{m_e \nu_m}$, $\nu_m$ being the collision frequency between neutrals and electrons (thermalization).
+
+Average energy loss per collision $= 1.5 \delta e (T_e - T_gas)$. Multiply by neutral-electron collision frequency for average power. Balance out the two terms and we have
+
+\[T_e - T_{gas} = \frac{2 e E^2}{3 \delta m_e \nu_m^2}\]
+
+This scales as $1/p^2$. So we have a nonequilibrium plasma, much higher electron temperature than ion temperature, at low pressures ($1 mbar$). This equithermalizes at atmospheric pressures.
+
+\subsubsection{Inelastic collisions - with excited atoms}
+
+Same situation and before. Conservation of energy now involves term for internal energy of atom M, which is excited. It turns out that for internal energy, $delta_{max} \sim 1$ for electrons while still $\ll 1$ for kinetic energy! So you can use high energy electrons to modify chemical bonds, but leave the gas temperature unchanged.
+
+\subsubsection{Key to industrial plasma  processing}
+
+In $2 eV$ (low temperature), $T_e \gg T_{gas}$ (nonequilibrium) plasmas, we can do \textbf{high temperature plasma chemistry on low temperature substrates}. Substrates like glass, plastics or \textbf{people}.
+
+\subsubsection{Plasmas in medicine}
+
+Take a low temperature \textbf{dielectric barrier discharge} plasma jet in air - just flow a rare gas into a glass tube (to separate gas from electrodes, which have a voltage applied to them). Gas gets ionized and accelerated, resulting in a centimeter length plasma jet.
+
+This can be used for sterilization. This is an active research area - the plasma can create \textbf{reactive oxygen and nitrogen radicals}, there's ultraviolet photons, electric fields and electrical charges, and they may work together in ways we don't understand. It's difficult to pick out just one of those factors and see what kind of changes it causes.
+
+This is kind of awesome.
+
+\end{document}
