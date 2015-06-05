@@ -24,9 +24,9 @@ $f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase sp
 \par \textbf{Examples of distribution functions}
 \begin{itemize}
 	\item Maxwell-Boltzmann distribution function, for three dimensions
-	\[ F_0(\v{v}) = n_0 (\frac{1}{2 \pi v_{thermal}})^{3/2} \exp{-\frac{v^2}{2 v_{thermal}^2}} \] %insert equation
+	\[ F_0(\v{v}) = n_0 \Big( \frac{1}{2 \pi v_{thermal}} \Big)^{3/2} \exp \Big(-\frac{v^2}{2 v_{thermal}^2} \Big) \] %insert equation
 	In 1D, only the normalization of the distribution changes from the 3D case:
-	\[ F_0(v) = n_0 (\frac{1}{2 \pi v_{thermal}})^{1/2} \exp{-\frac{v^2}{2 v_{thermal}^2}} \]
+	\[ F_0(v) = n_0 \Big( \frac{1}{2 \pi v_{thermal}} \Big)^{1/2} \exp \Big(-\frac{v^2}{2 v_{thermal}^2} \Big) \]
 	\item Monoenergetic beam in 1D
 	\[ F_0(v) = n_0 \delta (v-v_0) \]
 	\item Two counterstreaming beams in 1D (two-stream instability!)
@@ -38,32 +38,32 @@ $f(\v{r}, \v{v}, t) d\v{r} d\v{v} = $ number of particles at time t, in phase sp
 If there are no sources or sinks, we have the following condition for conservation of number of particles
 \[ \d{f_s}{t} = -\nabla_{6D} \cdot (\v{u} f_s) \]
 where we introduce the six-dimensional nabla operator because who's gonna stop us
-\[ \nabla_{6D} = ( \d{}{x},\d{}{y},\d{}{z},\d{}{v_x},\d{}{v_y},\d{}{v_z}) = (\d{}{\v{r}}, \d{}{\v{v}}) \]
-\[ \v{u} = (\d{\v{r}}{t}, \d{\v{v}}{t}) = (\v{v}, \frac{\v{F}}{m_s}) = (\v{v}, \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s}) \] %insert
+\[ \nabla_{6D} = \Big( \d{}{x},\d{}{y},\d{}{z},\d{}{v_x},\d{}{v_y},\d{}{v_z} \Big) = \Big( \d{}{\v{r}}, \d{}{\v{v}} \Big) \]
+\[ \v{u} = \Big( \d{\v{r}}{t}, \d{\v{v}}{t} \Big) = \Big( \v{v}, \frac{\v{F}}{m_s} \Big) = \Big( \v{v}, \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} \Big) \] %insert
 
 Long range forces - collective interactions. Short range forces - binary collisions (between individual particles, like you'd have in a gas).
 Plugging these back into the particle conservation equation:
-\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
+\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot \Big[ \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s \Big] \]
 
 \textbf{Boltzmann equation}
 	We can improve on the previous equation. Start out with the expanded particle conservation equation:
 	
-\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot [\frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s] \]
+\[ \d{f_s}{t} = -\d{}{\v{r}} \cdot (\v{v} f_s) - \d{}{\v{v}} \cdot \Big[ \frac{\v{F_{long range}} + \v{F_{short range}}}{m_s} f_s \Big] \]
 
 \begin{itemize}
 	\item In the phase space approach, velocity is treated as a completely independent variable from r (though you could consider one as a derivative of the other). Thus $\d{}{\v{r}} \cdot (\v{v} f_s) = \v{v} \cdot	\d{f_s}{\v{r}}$
 		\item long range force can be decomposed into electric field independent of v, and the  $\v{v} \times \v{B}$ term - perpendicular to v. Thus, $\d{}{\v{v}} \cdot [\v{F_{long range}} f_s] = \v{F_{long range}}\cdot\d{f_s}{\v{v}} $
 	\item Plugging in:
 	
-	\[ \d{f_s}{t} = -\v{v}\cdot\d{f_s}{\v{r}} - \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} - \d{}{\v{v}} \cdot (\frac{\v{F_{short range}}}{m_s} f_s) \]
+	\[ \d{f_s}{t} = -\v{v}\cdot\d{f_s}{\v{r}} - \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} - \d{}{\v{v}} \cdot \Big( \frac{\v{F_{short range}}}{m_s} f_s \Big) \]
 	\item Can be rewritten as:
 	
-	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} = - \d{}{\v{v}} \cdot (\frac{\v{F_{short range}}}{m_s} f_s) \]
+	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{\v{F_{long range}}}{m_s} \cdot \d{f_s}{\v{v}} = - \d{}{\v{v}} \cdot \Big( \frac{\v{F_{short range}}}{m_s} f_s \Big) \]
 	
 	Term on the right is called a `collision operator' $(\d{f}{t})_c$.	
 	
 \item And we get the \textbf{Boltzmann equation}:
-	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{q_s}{m_s}(\v{E_{long range}} + \v{v} \times \v{B_{long range}}) \cdot \d{f_s}{\v{v}} = (\d{f_s}{t})_c \]
+	\[ \d{f_s}{t} +\v{v}\cdot\d{f_s}{\v{r}} + \frac{q_s}{m_s}(\v{E_{long range}} + \v{v} \times \v{B_{long range}}) \cdot \d{f_s}{\v{v}} = \Big( \d{f_s}{t} \Big)_c \]
 \end {itemize}
 
 \[   \]
@@ -90,23 +90,23 @@ Denote $\theta$ - angle between initial and final electron velocity.
 
 Particles interact through Coulomb force. Angular momentum and energy - conserved (if electron is much lighter than ion, $\frac{m_e}{m_i} \ll 1$).
 
-\[ tan(\theta/2) = \frac{b_{\pi/2}}{b} = \frac{Ze^2}{4 \pi \epsilon_0 m_e v_e^2 b} \]
+\[ \tan(\theta/2) = \frac{b_{\pi/2}}{b} = \frac{Ze^2}{4 \pi \epsilon_0 m_e v_e^2 b} \]
 
 $b_{\pi/2}$ - impact parameter at which collision deflects electron by $90^\circ$.
 
 Cumulative effect for many collisions? Imagine electron moving towards ion cloud.
 
 Due to symmetry we take $\avg{\Delta \v{v_{\perp e}}} =0$ but $\avg{\Delta \v{v_{\perp e}^2}} \neq 0$ . So magnitude could change, but there will be no preferred direction. $\perp$ stands for parallel to initial velocity.
-\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =\int db n_i v_e 2 \pi b \]
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =\int db \hspace{1cm} n_i v_e 2 \pi b \]
 (we integrate over all possible impact parameters
 \[ \Delta \v{v_{\perp e}^2} = v_e^2 \sin{\theta}^2 = \Delta v_e^2 \tan{\theta/2}^2 [1+\tan{\theta/2}^2]^{-2} \]
 
 Plugging into the integral:
-\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =8 \pi n_i v_e^3 \int_0^{\lambda_D} \frac{(b_{\pi/2} / b)^2 b}{(1+(b_{\pi/2} / b)^2)^2} db \pi b \]
+\[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} =8 \pi n_i v_e^3 \int_0^{\lambda_D} db \hspace{1cm} \frac{(b_{\pi/2} / b)^2 b}{(1+(b_{\pi/2} / b)^2)^2} \pi b \]
 We neglect quantum effects (thus integrating from 0) and integrate up to Debye length as coulomb interactions are screened beyond it. Finally, we get:
 \[\d{\avg{\Delta \v{v_{\perp e}^2}}}{t} = 8 \pi n_i v_e^3 b_{\pi/2}^2 \ln{\frac{\lambda_D}{b_{\pi/2}}} \text{(if $\lambda_D \gg b_{\pi/2}$} \]
 
-Following section may have some 4`s swapped for $\Delta$`s. 
+Following section may have some 4's swapped for $\Delta$'s. 
 \begin{itemize}
 \item Note that electrons do not lose much energy as $m_e \ll m_i$. Basically reflected balls from a wall. Thus
 \[ v_e (\Delta v_{\parallel e}) + 0.5 \Delta v_{\perp e}^2 = 0\]
@@ -130,16 +130,16 @@ Much smaller than 1! So small angle deflections dominate over large scale deflec
 \[ \d{\avg{\Delta v_{\parallel e} }}{t} = - \nu_{ei} v_e = -\frac{n_i Z^2 e^4 \ln{\Lambda}}{4 \pi \epsilon_0^2 m_e^2 v_e^3} \]
 We could use this to calculate how an electron beam slows in a plasma.
 Assume a Maxwellian distribution of electron velocities with mean velocity $u_e\ll v_{thermal, e}$ in 1D:
-\[ f_e(v) = n_0 (\frac{m_e}{2 \pi v_{thermal,e}})^{1/2} \exp{\frac{-m_e (v_{\parallel e} - u_e)^2}{2 v_{thermal,e}^2}} \]
+\[ f_e(v) = n_0 \Big( \frac{m_e}{2 \pi v_{thermal,e}} \Big)^{1/2} \exp \Big(\frac{-m_e (v_{\parallel e} - u_e)^2}{2 v_{thermal,e}^2}\Big) \]
 
-\[ \d{u_e}{t} = -\avg{\nu_{ei} v_{\parallel e}} = \frac{-1}{n_0} \int{\nu_{ei} v_{\parallel e} f_e(v_{\parallel e}) dv_{\parallel e}} \simeq -\avg{\nu_{ei}} u_e (\text{if } u_e \ll v_{thermal, e})\]  
+\[ \d{u_e}{t} = -\avg{\nu_{ei} v_{\parallel e}} = -\frac{1}{n_0} \int{\nu_{ei} v_{\parallel e} f_e(v_{\parallel e}) dv_{\parallel e}} \simeq -\avg{\nu_{ei}} u_e (\text{if } u_e \ll v_{thermal, e})\]  
 
 The average collision frequency between electrons and ions $\nu_{ei}$ is
 
-\[ \nu_{ei} = \frac{\sqrt{2}}{12 \pi^(3/2)} \frac{n_i Z^2 e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^(1/2) T_e^(3/2)} \]
+\[ \nu_{ei} = \frac{\sqrt{2}}{12 \pi^{3/2}} \frac{n_i Z^2 e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^{1/2} T_e^{3/2}} \]
 
 There are also collisions between electrons coming from the beam and electrons in the plasma:
-\[ \nu_{ee} = \frac{\sqrt{2}}{12 \pi^(3/2)} \frac{n_e e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^(1/2) T_e^(3/2)} \sim \frac{\avg{\nu_{ei}} n_e}{Z^2 n_i} \]
+\[ \nu_{ee} = \frac{\sqrt{2}}{12 \pi^{3/2}} \frac{n_e e^4 \ln{\Lambda}}{\epsilon_0^2 m_e^{1/2} T_e^{3/2}} \sim \frac{\avg{\nu_{ei}} n_e}{Z^2 n_i} \]
 
 \subsubsection{Plasma resistivity}
 Take a cloud of ions and electrons. Apply electric field $\v{E}$. Ions will move in direction of E, whereas electrons will move in opposite direction. E then drives a current in a plasma - charges are moving!
@@ -180,7 +180,7 @@ The electrons have a similar, very fast rate of collisions with each other and w
 
 \subsection{2d) Vlasov equation}
 \subsubsection{Derivation from Boltzmann equation}
-\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = (\d{f_s}{t})_c\]
+\[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = \Big( \d{f_s}{t} \Big)_c\]
 If we can assume that the number of particles in a Debye cube is REALLY HIGH: $n \lambda_D^3 \gg\gg$, so that  $(\d{f}{t})_c=0$, then the \textbf{Vlasov equation} holds:
 \[\d{f_s}{t} + \v{v} \cdot \d{f_s}{\v{r}} + \frac{q_s}{m_s} (\vec{E} + \vec{v} \times \v{B}) \cdot \d{f_s}{\v{v}} = 0\]
 E and B here represent the long range interactions. The charge density is computed as indicated before, integrating out all the velocities. The currents are likewise obtained by summing over the species and calculating the average velocities at each positions.
