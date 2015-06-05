@@ -1,5 +1,6 @@
 \documentclass[PlasmaNotes.tex]{subfiles}
 \begin{document}
+\setcounter{section}{4}
 
 \section{Week 5. SPAAAAAAAAAAAAAAAAAAAAAAACE}
 
@@ -112,5 +113,125 @@ At solar minimum, polar fields about 10 Gauss - much lower than in sunspots. Wit
 At solar maximum, multipolar field, lots of twisted lines leaving and entering solar surface
 
 At next solar minimum, reversed polarity.
+
+\subsection{Dynamo - from plasma flow to magnetic fields}
+
+Mechanical energy (fluid movement) converted into stretching and twisting B lines
+
+Faraday rotor - homopolar disk dynamo. Metal disk rotating at constant angular velocity. Wire transfers charge to central rod.
+
+Above a critical value of angular velocity, there's flux amplification and dynamo action.
+
+Dynamos result from asymmetries of internal motion - fluid movement inside the Sun
+
+Theorems:
+\begin{enumerate}
+\item there are no 2D dynamo fields. It always depends on all 3 coordinates.
+\item Can't make a dynamo with a toroidal flow.
+\item Can't have a field vanishing at infinity (e.g. physical) for axisymmetric
+\item High degree of symmetry stops dynamo action: stationary axisymmetric, stationary centrally symmetric, planar velocity field
+\end{enumerate}
+
+\subsubsection{Surface rotation}
+Non-uniform rotation of solar surface - equator rotates with period of 25 days. Closer to the pole, period increases. The Sun is not a solid body, but a miasma of incandescent plasma, of course.
+
+\subsubsection{Helioseismology}
+
+Acoustic waves in the sun allows to determine rotation rate relation to depth
+
+Up to $0.7 R_0$ the sun rotates as a solid body
+
+There's a $0.04R_0$ area called the \textbf{tachocline} where the sun experiences extreme shear forces
+
+\subsubsection{Meridional circulation}
+Flow from equator to poles
+
+\begin{center}
+I skipped making notes in this section. If anyone wants to fill this part out, feel free to!
+\end{center}
+
+\subsection{Reconnection: from magnetic fields to flows}
+
+\begin{center}
+Likewise, I skipped making notes in this chapter.
+\end{center}
+
+\subsection{How does the solar wind blow?}
+
+We'll use an MHD description to describe the solar wind.
+
+Cometary tails pointing away from Sun regardless of velocity imply ionized gas pushed away from the comet by the solar wind.
+
+Example - Hale-Bopp comet. White tail - light pressure, radially away from Sun. Blue tail - not radially away from Sun, points in another direction - it's solar wind. Doesn't necessarily have to blow radially, right?
+
+Solar wind speed measured for the first time in 1962 by Mariner 2 probe. Measured speed - $300-700 km/s$. 
+
+1990 ESA/NASA Ulysses mission detected strong correlation of solar wind to number of sunspots. It also detected a variation in power (with solar activity) of a factor of $4$.
+
+\subsubsection{Fluid model of the solar wind}
+
+Note that this neglects kinetic effects and is not completely correct!
+
+We'll work, obviously, in spherical coordinates. Assume solar wind velocity $v(r)$ is purely radial and dependent only on radial distance. Our parameters then are pressure $P$, temperature $T$, density $\rho$.
+
+Use mass conservation and equation of motion, including force of solar gravity. Assume negligible $\crossproduct{j}{B}$ term. Assume also that since we're looking for stationary solutions, time derivatives are negligible.
+
+Assume also a hydrostatic solution - zero wind velocity. Then we can use the ideal gas law for protons and electrons together (neglecting electron mass compared to ion mass for averaging). Assume isothermal gas (constant temperature). It turns out that the pressure falls inversely with radius. The result is rather nonphysical because we get a finite pressure at inifinity... so the hydrostatic solution is a failure.
+
+Roll back the zero wind velocity, but carry on with the isothermal plasma assumption. 
+
+Define sound speed as $v_s^2=\frac{K_b T}{\mu}$, $\mu$ being the average particle mass.
+
+Define also a critical radius $r_g = \frac{G M_{sum}}{2 v_s^2}$
+
+\subsubsection{Solar wind}
+
+\[ \oneover{v} \d{v}{r} (\frac{v^2}{v_s^2}-1) = \frac{2}{r}(1-\frac{r_c}{r}) \]
+
+At small $r$, $1-r_c/r<0$ and for assumed small starting velocity $(v/v_s)^2-1 < 0$. Thus $\d{v}{r}>0$ - the plasma accelerates and the solar wind starts to blow.
+
+The phase space is divided into four regions by the two critical values $v_s$, $r_c$.
+
+\begin{enumerate}
+\item If a trajectory reaches $v=v_s$ at $r<r_c$ it accelerates while turning back. This is nonphysical.
+
+\item If $v<v_s$ at $r=r_c$, the wind accelerates until the critical radius (minimum derivative and then begins slowing down. This is called a subsonic breeze.
+
+\item If $v_s$ at $r=r_c$, the wind keeps accelerating afterwards. The acceleration is always positive, though may become small (asympotically zero). This is a supersonic wind.
+\end{enumerate}
+
+\subsubsection{Typical values for solar wind}
+
+\[ r_c = \frac{M_sum G}{2 v_s^2} \]
+
+\[ v_s = \sqrt{\frac{k_b T}{\mu}} \]
+
+Average mass $\mu = 0.6 m_p$ due to helium presence
+
+Temperature $1.5e6 K$.
+
+Boltzmann constant $k_b = 1.38e-23 J/K$.
+
+This gives us $v_s = 1.4e5 m/s$, $r_c = 3.4e9 m = 4.5 R_{sun}$. This is where the wind becomes supersonic.
+
+We can use these velocities with the equation of motion (assuming isothermality), integrating over trajectories to get energy conservation (a version of Bernoulli's theorem). Our calculated values give us initial conditions.
+
+\subsubsection{Solar mass loss due to solar wind}
+
+It turns out to be $1.58e9 kg/s$ - negligible compared to solar mass.
+
+Plasma density in solar corona - $10e14 m_p$. 
+
+\subsubsection{Solar wind at Earth position}
+
+$1 AU \sim 214 R_0 \sim 48 r_c$, which gives a velocity of $4 v_s = 5.6e5 m/s$. About 500 kilometers a second. It needs a good couple days to reach Earth and a good couple \textbf{months} to reach the outer planets.
+
+The solar wind strikes the magnetic field and, through the frozen flux theorem, pushes it into the outer Solar System.
+
+The interplanetary magnetic field is weak in magnitude, but it influences our magnetosphere. As the solar wind reaches our magnetosphere, it has a density of about $3-8$ ions per cubic centimeter. The magnetosphere carves a cavity free from those ions and deflects them. This forms a $17 km$-thich bow shock layer at a distance of about $90000 km$ away from the Earth.
+
+Some solar wind plasma penetrates the bow shock and forms the \textbf{magnetosheath}.The \textbf{magnetopause} is the abrupt boundary where the planetary magnetic field pressure and solar wind pressure equalize.
+
+The solar wind creates a neutral sheet behind the Earth, where B lines in opposite directions lie close to each other. This is just the condition for magnetic reconnection! This happens often during CMEs as the tail gets essentially cut off by the increased solar wind pressure. This pumps energetic particles into our atmosphere, producing auroras.
 
 \end{document}
