@@ -2,7 +2,10 @@
 \begin{document}
 \setcounter{section}{5}
 
-\section{Week 6. Plasma applications in industry and medicine}
+\let\oldexp\exp
+\renewcommand{\exp}[1]{\oldexp(#1)}
+
+\section{Week 6. Plasma applications in industry and medicine, with Alan Howling}
 
 \subsection{Survey of plasmas in industry and medicine}
 
@@ -66,5 +69,212 @@ Take a low temperature \textbf{dielectric barrier discharge} plasma jet in air -
 This can be used for sterilization. This is an active research area - the plasma can create \textbf{reactive oxygen and nitrogen radicals}, there's ultraviolet photons, electric fields and electrical charges, and they may work together in ways we don't understand. It's difficult to pick out just one of those factors and see what kind of changes it causes.
 
 This is kind of awesome.
+
+\subsection{Breakdown in low pressure gases: part 1}
+
+Our example will be a communication satellite powered by photovoltaic solar panels. These rotate around the communications device by a slip ring\footnote{\url{http://en.wikipedia.org/wiki/Slip_ring}} assembly. We want to design that one to avoid electrical breakdown. How does the latter work?
+
+\subsubsection{Background ionization}
+
+We take a small vacuum vessel (a few $cm$ long) and put in rarified argon at a few $mbar$. Apply DC voltage to the walls. How does the plasma start?
+
+There's always background radiation, cosmic rays, radioactivity. That means electrons are randomly appearing everywhere all the time. The plasma begins to exist spontaneously, given the applied voltage!
+
+Photoemission intensity leads to a saturation current $i_0 = \dot{N}_0 e$ - the maximum value of a $1-\exp{-t}$ increase. Small current, $10 pA$, at voltages of about $10 V$.
+
+We now increase the voltage...
+
+\subsubsection{First Townsend coefficient}
+
+Electron impact ionizes atoms. Current exceeds saturation value, as each electron creates an avalanche (standard exponential growth).
+
+Townsend's first ionization coefficient - $\frac{\text{number of ionization collisions}}{\text{number of electrons, unit length along E}}$. Thus $d\dot{N} = \dot{N} \alpha dx$, leading to $i=i_0 \exp{\alpha d}$.
+
+Every ionization creates positive ions! This means that the current is independent of the $x$ position (along vacuum vessel).
+
+So the $I-V$ curve is a $1-\exp{-t}$ decaying increase until Townsend discharge begins.
+
+\subsubsection{Second Townsend coefficient}
+
+A start electron hits an ion, this returns to the cathode. The electron instead avalanches towards the anode. If an electron hits a returning ion, it's called a secondary emission event. This is described by Townsend's second ionization coefficient $\gamma$ - number of electrons emitted per incident ion. About $0.01$. 
+
+How does this impact the current?
+
+1st ion current given by $i_0(\exp{\alpha d} - 1)$. 1st secondary emission - that times $\gamma$. These cause an avalanche... it's a geometric series.
+
+In sum, the current is $i=i_0 \frac{\exp{\alpha d}}{1-\gamma(\exp{\alpha d} -1)}$. This would increase to infinity as the denominator goes to zero... that's a spark!
+
+\subsubsection{Breakdown criterion in gases}
+
+\[ 1-\gamma(\exp{\alpha d} -1 ) = 0 \]
+
+This is when the gas is said to \textbf{break down}. It's a self sustaining discharge. In other words, $\gamma \exp{\alpha d} = \gamma + 1 $ - every electron creates another to replace it before it gets absorbed.
+
+This opens a current limited only by external resistance. That can lead to very high currents, and even melting of metals.
+
+\subsection{Low Pressure Gases 2: Electrical Breakdown}
+
+We now investigate a lab plasma in a vacuum chamber device controlled by a laptop with a windows system.
+
+We'll derive Paschen's low, see how breakdown is measured, investigate vacuum breakdown and see a numerical model used to descrive this.
+
+\[ \gamma\exp{\alpha d} = 1 + \gamma \]
+
+\subsubsection{Townsend's first coefficient, alpha}
+
+
+$\alpha$ stood for number of ionization collisions per electron per distance. Use definition of mean free path $\lambda$ as number of collisions per distance $=1/\lambda$.
+
+Ionization probability of collision is a Boltzmann factor. $\varepsilon_i$ - ionization energy. $\exp$
+
+We can multiply that and then equate to alpha, getting (as pressure inversely proportional to $\lambda$)
+
+\[ \alpha = A p \exp{-B p/E} \]
+
+\subsubsection{Paschen's law}
+
+For parallel plates $E=V/d$
+
+We can thus get a breakdown voltage - Paschen's law
+
+\[ V_B = \frac{B p d}{\ln{A pd} - \ln{\ln{ 1 + 1/\gamma}}} \]
+
+Can be simplified by introducing another constant, $C=A/\ln{1+1/\gamma}$
+
+Plotting the curve, we get that at low $pd$ there can be no breakdown (infinite $V_B$). There's a minimum at $\ln{C pd} =1 $.
+
+$\alpha$ depends on gas type, $\gamma$ - gas type and electrode material.
+
+At low pressures - few collisions, so you need high ionization probability, high voltage.
+
+At high pressures -  short mean free path, high collision energy ($eE\lambda$), need high voltages again.
+
+\subsubsection{Vacuum discharge}
+
+Measuring this experimentally we notice that Paschen's law golds ok but not at the `infinite $V_B$' region. This is due to the fact that plasma can form \textbf{inside the metal electrodes} in vacuum at really high voltage. Can be proven by spectroscopy. \textbf{The electrodes themselves get ionized}. This is related to \textbf{thermionic field emissions}.
+
+Another issue is that the minimum region of gas discharge when measured experimentally is wider and flatter than the Paschen curve.
+
+\subsubsection{Breakdown numerical simulation by a two fluid model for arbitrary geometry}
+
+\[ \d{n_j}{t} + \div{\Gamma_j} = S_j \]
+
+$S_j$ is a source term. $\Gamma_j$ is a flux therm, can be decomposed into diffusive ($-D_j \grad{n_j}$) and convective ($n_j u_j = \pm n_j \mu_j E$)  terms. 
+
+$S_j = n_e \alpha u_e$, ionization rate due to collisions.
+
+Boundary conditions - zero flux of ions leaving anode. For ions - flux of electrons leaving cathode is related to flux of ions by $-\gamma_{second}$ And we also have the applied voltage.
+
+Results - for a $1mm$ single gap , the Paschen curve agrees with results. At $100mm$, we still have agreement.
+
+Having a model with multiple electrode gaps gives a wide and flat curve. All in all, it's a geometry issue.
+
+\subsection{Sheaths and plasma etching - part 1}
+
+\subsubsection{How does a plasma form?}
+
+Transition from Townsend discharge (weak space charge, Laplace equation) to self sustaining plasmas (Poisson equation)
+
+Note that the transition curve is only for parallel plates!
+
+\subsubsection{Formation of a sheath}
+
+Ion thermal flux, given by kinetic theory, through any boundary in a plasma - completely negated by ion flux from the other side.
+
+Electron flux (also from kinetic theory) - much larger than ion flux due to larger mass. Temperature also a factor, but not as big.
+
+\[\Gamma_e \gg \Gamma_i\]
+
+But this analysis has been isotropic, no boundary conditions taken into account. But you need wall interactions for deposition, etching and surface modding.
+
+Suppose this imaginary surface was replaced by metal wall?
+
+Electrons will flow to the wall and form a negative charge on the wall. A positive layer will form near the wall (and stay there for a time, due to lower ion mobility). The plasma potential rises in the direction into the plasma, to slow down electron escape. There's a \textbf{sheath potential drop}.
+
+If there's no net current, there's a flux equilibrium.
+
+
+Now, use a Gaussian pillbox perpendicular to the wall. As electric field is zero (if pillbox of enough length), the charge inside is zero!
+
+So:
+\begin{itemize}
+\item transition region
+\item bulk positive charge equal in magnitude to negative surface charge
+\item dynamic equilibrium of ion and electron fluxes at the wall
+\item plasma potential always positive with respect to most positive surface
+\item thickness - several $\lambda_D$
+\item the sheath is a dark layer because there's few electrons in it (in bulk)
+\item strong electric field $\rightarrow$ positive ion flux directed towards the wall
+\end{itemize}
+
+\subsubsection{Plasma etch applications}
+
+A plasma formed between two electrodes. At the sheath, photoresist (much smaller than sheath thickness) deposited on a silicon substrate. Ions accelerated perpendicular to substrate.
+
+This allows high aspect ratio etching - requires high precision. Cannot be achieved with a wet process. Plasmas are necessary because of the vertical ion flux.
+
+Transistor densities steadily increasing, photoresist feature size steadily increasing.
+
+This is how Moore's law comes about!
+
+\subsection{Sheaths and plasma etching - part 2 - a mathematical description}
+
+\subsubsection{Sheath potential}
+
+\newcommand{\dvpresheath}{\Delta V_{presheath}}
+
+$V_{plasma}$ at large distance from wall. $V=0$ we define to be at sheath edge. $V_{plasma}-0 = \Delta V_{presheath}$. $u_s$ - speed of initially stationary ions at sheath.
+
+Use conservation of energy: $0.5 M u^2 + e V = 0.5 M u_s^2$
+
+Conservation of ion flux, stating that no ionization occurs in sheath: $n_i u = n_s u_s$
+
+Can eliminate unknown ion speed $u$, $n_i = n_s (1-\frac{2 e V}{M u_s^2})^{-0.5}$
+
+\subsubsection{Ion densities}
+
+We can use a piecewise model.
+
+In the bulk plasma $n_0=n_e=n_i$.
+
+In the presheath $n_e = n_i$ approaches $n_s$ towards the sheath edge.
+
+Up to now, this is the quasi neutral plasma.
+
+Inside the sheath, $n_i > n_e$. They both vary with x (actual dependence is through dependence on V).
+
+Electron sheath density is a Boltzmann: $n_e = n_s \exp{V/T_e}$
+
+\subsubsection{Bohm criterion}
+
+Using 1D Poisson inside the sheath:
+
+\[ \dd{V}{x} = -(n_i - n_e) e /\eps \]
+
+Insert our expressions for density from above:
+
+At plasma sheath interface, we expand the Taylor series to get
+
+\[ \dd{V}{x} = \frac{e n_s}{\eps} \Big(\oneover{T_e} - \frac{e}{M u_s^2}\Big) \]
+
+Assume physically that the behavior is non-oscillatory. Thus the factor $\Big(\oneover{T_e} - \frac{e}{M u_s^2}\Big) >0 $.
+
+From this, we can get a bound:
+
+\[ u_s \geq u_B = \sqrt{\frac{e T_e}{M}} \]
+
+This is Bohm's criterion for ion velocity leaving the plasma. It depends on the \emph{electron temperature}. 
+
+So the ions are accelerated to a kinetic energy $0.5 M u_B^2$ at the sheath, the potential drop is $T_e/2$
+
+Bohm's criterion is kind of universal.
+
+\subsubsection{Consequences of Bohm's criterion}
+
+Ion flux into sheath = $0.61 n_0 u_B$
+
+Ion saturation current - ion current to a probe area A, seen very often
+
+We can calculate the ion and electron fluxes (electron flux from kinetic theory). We can then calculate the sheet voltage drop and combine it with the presheath voltage drop, to get the total ion energy. Turns out to be $\sim 5.2 T_e$ in this case.
 
 \end{document}
