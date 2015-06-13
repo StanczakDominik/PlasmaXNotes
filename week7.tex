@@ -1,0 +1,75 @@
+\documentclass[PlasmaNotes.tex]{subfiles}
+\begin{document}
+\setcounter{section}{6}
+\let\oldexp\exp
+\renewcommand{\exp}[1]{\oldexp(#1)}
+\newcommand{\png}[1]{\begin{center}\includegraphics{#1}\end{center}}
+\section{Week 7. Thermonuclear fusion: an overview}
+
+This week I'm learning how to easily add pictures.
+
+\subsection{The basics}
+
+\subsubsection{Why fusion?}
+
+HDI correlated with electricity use per capita (though Canada is using almost three times as much as the Netherlands so there's room for improvement there). So to develop humankind we need better power sources.
+
+We have to fight global warming, stop using fossil fuels and save this polar bear.
+
+\png{thisbear.PNG}
+
+We also have to make sure the power sources are safe for the population. Energy sources that endanger people are \textbf{bad}.
+
+And fusion fulfils all of those criteria!
+
+\subsubsection{How does it work}
+
+\png{bindingenergycurve.PNG}
+
+Two possible approaches to nuclear energy generation - split really heavy nuclei, like uranium, or merge small nuclei. Note that as the slope is sharp on the left, so you get a lot of energy per each fusion.
+
+\subsubsection{Fusion reactions for a terrestrial reactor}
+
+Three possibilities: DT, DHe3, DD fuel cycles.
+
+At low kinetic energies coulomb repulsion deflects particles. This prevents fusion from occuring (essentially interception by atomic forces). High kinetic energies are equivalent to saying we need high temperature.
+
+You don't actually need $380 keV$ to get into the potential well on the left - you can do with $10 keV$ due to tunneling (a quantum effect).
+
+\png{7FuelCycles.PNG}
+
+Cross section times average velocity over distribution functions (AKA \textbf{reactivity}) - this is a parameter that describes how easy it is for particles to fuse. The DT reaction has the largest one at that for the smallest temperatures, so we're focusing on that for now.
+
+At these temperatures ($10 keV$ or so), pretty much all matter is in the plasma state! So we're gonna need to go through this to understand that.
+
+\textbf{Thermo}nuclear fusion - as Coulomb collisions have a humongous cross section, any monoenergetic beam would be scattered in a plasma before the particles have time to fuse. Thus, an important condition is that our plasma is in a \textbf{thermalized} Maxwellian distribution (this would be mean that the plasma is kind of in a stationary state).
+
+\subsubsection{The DT cycle}
+
+\png{7DTCycle.PNG}
+
+This is the current approach to terrestrial fusion. Deuterium is ubiquitous in the oceans. Tritium has a half-life of $12.5$ years and has to be \textbf{bred} from lithium. That can also be found in the ocean.
+
+We look into the $Li-6$ reaction due to its large cross-section. Smack a neutron into the $Li-6$ atom and one $T$ and one $He-4$ pops out. Lithium can be supplied by using a \textbf{blanket} mounted on the inside wall of the vacuum vessel.
+
+\subsubsection{Schematic of a fusion reactor}
+
+We inject deuterium into the reactor and lithium into the blanket. The tritium stays in a closed system. Helium can be bottled and made into balloons or sold at high prices. The energy is removed from the system by a conventional fluid based system.
+
+\subsubsection{Why fusion is neat}
+
+Fusion energy density: $3.5e8 MJ/kg$. Compare to $30 MJ/kg$ for coal, $50 MJ/kg$ for oil, $8.5e7 MJ/kg$ for uranium fission. $9e10 MJ/kg$ for $E=mc^2$ total conversion.
+
+The fuels are virtually inexhaustible. Lithium specifically can be mined (one example - Nevada), both lithium and deuterium can be obtained from sea water. This is so uniformly spread over the Earth that you could almost call it open source.
+
+The environmental impact? No greenhouse gases whatsoever, helium is neat. The radioactive elements, depending on the materials used, take a short time to become safe.
+
+It is impossible to weaponize a fusion reactor. You can't lose control of the reaction (no criticality) and there's very little fuel in the reactor at any given time (about $1g$) .
+
+\png{7NeatReactorPicture.PNG}
+
+\begin{center}
+\textbf{Let's go do that.}
+\end{center}
+
+\end{document}
