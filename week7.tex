@@ -4,9 +4,8 @@
 \let\oldexp\exp
 \renewcommand{\exp}[1]{\oldexp(#1)}
 \newcommand{\png}[1]{\begin{center}\includegraphics{#1}\end{center}}
-\section{Week 7. Thermonuclear fusion: an overview}
-
-This week I'm learning how to easily add pictures.
+\newcommand{\goesto}{\rightarrow}
+\section{Week 7. Thermonuclear fusion: an overview, with Ambrogio Fasoli}
 
 \subsection{The basics}
 
@@ -72,4 +71,183 @@ It is impossible to weaponize a fusion reactor. You can't lose control of the re
 \textbf{Let's go do that.}
 \end{center}
 
+\subsection{Power balance in reactors}
+
+Each DT reaction gives $3.5 MeV$ to the $\alpha$ and $14.1 MeC$ to the neutron, for a total of $17.6 MeV$.
+
+Fusion power density for a particular relative velocity (or energy). $n_D, n_T$ are densities of deuterium and tritium. $\sigma$ is the reaction cross-section.
+\begin{equation}
+R_{DT}(v) \Delta E_f = (n_D n_T \sigma_{DT} (v) v) \Delta E_f
+\end{equation}
+
+We can integrate that over velocity distributions for both D and T.
+
+Assuming neutrality ($n_D=n_T=n_e/2=n/2$), neglecting impurities and density of alpha particles:
+\begin{equation}
+\text{Power density} = n_D n_T \avg{\sigma v}_{DT} \Delta E_f = \oneover{4} n^2 \avg{\sigma v}_{DT} \Delta E_f
+\end{equation}
+
+To produce $1GW$ of fusion power at $T=20keV$, $n=5e20 m^{-3}$, use tabularized data for the average $\avg{\sigma v}$. Divide desired fusion power by fusion power density. The result: $14 m^3$ - apparently a reasonable volume.
+
+\subsection{Generalities}
+
+For steady state operation - conservation of energy. The losses include radiation, convection and conduction (`direct losses'). Our power input is whatever we do to heat the plasma and the fusion power produced inside.
+
+The radiative lossses include bremsstrahlung - electrons are accelerated in an electric field, producing x-ray radiation (which can pass through the plasma and the containment vessel - thus escaping). Power density of that $\sim n^2 T_e^{1/2}$.
+
+The direct losses are described by the energy confinement time $\tau_E$. Power density of that $=3nT/\tau_E$.
+
+\subsection{Calculation of power balance - breakeven}
+
+Def. physics fusion gain $Q=\text{Fusion power/Input power} = P_f/P_in$. A reactor needs $Q>1$. At $Q=1$ we have a breakeven situation. $P_in + P_\alpha = P_{losses} = P_{direct losses} + P_{bremsstrahlung}$, so we get $Q=\frac{P_f}{P_{direct losses} + P_{bremsstrahlung} - P_{\alpha}}$.
+
+Inserting the previously derived expressions:
+
+\begin{equation}
+ n \tau_E \geq \frac{12 T}{\frac{6}{5} \avg{\sigma v}_{DT} \Delta E_F + 4 A Z_{eff} T^{1/2}}
+\end{equation}
+
+At large temperatures (over $1 keV$), we can neglect the second term to get
+
+\begin{equation}
+\oneover{n \tau_E} = f(T) = \frac{\avg{\sigma v}_{DT} \Delta E_F}{10 T}
+\end{equation}
+
+\png{7breakevencurve.png}
+
+Reactors can work in the green area above the breakeven curve.
+
+\subsubsection{Ignition}
+
+This is the limit where all the heating the plasma needs comes from the fusion reactors. This would be the Sun on Earth scenario. $P_F/P_{in} = +\infty$ as $P_{in} \goesto 0$
+
+$P_in = 0$ means that $P_\alpha \geq P_{losses} \sim P_{dl}$ (we neglect bremsstrahlung).
+
+$n \tau_E \text{at ignition} \geq \frac{12 T}{\avg{\sigma v}_{DT} \Delta E_\alpha} = 6/f(t)$. It's just a higher parabola!
+
+\png{7ignition.png}
+
+The burning plasma regime is when alpha particle heating is greater than the input heating, $Q \geq 5$.
+
+\subsubsection{Engineering fusion gain}
+
+Def. $Q_E$ - ratio of electric power output to input, $\eta_e$ - efficiency of plasma heating electrical power supply, $\eta_t$ - efficiency of thermal fusion power conversion into energy. $\eta = \eta_e \eta_t$, $Q_E=\frac{\eta(P_f + P_{in}) - P_{in}}{P_{in}} = \eta Q - (1-\eta)$. $Q \gg Q_E$, sadly.
+
+\subsection{Plasma confinement approaches}
+
+We need both $n \tau_E = 10^{20} m^{-3} s$ and $T\geq 10 keV$. Magnetic confinement has $\tau_E$ about $1s$. Inertial confinement goes with $10^{-9}s$ and much higher densities.
+
+
+
+\subsection{Inertial confinement}
+
+We consider the ion confinement time $\tau_i = R/c_s$, $R$ being the pellet radius and $c_s$ the speed of sound, at which the ions tend to move.
+
+We also define the heating time $\tau_h=\frac{\text{energy in pellet}}{\text{power deposited on surface}}=\frac{3nT 4\pi R^3/3}{F 4 \pi R^2} = \frac{n T R}{F}$, F being the energy flux
+
+We must have heating faster than the confinement time. $\tau_h < \tau_i \rightarrow F >  m T^{3/2} / \sqrt{m_i}$. The size of the pellet cancels out. Note that we neglected all compressional effects (shock waves...).
+
+For a standard example, $F$ is about $5e19 W/m^2$. This means lasers. Really big lasers.
+
+\subsubsection{ICF energy balance}
+
+Laser inputs energy $E_L$ - I took the liberty of changing notation. Thermal energy is scaled by efficiency $\epsilon_c$: $E_{th}=E_L \epsilon_c$. This produces fusion energy $E_f$ and that process also has a finite efficiency in conversion to electricity, $\epsilon_{th}$. We can also recirculate some of the fusion energy to drive the reactor.
+
+\png{7icfloop.png}
+
+It turns out there's a simple condition for the laser energy sufficient for fusion. For typical values (solid deuterium), and relatively low efficiencies ($5\%$, $10\%$) it turns out to give $10^{15} J$ - $50$ times the Hiroshima bomb. We can currently achieve $2 MJ$. This requires a density of $3000 n_0$, $n_0$ being solid deuterium density. This means we have to have a pressure of $3000 n_0 T$, which is $2e17$ Pascal. That's a lot. Can't do that just by firing lasers.
+
+\subsubsection{The rocket effect}
+
+Generate an implosion by launching a lot of energy into the external surface. Conservation of momentum will cause an inward motion of the external layers and this will compress the plasma.
+
+Pressure $P_{rocket} = \frac{\d{(mv)}{t}}{\text{surface}} \sim \frac{V \d{m}{t}}{S}$ at constant $v$
+
+The energy flux $F$, at constant $v$, turns out to be $\frac{v^2 dm}{2 S dt}$ and we can derive the $\d{m}{t} = \frac{2 S F}{v^2}$.
+
+Cancelling the terms, we get $\frac{P_{rocket}}{P_{laser}} = \frac{2c}{v}$. This is much bigger than 1 and thus a considerable boost
+
+\subsubsection{Additional ICF effects}
+
+The shockwave, if it goes symmetrically into the center, helps increase pressure.
+
+Alpha production can also help heat the core, but the pellet must be larger than alpha mean free path.
+
+However, instabilities, as always, occur and the laser light can't be too intense. Also, too much density means the laser beam actually gets reflected (plasma frequency cutoff occurs)
+
+\subsubsection{Summary of physics}
+
+\begin{itemize}
+ \item Radiation phase
+ 
+ Surface heated by laser, gets plasmified
+ \item Blowoff phase
+ 
+ This is where the surface is blown off and the rest is pushed inside.
+ 
+ \item Implosion phase
+ 
+ Thermal energy is transported to the center, the core is heated
+ 
+ \item Thernomuclear burning
+ 
+\end{itemize}
+
+The challenges here are as follows: The core cannot be heated before the shock wave hits it (separate it from the rest somehow?). Imposes constrains on laser pulse timing and pellet design.
+
+Also, there's the question of hydrodynamic stability:
+
+\png{7rayleightaylorpellet.png}
+
+The pellet must be very symmetric and the beams have to be really carefully aligned. Shown above is a mixing of the DT fuel and core material due to the Rayleigh Taylor instability - we don't really want that.
+
+\subsubsection{Direct and indirect drive}
+
+The direct drive is the simpler one - we just smack the pellet with lasers, as symmetrically as possible. There's multiple layers - a low density ablator on the outside, a ball of solid or liquid fuel and a gas layer.
+
+The indirect drive is intended to lower the symmetry requirements. We have a small chamber - the so called hohlraum - around the pellet. It receives laser beams through two holes and acts as a black body source of x-rays. This is inherently more symmetric than injecting the pellet with laser energy.
+
+The Lawrence Livermore Laboratory's National Ignition Facility uses 192 lasers to achieve pulse energy of $2 MJ$, with about $500 TW$ of power. These fire UV light ($352 nm$).
+
+\subsubsection{Engineering challenges}
+
+Cost, efficiency, reliability. Difficult to find materials for first vacuum chamber wall. Capsules are really complex (3d printing, perhaps?).
+
+A reactor would need to fire a few times a second to function as a power generator.
+
+\subsection{Magnetic confinement}
+
+Confine particles by making them rotate around magnetic field lines. Macroscopic confinement times allow lower densities.
+
+There's many schemes for this:
+\begin{itemize}
+ \item Linear devices - such as magnetic mirrors
+ \item Toroidal configurations
+ \item Stellarators
+\end{itemize}
+
+\subsubsection{Simple toroidal device example}
+
+A simple toroidal field has curvature and an intensity gradient. This causes drifts - positive charges go to the top, negative charges to the bottom. This causes first an E field, then an ambient magnetic field and this means loss of confinement.
+
+What we do is impose a poloidal field. Through their motions particles stay in regions of different drifts directions.
+
+There's the so called hoop force which tends to move field lines to the outer region of the tokamak. To avoid this, we add a vertical field which counters that.
+
+To sum up:
+\begin{itemize}
+ \item Toroidal field coils
+ \item Plasma current generates poloidal field
+ \item Outer poloidal field coils that generate the vertical field, can also help positioning 
+\end{itemize}
+
+How to drive the current in the plasma? That's a neat idea - it's basically a transformer. The plasma is the secondary circuit and the primary circuit is a coil inside the core - center - of the tokamak. Drive AC through that and you drive AC through the plasma by Faraday's law.
+
+\subsubsection{Progress}
+Density times confinement time with respect to temperature - we're steadily moving towards the high energy multiplication and sustained burn region. $Q = 5$ is getting really close now. ITER should have $Q$ of about $10$ - a reactor needs about $30$ or $40$. TFTR and JET actually got close to breakeven by significantly increasing the confinement time. ITER aims to push that to several hundreds of second.
+
+ITER is being built in Cadarache in the south of France. A really global project.\footnote{Really makes you wonder why the victory condition in Civilization games is the space race to Alpha Centauri, huh?}
+
+And now, back to our regularly scheduled programme on magnetic confinement.
+5
 \end{document}
