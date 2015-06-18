@@ -193,7 +193,7 @@ However, instabilities, as always, occur and the laser light can't be too intens
  
 \end{itemize}
 
-The challenges here are as follows: The core cannot be heated before the shock wave hits it (separate it from the rest somehow?). Imposes constrains on laser pulse timing and pellet design.
+The challenges here are as follows: The core cannot be heated before the shock wave hits it (separate it from the rest somehow?). Imposes constraints on laser pulse timing and pellet design.
 
 Also, there's the question of hydrodynamic stability:
 
@@ -250,4 +250,112 @@ ITER is being built in Cadarache in the south of France. A really global project
 
 And now, back to our regularly scheduled programme on magnetic confinement.
 5
+
+\subsection{Simple design of a magnetic fusion reactor}
+
+Constraints on the design result from nuclear physics and engineering.
+
+We put lithium in the blanket, which also collects the heat (usual water energy transfer system).
+
+Tritium is produced in the blanket - has to be kept in a closed system, as it's used in the DT plasma for fusion purposes.
+
+Around the blanket we need magnets for B field generation.
+
+We want $1<Q<\infty$, between breakeven and ignition. $n\tau_E$ is thus between $1e20$ and $6e20 m^{-3}s$. $T\geq 10keV$.
+
+We want to minimize the cost of the reactor and the requirements on plasma performance. This means minimizing $\tau_E$ and $\beta$ - ratio of plasma pressure and magnetic pressure.
+
+We'll be optimizing:
+\begin{itemize}
+ \item the size of the reactor
+ \item reactor geometry
+ \item magnitude of $B$ field
+ \item $n$
+ \item $T$
+ \item $\tau_E$
+\end{itemize}
+
+Our constraints are those resulting from both physics and engineering.
+
+\subsubsection{Simplified geometry for magnetic fusion reactor}
+
+Assume toroidal general shape, circular cross section. Plasma on the inside, radius $a$. Blanket of thickness $b$. Magnet thickness $c$.
+
+From engineering:
+
+We want to produce $P_E=1GW$ for now.
+
+Wall loading $L_W$ - this tells us how much power we can be depositing on the wall. Usually about $5 MW/m^2$.
+
+The magnets have to be superconducting in a certain region in BJT space - in practice this says that we can only have $13 T$ at the coil.
+
+
+From nuclear physics:
+
+Value of fusion rate determined by fusion cross-section.
+
+Processes in the blanket also have their cross-sections:
+
+Neutron multiplication (has to occur before breeding tritium, has to occur at the same rate).
+
+Neutron slowing down - at high neutron energies tritium production cross-section decreases.
+
+Note that we only consider lithium 6 - at low temperatures the cross section for Li-7 is negligibly small. We don't really have to worry about that, it seems (at least at this basic level).
+
+We must also shield the coils from the neutrons - don't want those to become radioactive, of course!
+
+\subsubsection{Neutron physics - blanket and shielt thickness}
+
+For each process, the thickness required is the inverse of number density of targets times cross section.
+
+Neutron multiplication can be done on beryllium. Thickness comes out to be $13 cm$.
+
+Neutrum slowing down can be done on lithium itself - that's $20 cm$.
+
+Tritium breding at room temperature $0.025 eV$ with $7.5\% Li^6$ turns out to be $0.2 cm$. Note that the $7.5\%$ purity of lithium comes into the number density. So we don't have to add more than necessary for slowing down, it seems.
+
+For coil shielding, say we want to reduce the flux $100$ times. Assume only the slowdown layer (which is the largest) - we need $1m$.
+
+Total thickness about $1.2m$ - it's not direct addition as layers overlap in function.
+
+\subsubsection{Minimisation of cost of electricity}
+
+Minimising reactor cost over power is equivalent in this kind of work to minimizing volume of complex systems over power. This means - everything but the plasma, that's not something you build.
+
+Volume of torus $2 \pi R_0 \times \pi ((a+b+c)^2-a^2)$. Electrical power produces is $1/4$ efficiency of power input times sum of energies in alpha, neutron and tritium (in blanket!) production, times density squared, times DT cross-section, times plasma volume ($2\pi R_0 \pi a^2$)
+
+We use the wall loading constraint to get $R_0$ - we take the $5 MW/m^2$ value times plasma surface area.
+
+Neutron power is fusion power over efficiency in transformation into electric energy, times fraction of neutron energy over total produced energy.
+
+From the equality between the latter two pops out (upon assuming $40\% = \eta_t$) an expression for $R_0$.
+
+We can now take the complex system volume over power fraction - the electrical power actually drops out - and we're left with an expression:
+
+\[
+ \frac{V}{P} = 0.8 \frac{(a+b+c)^2-a^2}{a L_W^{max}}
+\]
+
+Thus the better materials we have (more wall loading), the lower the volume and cost. $b$ is already set - due to blanket physics - so we're optimizing in 2-space, over $a$ and $c$.
+
+\subsubsection{Magnet thickness}
+
+That should also be minimum. There's the $\crossproduct{J}{B}$ force on the magnet (superconducting coil) and it has to be able to withstand the stress. A calculation with tensile stress gives $c=\frac{2\alpha}{1-\alpha}(a+b)$, alpha being $\frac{B_{coil}^2}{4\mu_0 \sigma_{max}}$, $\sigma_{max}$ being the maximum stress the magnet can endure.
+
+It's difficult to reach high $\beta$ in the plasma. So we need the maximum field at the coil - $13 T$ (at higher values they stop superconducting, at least with today's technology).
+
+Maximum stress is about $200 MPa$. $\alpha \sim 0.1$. So $c=0.22(a+b)$ - it simplifies out of our optimization problem! It's a one variable problem, in this simplified version.
+
+\[
+ \frac{V}{P} = 0.8 \frac{(a+b+c)^2-a^2}{a L_W^{max}}
+\]
+
+Taking the derivative we get $a=\sqrt{3} b$. $c=0.22(\sqrt{3}+1)b=0.6b$. $b=1.2m$, $a=2.1m$, $c=0.7m$.
+
+\subsubsection{Resulting reactor geometry and plasma parameters}
+
+Taking $L_W^{max} = 4.5 MW/m^2$ we get $R_0 = 4.2m$. The plasma surface becomes $350m^2$, volume $365m^2$. The power density in that - power of alphas and neutrons over volume - $6 MW/m^3$. $B_0$ being the magnetic field in the plasma, at the major radius. $B \propto 1/r$ and at the coil it's $13 T$, so we'll get $2.7 T$ at the major radius, assuming coil located at $R_0-a-b$.
+
+Assuming $\tau_E = 2s$, $n=1e20 m^-3$, $T=15 keV$, $\beta$ turns out to be $= \frac{n T}{B_0^2/2\mu_0} = 8\%$.
+
 \end{document}
