@@ -4,6 +4,7 @@
 \let\oldexp\exp
 \renewcommand{\exp}[1]{\oldexp(#1)}
 \newcommand{\png}[1]{\begin{center}\includegraphics{#1}\end{center}}
+\newcommand{\largepng}[1]{\begin{center}\includegraphics[width=\linewidth]{#1}\end{center}}
 \newcommand{\goesto}{\rightarrow}
 \section{Week 7. Thermonuclear fusion: an overview, with Ambrogio Fasoli}
 
@@ -357,5 +358,50 @@ Taking the derivative we get $a=\sqrt{3} b$. $c=0.22(\sqrt{3}+1)b=0.6b$. $b=1.2m
 Taking $L_W^{max} = 4.5 MW/m^2$ we get $R_0 = 4.2m$. The plasma surface becomes $350m^2$, volume $365m^2$. The power density in that - power of alphas and neutrons over volume - $6 MW/m^3$. $B_0$ being the magnetic field in the plasma, at the major radius. $B \propto 1/r$ and at the coil it's $13 T$, so we'll get $2.7 T$ at the major radius, assuming coil located at $R_0-a-b$.
 
 Assuming $\tau_E = 2s$, $n=1e20 m^-3$, $T=15 keV$, $\beta$ turns out to be $= \frac{n T}{B_0^2/2\mu_0} = 8\%$.
+
+\subsection{Plasma-wall interactions}
+
+\subsubsection{The first wall}
+
+We now turn our investigation to the requirements faced\footnote{Sorry.} by the reactor wall. This has to take $10MW/m^2$ of heat! $1MW/m^2$ is felt by reentering spacecraft. $80MW/m^2$? A live rocket engine. What we also want to make sure is that the plasma is not contaminated - impurities are bad in that they increase ignition temperature, and radiate energy away (line and brehmstrahlung radiation, which goes as $Z_eff \sqrt{T_e}$). Note that this means we have to use low Z materials, it seems.
+
+We also have to stop retention of T in the wall. Tritium slowly accumulates during the discharge. We can tolerate up to 700g of T in the wall. Carbon materials accumulate it much quicker than if you made it all out of tungsten, which seems like a neat solution.
+
+The walls must also minimize dust production, that leads to instabilities, allow containment, refueling and removal of helium ashes - low energetic alpha particles. We have to remove those as fast as possible.
+
+\subsubsection{Limiters and divertors}
+
+Direct contact should be avoided, but is ultimately necessary (helium, energy removal, etc). People use limiters and divertors for that. Limiters stick out into the plasma and intercept particles. Divertors use an X shaped magnetic field configuration which has a null point for the poloidal field.
+\largepng{7divlimiter}
+
+\subsubsection{The scrape off layer}
+
+This is the layer of the plasma which is in direct contact with the wall. The parallel flow in that strikes the limiter. Using a diffusion argument (Fick's law), we get a $1cm$ thickness for ITER - a lot of power striking a small surface! 
+
+\subsubsection{Divertor advantages}
+
+Particles move along field lines. The `connection length' for the ITER divertor will be about $150m$, this slows down the flux of particles and reduces parallel power flux. There is also a temperature gradient - the plasma is colder towards the divertor while being thermonuclear near the core.
+
+The slowdown of particles means that there's less sputtering and charge exchange collisions. This also means that there's less impurities in the main plasma chamber - it seems to be mostly flowing outside to the divertor chamber.
+
+High confinement regimes are allowed by the divertor concept - they have low turbulence and are easier to confine. Transport barrier - a calm layer of plasma that stops transport.
+
+L-mode, AKA low confinement mode - turbulent edge. Small amplitude pressure gaussian, particles sorta tunnel through.. In the H-mode, the pressure gaussian is much taller and this effectively stops particle transport.
+
+Due to the high pressure region, pumps can exhaust particles easier from there. Cryopumps can also be used to exhaust material.
+
+\largepng{7cryopumps.png}
+
+The divertor allows the plasma to cool down to about 5 eV. This lowers ionisation cross-section. Allows easier change exchange collisions. This transfers the energy from ions to neutrals, forming a so-called neutral cushion in the divertor chamber. Energy is mostly dissipated here in radiation and not through wall interactions, which is neat! Otherwise this would hit the wall.
+
+In ITER, the divertor will be made of tungsten. The walls will be made of beryllium. Both have low tritium retention. Tungsten has high Z but that's okay because the sputtering threshold is high, so not much of it will be injected into the plasma. These materials are also resistant to neutron irradiation.
+
+\png{7wallcomponents.png}
+
+Transients include ELMs - Edge Localised Modes. Steep gradients of pressure near the edge - large thermodynamic potential - can drive violent instabilities - $15MJ$ for ITER in a single burst over $0.2ms$ deposited over $6m^2$ - $10GW/m^2$ of power. Heats wall to $6000 C$ - melts the metal.
+
+Another issue are disruptions. A disruption is a sudden loss of plasma control. Deposits energy on the wall, on very specific areas. In ITER, if we have disruptions the divertor will fail after about 300 of them.
+
+We can't fix this right now via materials! We have to control the plasma itself. DEMO will need a lot of work. There's plenty of alternative concepts, some of them: liquid metal walls - a thin layer of melted lithium circulating around the plasma. Super-X divertor designs - expand the divertor to get more volume for the plasma chamber, from which we can radiate energy. Snowflake divertor - tested at EPFL - give the divertor four legs instead of two. Longer connection length. Can change plasma stability, must be investigated. Not sure if this will work better than what current divertors.
 
 \end{document}
