@@ -404,4 +404,38 @@ Another issue are disruptions. A disruption is a sudden loss of plasma control. 
 
 We can't fix this right now via materials! We have to control the plasma itself. DEMO will need a lot of work. There's plenty of alternative concepts, some of them: liquid metal walls - a thin layer of melted lithium circulating around the plasma. Super-X divertor designs - expand the divertor to get more volume for the plasma chamber, from which we can radiate energy. Snowflake divertor - tested at EPFL - give the divertor four legs instead of two. Longer connection length. Can change plasma stability, must be investigated. Not sure if this will work better than what current divertors.
 
+\subsection{Structural materials}
+
+Large fluxes of $14.1 MeV$ neutrons in reactors (results of fusion). We must thus minimize activation of materials. Fusion is at least an order of magnitude lower in thermal power than fission. Ferritic steel is nice, but silicon carbide and vanadium alloys are really amazing - they get cold relatively quickly.
+
+Use Carnot efficiency, $\eta_{Carnot} = 1 - T_{cold}/T_{hot}$. Higher plasma temperatures and lower coolant temperatures lead to increased $\eta$.
+
+Fission reactors go steady state quickly, but temperatures are relatively low in our terms. Fusion reactors would have much higher temperatures, but violent transfers. Main difference: fission has average neutron energy $2 MeV$. In fusion $14.1 MeV$. Causes requirement for more complex materials devices.
+
+\subsubsection{Physical picture of energetic neutron collisions}
+
+A $E_n$ neutron hits mass M atom, resting in a lattice. Maximum transferred energy $E_{max} = E_n \frac{4 m_n M}{(m_n+M)^2} \sim \frac{E_n 4 m_n}{M}$. For iron, $M=56 amu$. $E_max = 1 MeV$. Much higher than the so called Wigner energy - threshold value for energy, at which atom is displaced in the lattice (usually about $25 eV$). The iron atom gets bumped out of the lattice! What's worse, the process cascades. The pair between the hole and the displaced atom is called a Frenkel pair. We define displacements per atom as measure of damage.
+
+Not as simple as that though - the neutron also causes nuclear transmutation. It generates hydrogen and helium atoms - this causes the grain boundaries to become brittle. Measured in atomic pair per million (appm) of He or H.
+
+This causes changes in the material microstructure. Degrades macroscopic properties. Defects migrate across the lattice. For a $3 GW$ fusion reactor, we expect $20-30 dpa/y$ in steels. ITER is expected to have $3dpa$ at end of life cycle. Appm/dpa is much higher than in fission! This causes:
+\begin{itemize}
+ \item chemical composition changes
+ \item changes in physical properties such as electrical and thermal conductivity for functional materials
+ \item changes in mechanical properties for structural materials
+ \item changes in mechanical dimensions - stuff starts deforming, swelling, growing in length... wacky.
+\end{itemize}
+
+Thus we are constrained to considering low activation elements. Currently we're looking into:
+\begin{itemize}
+ \item Reduced activation ferritic or martensitic steels - least advanced option
+ \item Vanadium alloys
+ \item Tungsten alloys
+ \item SiC or its composites
+\end{itemize}
+
+We have to test the materials! We know little experimentally about the behavior of those materials under such strong neutron fluxes\footnote{High energy neutron gun recently developed at IFPILM may help, go Poland, can into fusion project!}. We know much more about the plasma parameters at fusion regimes than about material behavior in those regimes. Have to extrapolate from small samples.
+
+Current ideas for testing those are low fusion gain tokamaks and accelerator based irradiation test facilities, such as the IFMIF project - uses a deuterium ion beam at $10 MW$ to hit a liquid lithuim target, which produces lots of neutrons to strike a small solid material target. Can extrapolate results for larger samples.
+
 \end{document}
