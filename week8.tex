@@ -1,0 +1,135 @@
+\documentclass[PlasmaNotes.tex]{subfiles}
+\begin{document}
+\setcounter{section}{7}
+\let\oldexp\exp
+\renewcommand{\exp}[1]{\oldexp(#1)}
+\newcommand{\png}[1]{\begin{center}\includegraphics{#1}\end{center}}
+\newcommand{\largepng}[1]{\begin{center}\includegraphics[width=\linewidth]{#1}\end{center}}
+\newcommand{\goesto}{\rightarrow}
+\section{Week 8. Magnetic confinement part I with Ambrogio Fasoli and Duccio Testa}
+
+\subsection{The tokamak concept and operation}
+
+  \subsubsection{Geometry}
+
+    A tokamak consists of
+
+    \begin{itemize}
+    \item Toroidal coil (the D shaped ones) - produces toroidal field
+    \item Inner poloidal field coil - transformer - produces plasma current in toroidal direction
+    \item plasma - secondary transformer circuit - current in toroidal direction produces poloidal magnetic field
+    \item Outer poloidal field coils - allow positioning and shaping
+    \end{itemize}
+
+    Can use cylindrical coordinates $(R,Z,\phi)$ (quasicartesian) or toroidal $(r, \theta, \phi)$  - r goes from 0 to minor radius, inside the tube. High and low field side (field goes as $1/R$ from center of distance). Resistivity depends on inverse of temperature, which is peaked in middle of tube - low resistivity there, which leads to large current inside.
+
+  \subsubsection{Plasma shaping}
+    
+    Done through the outer poloidal field coils. Quadrupole magnet configuration elongates the plasma (gets stretched in the direction of negative poles). A hexapole configuration forces a triangular shape. This is one way to actively control and prevent instabilities! Really important topic.
+    TCV tokamak, research shows huge variety of possible plasma shapes.
+    
+  \subsubsection{MHD equilibrium in a tokamak}
+  
+    MHD equilibrium requires force balance condition $\crossproduct{j}{B} = \grad{P}$. Nested flux surface along isobaric surfaces, current flows on those.
+    
+    $\beta = nT/(B^2/2\mu_0)$, measure of confinement efficiency.
+    
+    Grad-Shafranov equation - averaging MHD equilibrium condition over all flux surfaces. This is a differential equation and as such needs boundary and initial conditions. The former come from measuring fields and fluxes at edge. The latter - the plasma profile.
+    
+    COMPASS tokamak team research example of GS equation solution. 2D situation, coils and points of measurement marked on image. Inside - nested magnetic flux or pressure (same thing) isosurfaces.
+    
+    Shafranov shift - between centers of successive surfaces. They don't quite coincide.
+    
+    Plasma pressure - a wide bump profile in typical JET discharge. Current density more like a gaussian. Note that poloidal field changes sign! Toroidal field $1/R$.
+    
+    Magnetic field lines are helical in the tokamak. Safety factor - a measure of plasma current contained within surface. Related to field pitch angle. At plasma edge equal to inverse of total plasma current. If it has a rational value (basically, number of times the field line goes in the toroidal direction or in the poloidal direction before returning to the same point), instabilities tend to crop up (due to resonances). 
+    
+    Safety factor increases with distance from plasma center (inverse of plasma current, remember?). Minima of safety factor connected to resonances and instabilities.
+    
+  \subsubsection{Typical operation of tokamak discharge}
+  
+    Inject some gas. Increase toroidal field. Breakdown occurs and plasma (and poloidal field coil) current begins ramping up quickly ($2ms$). Then flat-top region for toroidal field, current flat tops slightly delayed. JET discharge: flashes of light indicate radiation.
+   
+  \subsubsection{Tokamaks: A history}
+  
+    Originated at Kurchatov institute in 1950s. Currently over 40 running. JET: creating plasma since 1983. Actually does DT fusion at 16 MW, fusion power gain $0.62$ - $0.95$ in transients. $3m$ major radius, $1.25m$ minor radius. $3.5T$ toroidal field, $3.5MA$ plasma current - can increase to $4T$ and $6MA$. Heating power goes up to $40MW$. Electron density in center up to $5e19 m^{-3}$, thermalized temperature at center (both ions and electrons) $15 keV$. Confines energy for $500ms$. Tungsten and beryllium walls. It's a testing ground both for fusion and technology - remote handling - no humans necessary, praise our remote handling overlords completely controlled by experienced operators situated in the control room.
+    
+  \subsubsection{The spherical tokamak}
+  
+    Much lower aspect ratio - $R_0/a = 1$ compared to $3.5$ for typical tokamaks! Plasma pressure much lower, but higher $\beta$ - less $B$ needed for confinement. Central solenoid gets exposed to plasma. Cheap, replaceable materials...? Usually just try not to hit it with the plasma.
+
+\subsection{The stellarator and other confinement concepts}
+
+\subsubsection{Stellarators - 3D configurations}
+  
+      In toroidal devices charges gather due to drifts. In axisymmetric configuration, this is short-circuited via toroidal current (tokamak simplifies to a 2D device in some ways). But if you break that symmetry you get 3D devices - twisted magnetic axis. Field modulation. Can superpose large axisymmetric toroidal field, moderately sized helical field, small vertical field. This is done by modular (separated, twisted) coils or torsatron coils (which look AWESOME, twisted all along the structure).
+      
+      One danger are magnetic islands - regions of poor confinement (stochastic magnetic field, can't quite control them). NCSX stellarator - flux surfaces have lots of variety over $\pi/3$.
+      
+      Advantages over tokamaks - no ohmic current, completely steady state. Not as much free energy for instabilities. However, very hard (duh) to construct and optimize. Reactor-relevant confinement not yet demonstrated experimentally. Will it work? I sure hope so.
+      
+      Stellarator originally invented by Lyman Spitzer - started after 1958. Kind of died out after tokamaks became \emph{mainstream}.
+      
+      LHD - Large Helical Device - largest stellarator in the world, Toki, Gifu, Japan. Reaches $\tau_E=0.4s$. Factor of 10 difference to go to triple product fusion value.
+      
+      W7X - 50 non planar modular superconducting coils, this is hardcore. Plasmas coming soon. This is pretty much a stellarator JET in terms of parameters. Plasma discharges up to 30 minutes!
+  
+  \subsubsection{RFP - toroidal reversed field pinch}
+  
+    Start with small toroidal B field. Ramp up large toroidal current and compress plasma. Toroidal field at edge reverses direction - large positive in plasma center - becomes negative with distance.
+    
+    Only a few toroidal coils are necessary. Could get us higher $\beta$ but more turbulent losses.
+    
+  \subsubsection{FRC - field reversed configuration}
+  
+    Pulsed device, no applied toroidal fields or transformers. Two theta pinches with fields in opposite directions. Magnetic fields tear and reconnect, the device becomes a flattened Z pinch.
+    
+    Actually more stable than MHD would predict! Huge in the private field.
+  
+  \subsubsection{Levitated dipole}
+  
+    Motivated by stable plasma rings in Jupiter dipolar field, at very high $\beta$.
+    
+    Use dipole field by a levitated superconducting magnet. Bad curvature! But high beta could fix that - very stable there. Magnetic field goes as $1/R^3$ with that. One issue - you can't do DT with that.
+
+\subsection{Operational limits of a tokamak}
+  
+    We need $2<Q_E<10$ (engineering fusion gain in terms of physics gain $10<Q<40$). Critical parameters - plasma current (linked to energy confinement time), density (square proportional to reactivity), pressure (square proportional to fusion power). Soft limits - degrading confinement, hard limits lead to disruptions.
+    
+    Hugill's diagram - relation of inverse of safety factor at plasma edge (total plasma current) to Murakama parameter (proportional to plasma density). $1/q_a < 0.5$ due to global MHD instabilities. Diagonal line (Greenwald density limit) bounds density from the right side - though this limit can be exceeded through plasma shaping.
+    
+    Ideal MHD instabilities occur much faster than can be controlled in real time. These are related to disruptions - the plasma current completely shuts down, but with a small peak about a milisecond wide which is a precursor to the disruption. Detecting those may allow finetuned small scale control of the disruptions.
+    
+    ITER can only take about 5 disruptions in 30 years. These must be avoided.
+    
+\subsection{Classical transport in plasmas}
+
+  There are few collisions in hot plasmas, but the few that do happen are crucial for heat and particle transport. We use a random walk based approach related to diffusion (for unmagnetised plasmas). This sets up a field to maintain quasineutrality - the ambipolar field. 
+  
+  Random walk spreading of particle position - a bit like wavefunction spreading. Huh. In 1D, calculating square of displacement - removing cross terms as they are statistically independent and will tend to cancel out - returns $x^2=N\xi^2$. $\tau$ - time between collisions. Introducing velocity$*$time for step size lets us introduce diffusion coefficient $D=(\text{step size})^2*(\text{collision frequency})$.
+  
+  We can just pick step sizes and collision frequencies for various types of collisions ($\nu_{ei}$, anyone?) and we'll have rough estimates of diffusion coefficients for different species, say, electrons. OR CAN WE? We test that in an unmagnetized steady state plasma, uniform temperature. 
+  
+  Einstein relation - charge over temperature equal to mobility over diffusion coefficient.
+  
+  Fick's law - particles move down a density gradient. Very general and intuitive.
+  
+  Upon some handwaving it can be confirmed that our diffusion coefficient occurs in a diffusion equation, and thus is indeed a diffusion coefficient.
+  
+  Ion and electron fluxes are (close to) equal due to quasineutrality. But they have different diffusion coefficients, so an ambipolar electric field pops up - this slows down the faster species and accelerates the faster one.
+  
+  Ambipolar diffusion - result of ambipolar electric field - D coefficient is a weighted (by mobilities) average of ion and electron D coefficients. Can usually approximate by $D_i (1+T_e/T_i) \sim 2 D_i$ at thermal equilibrium.
+  
+  In magnetized fields, parallel and perp. directions to B field work completely differently. Perpendicular direction means switching magnetic field lines.
+  
+  Note that when particles collide, they get displaced, change orbital phases. Displacement of order of Larmor radius.
+  
+  When like particles collide, they swap guiding centers. No interesting transport (identical particles!) is achieved. Unlike particles have diffusion coefficients with typical step size of their respective (ion or electron) Larmor radius.
+  
+  There's also a diffusion equation for heat instead of particles. There's a constant called the heat diffusivity in it - it's pretty much the same thing, typical step size combined with characteristic frequency. A huge difference - all collisions contribute to heat transfer.
+  
+  Along the parallel direction, heat is mostly transferred by electrons - much larger thermal velocities. Along the perpendicular one, it's mostly ions (much larger Larmor radius).
+
+\subsection{Neo-classical and anomalous transport in tokamaks}
+
+\end{document}
