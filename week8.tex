@@ -130,6 +130,39 @@
   
   Along the parallel direction, heat is mostly transferred by electrons - much larger thermal velocities. Along the perpendicular one, it's mostly ions (much larger Larmor radius).
 
-\subsection{Neo-classical and anomalous transport in tokamaks}
+\subsection{Neo-classical and anomalous transport in tokamaks. Turbulence!}
+
+  Anomalous transport - caused by waves and turbulence. Usually approached empirically, not analytically.
+  
+  From classical transport, we got Fick's law $\pd{n}{t} = D_{\perp} \grad^2 n$ and a way to estimate the diffusion coefficients. But if you try to relate that to experimental results... it doesn't end well. Five orders of magnitude of a difference for JET - the real diffusion is gigantic! Why the difference? One assumption we've made - we estimated the step size as the Larmor radius. But in a tokamak, particles follow helical field lines and may be trapped in the minima and maxima of B available to them, in so called banana orbits (resemble bananas when you look at the cross section). $B \sim 1/R$.
+  
+  Particles actually switch between banana orbits. The actual step size should be the banana orbit width - scales as $q \varepsilon^{-1/2} \rho_{Le}$, q being the safety factor and $\varepsilon$ - the inverse aspect ratio. The effective collision frequency for banana orbits changes. Also note that only some particles ($\varepsilon^{1/2}$) are trapped. Putting this all together, $D_\perp^{\text{neoclassical}} = q^2 \varepsilon^{-3/2} D_\perp^{\text{neoclassical}}$. In summary, in neoclassical transport we take into account the crazy orbits in tokamaks as opposed to just gyro-orbits. Should be better, right?
+  
+  No. This still doesn't account for experimental values. Back to checking our hypotheses. We assumed gaussian step sizes - but this doesn't need to be so. Levy probability distribution functions have heavy tails - can lead to long steps. The distribution can also be non-markovian (correlated direction between steps, for example - the system exhibits memory).
+  
+  Non diffusive transport described by mean square displacement $\sim t^\gamma$, there are cases of sub-diffusion, diffusion, super-diffusion for $\gamma <1, =1, >1$. This happens in many systems - prey and predator (sharks seeking fish in different reservoirs), banknotes.
+  
+  The answer turns out to be turbulence, AKA anomalous transport! Interaction of plasma particles with small scale collective instabilities, instead of with other particles (via collisions, Coulomb or otherwise). Turbulence - a way of releasing free energy via instabilities, shocks, nonlinearities...
+  
+  In plasma, turbulence is the result of nonlinear electrostatic (no magnetic field perturbation) waves - drift, sound or interchange waves. These are driven by pressure gradients and magnetic curvature opposing each other. This results in a fluctuating $\crossproduct{E}{B}$ flow - causes transport dependent on average fluctuation amplitude of density nad field, also on uniform (non-perturbed) magnetic field. Density and flow velocity usually oscillate out of phase - so called adiabatic situation - no actual transport induced, as they cancel out. But if they happen to fall in phase, we get net transport in one direction.
+  
+  \largepng{turbulenceeddies.png}
+  
+  Parallel to B in a tokamak (due to helical lines) long scales for turbulence, while perpendicular scales are very, very short. There's a region of turbulent transport between the hot core and the cold plasma edge.
+  
+  Experimentally, what is there to measure? Fluctuation amplitudes for density, temperature, magnetic and electric fields. There's also plenty of different time and space scales for the turbulence. There's different areas for turbulence - low in the core, high at the edge. There's also many methods - reflectometry, interferometry, laser scattering... One example - geodesic acoustic mode fluctuations (fire light into the plasma, the reflection will vary in phase due to density fluctuations) in the TCV - amplitude varies across the radial profile.
+  
+  Effective diffusion coefficient - size of wave structure squared over correlation time. Note that macroscopic structures can happen - hurricanes, for example. Flows can be sheared, though - and this can distort and destroy turbulence structures.
+  
+  Turbulence can be simulated via gyrokinetic simulations (1.3 Petaflop HELIOS simulation involving $10^9$ particles. The same mechanism is used to study zonal flows - in different regions, stripes - of Jupiter.
+  
+  Shear zonal flows can create local transport barriers - this can help in confining the core! There's a default L-mode (low confinement mode -  turbulence, low plasma pressure, low fusion performance). However, there's one called the H-mode AKA high confinement mode AKA edge transport barrier, at the edge of the plasma this creates a gigantic pressure gradient. It seems like this would be handy for an actual reactor. Another one caused by shear flow, the so called Internal Transport Barrier, does what it says.
+  
+  Turbulence is the coupling between the edge and the core. Increasing edge (pedestal) temperature increases core temperature and fusion gain or performance.
+  
+  Since we have no analytical theory for turbulence, we use empirical scaling based on experimental data to get a scaling law for confinement time. Goes roughly as $R^{1.97} B_T^{0.15} I_p^{0.93}$.
+  
+  
+  
 
 \end{document}
